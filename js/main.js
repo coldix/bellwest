@@ -1,4 +1,4 @@
-// bellwest.au — main.js (header, hero video) — v1.6.0 | 2026-06-17
+// bellwest.au — main.js (header, hero video, shared lightbox)
 
 (function () {
   const header = document.querySelector(".site-header");
@@ -35,4 +35,73 @@
     heroMedia.insertBefore(iframe, heroMedia.firstChild);
   }
 
+  function initLightbox() {
+    let lb = document.getElementById("lightbox");
+    let lbImg = document.getElementById("lightbox-img");
+
+    if (!lb) {
+      lb = document.createElement("div");
+      lb.id = "lightbox";
+      lb.className = "lightbox";
+      lb.setAttribute("role", "dialog");
+      lb.setAttribute("aria-modal", "true");
+      lb.setAttribute("aria-label", "Enlarged image");
+      lb.innerHTML =
+        '<div class="lightbox-content">' +
+        '<button type="button" class="lightbox-close" aria-label="Close">&times;</button>' +
+        '<img id="lightbox-img" src="" alt="">' +
+        "</div>";
+      lb.setAttribute("aria-hidden", "true");
+      document.body.appendChild(lb);
+      lbImg = document.getElementById("lightbox-img");
+    }
+
+    const closeBtn = lb.querySelector(".lightbox-close");
+
+    function openLightbox(fullSrc, alt) {
+      lbImg.src = fullSrc;
+      lbImg.alt = alt || "Enlarged image";
+      lb.classList.add("active");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lb.classList.remove("active");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      lbImg.removeAttribute("src");
+    }
+
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) closeLightbox();
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lb.classList.contains("active")) closeLightbox();
+    });
+
+    document.querySelectorAll("[data-full]").forEach(function (trigger) {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const img = trigger.querySelector("img");
+        const full = trigger.getAttribute("data-full");
+        if (!full) return;
+        openLightbox(full, img ? img.alt : "");
+      });
+    });
+
+    window.openLightbox = function (imgEl) {
+      if (!imgEl) return;
+      const full = imgEl.getAttribute("data-full") || imgEl.src;
+      openLightbox(full, imgEl.alt);
+    };
+
+    window.closeLightbox = closeLightbox;
+  }
+
+  initLightbox();
 })();

@@ -48,7 +48,9 @@
     <section class="pitches" aria-label="Business opportunity pitches">
       <div class="container">
         <article class="pitch-card pitch-card-visual">
-          <img src="images/gallery/torquay-fishermans.jpg" alt="Fisherman's Beach Torquay — surfers and rescue craft in the bay" class="pitch-image" width="1920" height="1080" loading="lazy" onclick="openLightbox(this)" title="Click to enlarge">
+          <button type="button" class="thumb-frame thumb-frame-pitch" data-full="images/gallery/torquay-fishermans.jpg" aria-label="Enlarge: Torquay">
+            <img src="images/thumbs/torquay-fishermans.jpg" alt="Fisherman's Beach Torquay" width="640" height="360" loading="lazy">
+          </button>
           <span class="pitch-number" aria-hidden="true">01</span>
           <div class="pitch-content">
             <h2>Home Base tourism &amp; itinerary platform</h2>
@@ -63,7 +65,9 @@
         </article>
 
         <article class="pitch-card pitch-card-visual">
-          <img src="images/gallery/bells-may22-surf.jpg" alt="Two surfers at glassy Bells Beach, Winki Pop" class="pitch-image" width="1920" height="1080" loading="lazy" onclick="openLightbox(this)" title="Click to enlarge">
+          <button type="button" class="thumb-frame thumb-frame-pitch" data-full="images/gallery/bells-may22-surf.jpg" aria-label="Enlarge: Bells surf">
+            <img src="images/thumbs/bells-may22-surf.jpg" alt="Two surfers at glassy Bells Beach, Winki Pop" width="640" height="360" loading="lazy">
+          </button>
           <span class="pitch-number" aria-hidden="true">02</span>
           <div class="pitch-content">
             <h2>Luxury real estate &amp; agistment portal</h2>
@@ -78,7 +82,9 @@
         </article>
 
         <article class="pitch-card pitch-card-visual">
-          <img src="images/gallery/bells-may22-storm.jpg" alt="Storm clouds over Bells Beach coastline" class="pitch-image" width="1920" height="1080" loading="lazy" onclick="openLightbox(this)" title="Click to enlarge">
+          <button type="button" class="thumb-frame thumb-frame-pitch" data-full="images/gallery/bells-may22-storm.jpg" aria-label="Enlarge: Bells storm">
+            <img src="images/thumbs/bells-may22-storm.jpg" alt="Storm clouds over Bells Beach coastline" width="640" height="360" loading="lazy">
+          </button>
           <span class="pitch-number" aria-hidden="true">03</span>
           <div class="pitch-content">
             <h2>Eco-tourism &amp; conservation hub</h2>
@@ -93,7 +99,9 @@
         </article>
 
         <article class="pitch-card pitch-card-visual">
-          <img src="images/gallery/bells-longboard-pano.jpg" alt="Aerial panorama of Bells Beach and Surf Coast" class="pitch-image" width="2560" height="853" loading="lazy" onclick="openLightbox(this)" title="Click to enlarge">
+          <button type="button" class="thumb-frame thumb-frame-pitch" data-full="images/gallery/bells-longboard-pano.jpg" aria-label="Enlarge: Bells panorama">
+            <img src="images/thumbs/bells-longboard-pano.jpg" alt="Aerial panorama of Bells Beach and Surf Coast" width="640" height="213" loading="lazy">
+          </button>
           <span class="pitch-number" aria-hidden="true">04</span>
           <div class="pitch-content">
             <h2>Curated food, wine &amp; heritage trail</h2>
@@ -152,7 +160,7 @@
     <div class="container footer-inner">
       <p class="footer-brand">
         <a href="https://oze.au" target="_blank" rel="noopener" title="Visit oze.au">
-          <img src="images/oze-logo.png" alt="oze.au" style="height: 22px; vertical-align: middle; margin-right: 6px;">
+          <img src="images/branding/oze-logo.png" alt="oze.au" style="height: 22px; vertical-align: middle; margin-right: 6px;">
         </a>
         <a href="https://bellwest.au">bellwest.au</a> &amp; <a href="https://bellwest.au">bellwest.com.au</a>
       </p>
@@ -167,41 +175,6 @@
     </div>
   </footer>
 
-  <!-- Lightbox for enlarged images (click any pitch image) -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()" aria-hidden="true">
-    <div class="lightbox-content" onclick="event.stopImmediatePropagation()">
-      <span class="lightbox-close" onclick="closeLightbox()" aria-label="Close enlarged image">&times;</span>
-      <img id="lightbox-img" alt="Enlarged view" />
-    </div>
-  </div>
-
   <script src="js/main.js"></script>
-  <script>
-    // Simple lightbox (added v1.2 2026-06-17)
-    function openLightbox(imgEl) {
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
-      if (!lb || !lbImg) return;
-      lbImg.src = imgEl.src;
-      lbImg.alt = imgEl.alt || 'Enlarged image';
-      lb.classList.add('active');
-      lb.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      const lb = document.getElementById('lightbox');
-      if (!lb) return;
-      lb.classList.remove('active');
-      lb.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-    // Close on Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        const lb = document.getElementById('lightbox');
-        if (lb && lb.classList.contains('active')) closeLightbox();
-      }
-    });
-  </script>
 </body>
 </html>

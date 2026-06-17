@@ -47,7 +47,9 @@
     <section class="article-section" aria-labelledby="article-heading">
       <div class="container article-layout">
         <div>
-          <img src="images/gallery/barwon-heads-may22.jpg" alt="Aerial panorama of Barwon Heads Bridge, Barwon River and farmland, 28 May 2022" class="article-hero-img" width="1600" height="1066" loading="eager" onclick="openLightbox(this)" title="Click to enlarge">
+          <button type="button" class="thumb-frame thumb-frame-article" data-full="images/gallery/barwon-heads-may22.jpg" aria-label="Enlarge: Barwon Heads aerial">
+            <img src="images/thumbs/barwon-heads-may22.jpg" alt="Aerial panorama of Barwon Heads Bridge, Barwon River and farmland, 28 May 2022" width="640" height="426" loading="eager">
+          </button>
         </div>
 
         <div class="article-aside">
@@ -99,7 +101,7 @@
     <div class="container footer-inner">
       <p class="footer-brand">
         <a href="https://oze.au" target="_blank" rel="noopener" title="Visit oze.au">
-          <img src="images/oze-logo.webp" alt="oze.au" style="height: 22px; vertical-align: middle; margin-right: 6px;">
+          <img src="images/branding/oze-logo.png" alt="oze.au" style="height: 22px; vertical-align: middle; margin-right: 6px;">
         </a>
         <a href="https://bellwest.au">bellwest.au</a> &amp; <a href="https://bellwest.au">bellwest.com.au</a>
       </p>
@@ -114,31 +116,6 @@
     </div>
   </footer>
 
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" onclick="closeLightbox()">
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-      <span class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</span>
-      <img id="lightbox-img" src="" alt="">
-    </div>
-  </div>
-
   <script src="js/main.js"></script>
-  <script>
-    function openLightbox(img) {
-      const lb = document.getElementById("lightbox");
-      const lbImg = document.getElementById("lightbox-img");
-      if (!lb || !lbImg) return;
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      lb.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLightbox() {
-      const lb = document.getElementById("lightbox");
-      if (!lb) return;
-      lb.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
-  </script>
 </body>
 </html>

@@ -4,17 +4,17 @@ Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula 
 
 **Domains:** [bellwest.au](https://bellwest.au) + [bellwest.com.au](https://bellwest.au) — **$4,000 AUD ONO**
 
-While the domain package is on the market, the site also showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
+While the domain package is on the market, the site showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
 
 ## Live site
 
 | Page | URL | Purpose |
 |------|-----|---------|
 | Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ |
-| Promo | [/promo/](https://bellwest.au/promo/) | Monetisation — promo pages & subdomains from $49.50/mo (sliding discount) |
+| Promo | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains — Stripe checkout + sliding discount |
 | Explore | [/explore.html](https://bellwest.au/explore.html) | Interactive map of the bellwest corridor |
 | Barwon Heads | [/barwon-heads.html](https://bellwest.au/barwon-heads.html) | Bellarine showcase article |
-| 360° tours | [/panorama.html](https://bellwest.au/panorama.html) | Kuula aerial panoramas (Barwon Heads, Torquay, Bells) |
+| 360° tours | [/panorama.html](https://bellwest.au/panorama.html) | Kuula aerial panoramas |
 | Potential uses | [/potential-uses.html](https://bellwest.au/potential-uses.html) | Four business opportunity pitches |
 
 **Community:** [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest)
@@ -28,26 +28,30 @@ bellwest/
 ├── barwon-heads.html
 ├── panorama.html
 ├── potential-uses.html
-├── promo/
-│   └── index.html          # Promo landing page
-├── css/style.css           # Shared styles (v1.6+)
+├── promo/index.html        # Promo landing (subfolder → /promo/)
+├── css/style.css
 ├── js/
-│   ├── main.js             # Header scroll, hero YouTube
-│   ├── map.js              # Leaflet map (explore page)
-│   └── promo.js            # Pricing slider, columns, form
+│   ├── main.js             # Header, hero video, shared lightbox
+│   ├── map.js              # Leaflet map
+│   └── promo.js            # Pricing slider
 ├── images/
-│   ├── gallery/            # Aerial photography
+│   ├── gallery/            # Full-resolution originals
+│   ├── thumbs/             # 640px thumbnails (display + click for full)
+│   ├── branding/           # oze logo, unused logo variants
 │   ├── hero-bells-beach-poster.jpg
 │   └── logo-wave-road.svg
 ├── content/coota-scrape.json
-├── deploy.sh               # Manual rsync deploy
-├── .github/workflows/deploy.yml
+├── deploy.sh
 ├── robots.txt
 ├── sitemap.xml
-├── llms.txt                # AI/LLM citation guide
+├── llms.txt
 ├── CHANGELOG.md
 └── readme.md
 ```
+
+**Root policy:** HTML pages and deploy/SEO files only at repo root. Images live under `images/`; promo page in `promo/`. No build step — static site.
+
+**Images:** Pages load `images/thumbs/` for display (`object-fit: contain` — no cropping). Click any thumbnail to open the full `images/gallery/` file in a shared lightbox (`js/main.js`).
 
 ## Local preview
 
@@ -56,73 +60,51 @@ cd bellwest
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080 — promo page at http://localhost:8080/promo/
+Open http://localhost:8080 — promo at http://localhost:8080/promo/
+
+### Regenerate thumbnails
+
+```bash
+for f in images/gallery/*.jpg; do
+  sips -Z 640 "$f" --out "images/thumbs/$(basename "$f")"
+done
+```
 
 ## Deploy
 
 ### Manual (Mac)
 
-Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
+Requires `~/.ssh/gha_hostinger` (`chmod 600`):
 
 ```bash
 ./deploy.sh
 ```
 
-**Remote path:** `/home/u566466219/domains/bellwest.au/public_html/`
+**Remote:** `/home/u566466219/domains/bellwest.au/public_html/`
 
 ### GitHub Actions
 
-Pushes to `main` auto-deploy via `.github/workflows/deploy.yml`.
+Push to `main` deploys via `.github/workflows/deploy.yml`. Secret: `HOSTINGER_SSH_KEY_B64`.
 
-**One-time setup:** Add repository secret `HOSTINGER_SSH_KEY_B64` (base64-encoded private key, same as ozol-au). Or run **Actions → Deploy to Hostinger → Run workflow** after the secret is set.
+## Stripe (promo checkout)
 
-### DNS
+| Item | Value |
+|------|-------|
+| Product | `prod_UiiOowYQt2TkPl` |
+| Coupon (90% off) | `BW-90` |
+| Payment link | https://buy.stripe.com/3cIeVdcVMezo1st51f77O00 |
+| Buy button ID | `buy_btn_1TjH5PDRtLu90m8j4O1g5xA5` |
+| Publishable key | `pk_live_6TrCubeAphhHGIDlKHpcluuS` |
 
-- **bellwest.au** → Hostinger
-- **bellwest.com.au** → same site or redirect to `https://bellwest.au/`
-
-Hero video streams from YouTube (`ze7-yqh-SMM`) — no local video file required.
-
-## Assets & sources
-
-| Asset | Source |
-|-------|--------|
-| Gallery images | [coota.au](https://coota.au) — Bells Beach, Torquay, Barwon Heads posts |
-| Hero video | YouTube `ze7-yqh-SMM` — Bells Longboard Classic aerial |
-| 360° embeds | [Kuula](https://kuula.co) — Barwon Heads, Torquay, Bells collections |
-| Map | [Leaflet](https://leafletjs.com) + OpenStreetMap |
-
-Scraped content manifest: `content/coota-scrape.json`
+Embedded on `/promo/`. Email order remains as fallback.
 
 ## Contact
 
 | Inquiry | Email |
 |---------|-------|
 | Domain purchase | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry) |
-| Promo page / subdomain | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry) |
+| Promo page | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry) |
 
 Operator: [oze.au](https://oze.au)
-
-## Stripe (promo checkout)
-
-Live on `/promo/` — buy button in `#stripe-checkout-slot`.
-
-| Item | Value |
-|------|-------|
-| Product | `prod_UiiOowYQt2TkPl` |
-| Intro coupon (90% off) | `BW-90` |
-| Payment link | https://buy.stripe.com/3cIeVdcVMezo1st51f77O00 |
-| Buy button ID | `buy_btn_1TjH5PDRtLu90m8j4O1g5xA5` |
-| Publishable key | `pk_live_6TrCubeAphhHGIDlKHpcluuS` |
-
-Customers apply **BW-90** at checkout for the introductory discount ($49.50 first month on the $495 base). Email order remains as a fallback.
-
-## SEO & AI visibility
-
-- `robots.txt` — crawler directives + sitemap link
-- `sitemap.xml` — all public pages including `/promo/`
-- `llms.txt` — structured facts for LLM citation
-- Homepage JSON-LD: WebSite, Product, FAQPage
-- Semantic HTML, minimal JS, static hosting
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.

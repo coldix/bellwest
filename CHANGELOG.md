@@ -2,6 +2,19 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.7.0] - 2026-06-17
+
+### Structure & images
+- `images/thumbs/` — 640px thumbnails for all gallery JPEGs.
+- `images/branding/` — moved oze logos and unused logo assets out of `images/` root.
+- Root `images/` keeps only site assets: `logo-wave-road.svg`, `hero-bells-beach-poster.jpg`, `gallery/`, `thumbs/`, `branding/`.
+
+### UX
+- Thumbnails use `object-fit: contain` (no crop/distort); click opens full image in shared lightbox (`main.js`).
+- Compact 2×2 gallery on home; shorter card copy; FAQ collapsed by default.
+- Removed duplicate per-page lightbox scripts.
+- Unified footer logo path: `images/branding/oze-logo.png`.
+
 ## [1.6.1] - 2026-06-17
 
 ### Stripe checkout (`/promo/`)

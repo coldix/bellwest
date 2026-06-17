@@ -1,0 +1,48 @@
+name: Deploy to Hostinger (SSH rsync)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
+
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTINGER_SSH_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p 65002 -H 46.202.196.151 > ~/.ssh/known_hosts 2>/dev/null || true
+          echo "SSH key file size: $(wc -c < ~/.ssh/id_ed25519) bytes"
+          ls -l ~/.ssh/
+
+      - name: Verify SSH connection
+        run: |
+          ssh -p 65002 \
+            -o BatchMode=yes \
+            -o ConnectTimeout=20 \
+            -o StrictHostKeyChecking=accept-new \
+            -o UserKnownHostsFile=~/.ssh/known_hosts \
+            u566466219@46.202.196.151 \
+            "echo '✅ SSH connection successful from GitHub runner at $(date)'" \
+            || (echo "❌ SSH verification FAILED. Check:"; echo "  - GitHub secret HOSTINGER_SSH_KEY_B64 is set on this repo (or org)"; echo "  - Public key is in remote ~/.ssh/authorized_keys"; echo "  - Remote path exists: /home/u566466219/domains/bellwest.au/public_html/"; exit 1)
+
+      - name: Deploy via rsync over SSH
+        run: |
+          rsync -av \
+            -e "ssh -p 65002 -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.DS_Store' \
+            ./ u566466219@46.202.196.151:/home/u566466219/domains/bellwest.au/public_html/

@@ -663,7 +663,7 @@ a:hover {
 .site-footer {
   padding: 2.5rem 0;
   background: var(--ocean-deep);
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.88rem;
   text-align: center;
 }
@@ -684,13 +684,22 @@ a:hover {
 }
 
 .footer-contact a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: var(--white);
 }
 
 .footer-copy {
   margin-top: 1rem !important;
-  opacity: 0.6;
+  opacity: 0.85;
   font-size: 0.82rem;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: none;
 }
 
 /* --- Responsive --- */

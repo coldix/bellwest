@@ -103,6 +103,17 @@ Scraped content manifest: `content/coota-scrape.json`
 
 Operator: [oze.au](https://oze.au)
 
+## Stripe (promo checkout)
+
+Promo page payments via Stripe:
+
+| Item | ID / code |
+|------|-----------|
+| Product | `prod_UiiOowYQt2TkPl` |
+| Intro coupon (90% off) | `BW-90` |
+
+Apply coupon **BW-90** at checkout for the introductory discount (e.g. $49.50 first month on the $495 base). Wire the Payment Link or Buy Button into `promo/index.html` at `#stripe-checkout-slot` when ready.
+
 ## SEO & AI visibility
 
 - `robots.txt` — crawler directives + sitemap link

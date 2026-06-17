@@ -1,19 +1,19 @@
 // bellwest — promo page interactions
-// Version: 1.0.0 | 2026-06-17
+// Version: 2.0.0 | 2026-06-17
 
 (function () {
   const BASE_PRICE = 495;
   const PRICING_MONTHS = [
-    { label: "July 2026", month: "July", year: 2026, discount: 90 },
-    { label: "August 2026", month: "August", year: 2026, discount: 80 },
-    { label: "September 2026", month: "September", year: 2026, discount: 70 },
-    { label: "October 2026", month: "October", year: 2026, discount: 60 },
-    { label: "November 2026", month: "November", year: 2026, discount: 50 },
-    { label: "December 2026", month: "December", year: 2026, discount: 40 },
-    { label: "January 2027", month: "January", year: 2027, discount: 30 },
-    { label: "February 2027", month: "February", year: 2027, discount: 20 },
-    { label: "March 2027", month: "March", year: 2027, discount: 10 },
-    { label: "April 2027+", month: "April", year: 2027, discount: 0 },
+    { label: "July 2026", short: "Jul", discount: 90 },
+    { label: "August 2026", short: "Aug", discount: 80 },
+    { label: "September 2026", short: "Sep", discount: 70 },
+    { label: "October 2026", short: "Oct", discount: 60 },
+    { label: "November 2026", short: "Nov", discount: 50 },
+    { label: "December 2026", short: "Dec", discount: 40 },
+    { label: "January 2027", short: "Jan", discount: 30 },
+    { label: "February 2027", short: "Feb", discount: 20 },
+    { label: "March 2027", short: "Mar", discount: 10 },
+    { label: "April 2027+", short: "Full", discount: 0 },
   ];
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -26,7 +26,51 @@
     const tier = PRICING_MONTHS[index] || PRICING_MONTHS[PRICING_MONTHS.length - 1];
     const price = BASE_PRICE * (1 - tier.discount / 100);
     const savings = BASE_PRICE - price;
-    return { ...tier, price, savings, index };
+    return Object.assign({}, tier, { price: price, savings: savings, index: index });
+  }
+
+  function buildPricingColumns() {
+    const container = document.getElementById("pricing-columns");
+    if (!container) return;
+
+    container.innerHTML = PRICING_MONTHS.map(function (tier, i) {
+      const t = getTier(i);
+      const height = Math.max(18, Math.round((t.price / BASE_PRICE) * 100));
+      return (
+        '<button type="button" class="pricing-col' +
+        (i === 0 ? " is-active" : "") +
+        '" data-index="' +
+        i +
+        '" aria-label="' +
+        tier.label +
+        ", " +
+        formatPrice(t.price) +
+        '">' +
+        '<div class="pricing-col-bar" style="--bar-height:' +
+        height +
+        '%">' +
+        '<span class="pricing-col-price">' +
+        formatPrice(t.price) +
+        "</span>" +
+        "</div>" +
+        '<span class="pricing-col-month">' +
+        tier.short +
+        "</span>" +
+        (tier.discount > 0
+          ? '<span class="pricing-col-off">' + tier.discount + "%</span>"
+          : '<span class="pricing-col-off is-full">FULL</span>') +
+        "</button>"
+      );
+    }).join("");
+
+    container.querySelectorAll(".pricing-col").forEach(function (col) {
+      col.addEventListener("click", function () {
+        const slider = document.getElementById("promo-price-slider");
+        if (!slider) return;
+        slider.value = col.dataset.index;
+        slider.dispatchEvent(new Event("input", { bubbles: true }));
+      });
+    });
   }
 
   function initPricingSlider() {
@@ -36,6 +80,7 @@
     const discountEl = document.getElementById("promo-live-discount");
     const savingsEl = document.getElementById("promo-live-savings");
     const fillEl = document.getElementById("promo-slider-fill");
+    const thumbGlow = document.getElementById("promo-thumb-glow");
     const orderBtn = document.getElementById("promo-order-btn");
     const stripeSlot = document.getElementById("stripe-checkout-slot");
     const monthField = document.getElementById("promo-selected-month");
@@ -49,6 +94,10 @@
       const pct = max > 0 ? (index / max) * 100 : 0;
 
       priceEl.textContent = formatPrice(tier.price);
+      priceEl.classList.remove("price-pop");
+      void priceEl.offsetWidth;
+      priceEl.classList.add("price-pop");
+
       if (monthEl) monthEl.textContent = tier.label;
       if (discountEl) {
         discountEl.textContent = tier.discount > 0 ? tier.discount + "% OFF" : "Full price";
@@ -56,22 +105,28 @@
       }
       if (savingsEl) {
         savingsEl.textContent =
-          tier.savings > 0 ? "Save " + formatPrice(tier.savings) + " this month" : "Standard monthly rate";
+          tier.savings > 0 ? "Save " + formatPrice(tier.savings) : "Standard rate";
       }
       if (fillEl) fillEl.style.width = pct + "%";
+      if (thumbGlow) thumbGlow.style.left = pct + "%";
 
-      document.querySelectorAll(".promo-slider-tick").forEach(function (tick) {
-        tick.classList.toggle("is-active", Number(tick.dataset.index) === index);
+      document.querySelectorAll(".pricing-col").forEach(function (col) {
+        col.classList.toggle("is-active", Number(col.dataset.index) === index);
       });
 
       if (monthField) monthField.value = tier.label + " — " + formatPrice(tier.price);
 
-      const orderSubject = "bellwest.au promo order — " + tier.label + " (" + formatPrice(tier.price) + ")";
+      const orderSubject =
+        "bellwest.au promo order — " + tier.label + " (" + formatPrice(tier.price) + ")";
       const orderBody = [
         "I'd like to order a bellwest.au promo page.",
         "",
         "Selected month: " + tier.label,
-        "Monthly rate: " + formatPrice(tier.price) + (tier.discount > 0 ? " (" + tier.discount + "% introductory discount)" : " (full price)"),
+        "Monthly rate: " +
+          formatPrice(tier.price) +
+          (tier.discount > 0
+            ? " (" + tier.discount + "% introductory discount)"
+            : " (full price)"),
         "Base price reference: $495/month + artwork/images",
         "",
         "Please send payment details / invoice.",
@@ -83,7 +138,7 @@
           encodeURIComponent(orderSubject) +
           "&body=" +
           encodeURIComponent(orderBody);
-        orderBtn.textContent = "Order now — " + formatPrice(tier.price);
+        orderBtn.textContent = "Order by email — " + formatPrice(tier.price);
       }
 
       if (stripeSlot) {
@@ -94,26 +149,6 @@
 
     slider.addEventListener("input", updatePricing);
     updatePricing();
-  }
-
-  function initTiltCards() {
-    if (reducedMotion) return;
-
-    document.querySelectorAll("[data-tilt]").forEach(function (card) {
-      const max = Number(card.dataset.tiltMax || 8);
-
-      card.addEventListener("mousemove", function (e) {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform =
-          "perspective(900px) rotateX(" + -y * max + "deg) rotateY(" + x * max + "deg) translateZ(12px)";
-      });
-
-      card.addEventListener("mouseleave", function () {
-        card.style.transform = "";
-      });
-    });
   }
 
   function initReveal() {
@@ -135,11 +170,11 @@
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
     );
 
     items.forEach(function (el, i) {
-      el.style.setProperty("--reveal-delay", i * 0.08 + "s");
+      el.style.setProperty("--reveal-delay", Math.min(i * 0.06, 0.4) + "s");
       observer.observe(el);
     });
   }
@@ -179,8 +214,8 @@
     });
   }
 
+  buildPricingColumns();
   initPricingSlider();
-  initTiltCards();
   initReveal();
   initPromoForm();
 })();

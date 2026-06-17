@@ -28,57 +28,63 @@ jobs:
         run: |
           set -e
           mkdir -p ~/.ssh
-          echo "${{ secrets.HOSTINGER_SSH_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
 
-          # Debug: show key info (first line + size)
-          echo "=== SSH Key Debug ==="
-          head -c 100 ~/.ssh/id_ed25519 | cat -A || true
-          echo ""
-          echo "SSH key file size: $(wc -c < ~/.ssh/id_ed25519) bytes"
-          ls -l ~/.ssh/id_ed25519
-
-          if [ ! -s ~/.ssh/id_ed25519 ]; then
-            echo "❌ ERROR: SSH private key is empty or missing!"
-            echo "   → Check that secret HOSTINGER_SSH_KEY_B64 exists and is valid base64 of the ed25519 private key."
+          SECRET="${{ secrets.HOSTINGER_SSH_KEY_B64 }}"
+          echo "=== SSH Secret Debug ==="
+          echo "Secret length (chars): ${#SECRET}"
+          if [ -z "$SECRET" ]; then
+            echo "❌ ERROR: Secret HOSTINGER_SSH_KEY_B64 is empty or not defined!"
+            echo "   This usually means the secret is not set in this repo (or org)."
+            echo "   Go to Settings → Secrets and variables → Actions and add it."
             exit 1
           fi
 
-          # Populate known hosts (best effort)
-          ssh-keyscan -p 65002 -H 46.202.196.151 >> ~/.ssh/known_hosts 2>/dev/null || true
-          echo "Known hosts file:"
-          cat ~/.ssh/known_hosts || true
+          # Robust decode: strip any whitespace/newlines that sometimes sneak into secrets
+          printf '%s' "$SECRET" | tr -d '\n\r\t ' | base64 -d > ~/.ssh/id_ed25519 || {
+            echo "❌ ERROR: Failed to base64-decode the secret."
+            echo "   Make sure the secret value is the exact base64 output of the private key file (no extra spaces)."
+            exit 1
+          }
+
+          chmod 600 ~/.ssh/id_ed25519
+
+          echo "SSH key file size: $(wc -c < ~/.ssh/id_ed25519) bytes"
+          ls -l ~/.ssh/id_ed25519
+          echo "First 80 chars of decoded key (for validation):"
+          head -c 80 ~/.ssh/id_ed25519 | cat -A || true
 
       - name: Verify SSH connection
         run: |
           echo "=== Verifying SSH to Hostinger ==="
-          ssh -i ~/.ssh/id_ed25519 -p 65002 \
-            -o BatchMode=yes \
-            -o ConnectTimeout=20 \
-            -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=/dev/null \
-            u566466219@46.202.196.151 \
-            "echo '✅ SSH connection successful from GitHub runner at $(date)' && whoami && pwd" \
-            || (echo "❌ SSH verification FAILED." \
-                echo "Check the following:" \
-                echo "  1. GitHub secret HOSTINGER_SSH_KEY_B64 is set (repo or coldix org)" \
-                echo "  2. The private key's public half is in the server's ~/.ssh/authorized_keys" \
-                echo "  3. Target dir exists and is writable: /home/u566466219/domains/bellwest.au/public_html/" \
-                echo "  4. Key was base64 encoded correctly (no extra newlines)" \
-                exit 1)
+          if ssh -i ~/.ssh/id_ed25519 -p 65002 \
+               -o BatchMode=yes \
+               -o ConnectTimeout=20 \
+               -o StrictHostKeyChecking=no \
+               -o UserKnownHostsFile=/dev/null \
+               u566466219@46.202.196.151 \
+               "echo '✅ SSH OK from runner at $(date)' && whoami && pwd"; then
+            echo "✅ SSH verification successful"
+          else
+            echo "❌ SSH verification FAILED."
+            echo "Check:"
+            echo "  1. Secret HOSTINGER_SSH_KEY_B64 is correctly set (repo or coldix org level)"
+            echo "  2. Public key is in server's ~/.ssh/authorized_keys for user u566466219"
+            echo "  3. Directory /home/u566466219/domains/bellwest.au/public_html/ exists and is writable"
+            echo "  4. No extra whitespace in the base64 secret value"
+            exit 1
+          fi
 
       - name: Deploy via rsync over SSH
         run: |
           echo "=== Starting rsync deploy ==="
-          rsync -av --progress \
-            -e "ssh -i ~/.ssh/id_ed25519 -p 65002 \
-                 -o BatchMode=yes \
-                 -o ConnectTimeout=20 \
-                 -o StrictHostKeyChecking=no \
-                 -o UserKnownHostsFile=/dev/null" \
+          if rsync -av --progress \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 65002 -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='.DS_Store' \
-            ./ u566466219@46.202.196.151:/home/u566466219/domains/bellwest.au/public_html/
-
-          echo "✅ Deploy completed successfully"
+            ./ u566466219@46.202.196.151:/home/u566466219/domains/bellwest.au/public_html/; then
+            echo "✅ Deploy completed successfully"
+          else
+            echo "❌ rsync failed. Check permissions on the remote public_html directory."
+            exit 1
+          fi

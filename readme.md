@@ -6,16 +6,21 @@ Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula 
 
 While the domain package is on the market, the site also showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
 
+## Design (v3.0)
+
+Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled by a floating pill (top-right). The choice persists in `localStorage` (`bw-theme`) and defaults to the visitor's `prefers-color-scheme`; an inline `<head>` script applies it before first paint to avoid flashing. Warm-sand / deep-teal palette (no blue-on-blue), underlined content links, redesigned footer, 3D card tilt + scroll-reveal (all motion respects `prefers-reduced-motion`).
+
 ## Live site
+
+Four primary pages + one article (consolidated from six in v3.0):
 
 | Page | URL | Purpose |
 |------|-----|---------|
 | Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ |
-| Advertise | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains from $49.50/year (sliding annual discount) |
+| Explore | [/region/explore.html](https://bellwest.au/region/explore.html) | Interactive map, featured locations **and** the 360° Kuula tours (`#tours`) |
 | Invest | [/invest/](https://bellwest.au/invest/) | Four business opportunity pitches |
-| Explore | [/region/explore.html](https://bellwest.au/region/explore.html) | Interactive map of the bellwest corridor |
-| Barwon Heads | [/region/barwon-heads.html](https://bellwest.au/region/barwon-heads.html) | Bellarine showcase article |
-| 360° tours | [/region/panorama.html](https://bellwest.au/region/panorama.html) | Kuula aerial panoramas (Barwon Heads, Torquay, Bells) |
+| Advertise | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains from $49.50/year (sliding annual discount) |
+| Barwon Heads | [/region/barwon-heads.html](https://bellwest.au/region/barwon-heads.html) | Bellarine showcase article (linked from Explore) |
 
 **Community:** [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest)
 
@@ -27,8 +32,8 @@ Old URLs 301 → new locations via `.htaccess`:
 |-----|-----|
 | `/explore.html` | `/region/explore.html` |
 | `/barwon-heads.html` | `/region/barwon-heads.html` |
-| `/panorama.html` | `/region/panorama.html` |
 | `/potential-uses.html` | `/invest/` |
+| `/panorama.html`, `/region/panorama.html` | `/region/explore.html#tours` |
 
 ## Project structure
 
@@ -41,13 +46,12 @@ bellwest/
 ├── invest/
 │   └── index.html          # Invest — four business opportunity pitches
 ├── region/
-│   ├── explore.html        # Interactive map of the bellwest corridor
-│   ├── barwon-heads.html   # Bellarine showcase article
-│   └── panorama.html       # Kuula 360° aerial tours
+│   ├── explore.html        # Map + featured locations + 360° Kuula tours (#tours)
+│   └── barwon-heads.html   # Bellarine showcase article
 ├── css/
-│   └── style.css           # Shared styles (v2.0)
+│   └── style.css           # Design system v3.0 — light + dark themes
 ├── js/
-│   ├── main.js             # Header scroll, hero YouTube embed, shared lightbox
+│   ├── main.js             # Theme toggle, header, hero video, 3D tilt, scroll reveal
 │   ├── map.js              # Leaflet map (explore page)
 │   └── promo.js            # Pricing slider, columns, form, reveal
 ├── images/

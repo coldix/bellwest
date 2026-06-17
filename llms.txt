@@ -35,10 +35,9 @@ Version: 1.7.2 | 2026-06-17
 
 - https://bellwest.au/ — Domain for sale, aerial gallery, promo banner, local utility hub, FAQ
 - https://bellwest.au/promo/ — Promo pages & subdomains offer with interactive pricing
-- https://bellwest.au/explore.html — Interactive map of the region
-- https://bellwest.au/barwon-heads.html — Barwon Heads / Bellarine showcase
-- https://bellwest.au/panorama.html — 360° Kuula aerial tours
-- https://bellwest.au/potential-uses.html — Four business models for the domain package
+- https://bellwest.au/region/explore.html — Interactive map, featured locations, and 360° Kuula aerial tours
+- https://bellwest.au/region/barwon-heads.html — Barwon Heads / Bellarine showcase article
+- https://bellwest.au/invest/ — Four business models for the domain package
 
 ## Content notes for AI
 

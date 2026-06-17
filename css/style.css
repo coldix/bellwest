@@ -558,7 +558,8 @@ a:hover {
 
 .pitch-card-visual .pitch-image {
   width: 100%;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 16 / 5;
+  max-height: 180px;
   object-fit: cover;
 }
 

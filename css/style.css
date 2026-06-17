@@ -1,6 +1,6 @@
 /* bellwest — premium domain sale site */
-/* Version: 1.1.0 | 2026-06-17 16:55 AEST */
-/* Update notes: Version stamp standardized as part of v1.1.0 SEO + AI release. */
+/* Version: 1.1.1 | 2026-06-17 16:55 AEST */
+/* Update notes: Added FAQ styles + version stamp. Part of v1.1 SEO + AI visibility release. */
 
 :root {
   --ocean-deep: #0a2540;
@@ -741,4 +741,45 @@ a:hover {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* FAQ section - added v1.1.0 (2026-06-17 16:55 AEST) */
+.faq {
+  padding: 3rem 0;
+  background: #f6f1e9;
+  border-top: 1px solid #e8dfd0;
+}
+
+.faq .section-header {
+  margin-bottom: 1.25rem;
+}
+
+.faq-list details {
+  background: #fff;
+  border: 1px solid #e8dfd0;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  padding: 0.85rem 1rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #0a2540;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list details[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+.faq-list p {
+  margin: 0;
+  color: #134e6f;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }

@@ -2,6 +2,13 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.7.2] - 2026-06-17
+
+### Promo pricing clarity
+- Image placement included; photography billed separately by the photographer.
+- FSBO portal listings (realestate.com.au + domain.com.au) noted as ~$600 p.a. extra.
+- New “What's included — and what's extra” block on `/promo/`.
+
 ## [1.7.1] - 2026-06-17
 
 ### Copy fix — annual pricing

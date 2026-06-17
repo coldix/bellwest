@@ -1,4 +1,4 @@
-// bellwest.au — promo page (pricing slider, form) — v1.7.1 | 2026-06-17
+// bellwest.au — promo page (pricing slider, form) — v1.7.2 | 2026-06-17
 
 (function () {
   const BASE_PRICE = 495;
@@ -126,7 +126,9 @@
           (tier.discount > 0
             ? " (" + tier.discount + "% introductory discount)"
             : " (full price)"),
-        "Base price reference: $495 p.a. + artwork/images",
+        "Base price reference: $495 p.a. (page, hosting & image placement included)",
+        "Photography: billed separately by the photographer",
+        "Portal listings (FSBO): realestate.com.au + domain.com.au ~$600 p.a. extra",
         "",
         "Please send payment details / invoice.",
       ].join("\n");

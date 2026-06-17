@@ -1843,6 +1843,49 @@ a:hover {
   line-height: 1.5;
 }
 
+.promo-extras-wrap {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.promo-extras h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  margin: 0 0 1.25rem;
+  color: #fff;
+}
+
+.promo-extras-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .promo-extras-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.promo-extras-col h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.promo-extras-col ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+}
+
+.promo-extras-col li + li {
+  margin-top: 0.55rem;
+}
+
 .pricing-cta-bar {
   display: flex;
   flex-direction: column;

@@ -88,7 +88,9 @@ Push to `main` deploys via `.github/workflows/deploy.yml`. Secret: `HOSTINGER_SS
 
 ## Promo pricing
 
-- Base rate: **$495 p.a.** + artwork/images
+- Base rate: **$495 p.a.** — page, hosting & image placement included
+- Photography billed separately by the photographer
+- FSBO portal listings (realestate.com.au + domain.com.au): ~**$600 p.a.** extra
 - Introductory sliding discount by signup month (Jul 2026 → Apr 2027+); coupon **BW-90** for 90% off July signups
 
 ## Stripe (promo checkout)

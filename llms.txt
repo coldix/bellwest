@@ -4,7 +4,7 @@
 > Digital gateway to the Bellarine Peninsula & South West Victoria (Surf Coast, Torquay, Bells Beach, Great Ocean Road).
 > The site also offers promotional pages for local businesses and private property sellers while the domain is listed.
 
-Version: 1.6.0 | 2026-06-17
+Version: 1.7.1 | 2026-06-17
 
 ## Key facts — domain sale
 
@@ -18,12 +18,12 @@ Version: 1.6.0 | 2026-06-17
 ## Key facts — promo pages
 
 - URL: https://bellwest.au/promo/
-- Base price: $495/month + artwork/images
-- Introductory sliding discount (10% less each month from July 2026):
-  - July 2026: $49.50 (90% off)
-  - August 2026: $99 (80% off)
-  - … decreasing monthly …
-  - April 2027+: $495 full price
+- Base price: $495 p.a. (per year) + artwork/images
+- Introductory sliding discount (10% less each signup month from July 2026):
+  - July 2026: $49.50 p.a. (90% off)
+  - August 2026: $99 p.a. (80% off)
+  - … decreasing each month you wait to sign up …
+  - April 2027+: $495 p.a. full price
 - Includes: custom URL (e.g. bellwest.au/your-property), Kuula 360° tours, drone galleries, QR code, lead forms, featured Facebook group post
 - Subdomains available (e.g. pizza.bellwest.au) — hospitality/ordering on request
 - Order: Stripe checkout on /promo/ (coupon BW-90 for 90% off) or email col@oze.com.au

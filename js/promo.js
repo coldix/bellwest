@@ -1,4 +1,4 @@
-// bellwest.au — promo page (pricing slider, form) — v1.6.0 | 2026-06-17
+// bellwest.au — promo page (pricing slider, form) — v1.7.1 | 2026-06-17
 
 (function () {
   const BASE_PRICE = 495;
@@ -104,7 +104,7 @@
       }
       if (savingsEl) {
         savingsEl.textContent =
-          tier.savings > 0 ? "Save " + formatPrice(tier.savings) : "Standard rate";
+          tier.savings > 0 ? "Save " + formatPrice(tier.savings) + " this year" : "Standard rate";
       }
       if (fillEl) fillEl.style.width = pct + "%";
       if (thumbGlow) thumbGlow.style.left = pct + "%";
@@ -120,13 +120,13 @@
       const orderBody = [
         "I'd like to order a bellwest.au promo page.",
         "",
-        "Selected month: " + tier.label,
-        "Monthly rate: " +
+        "Sign up in: " + tier.label,
+        "Annual rate (p.a.): " +
           formatPrice(tier.price) +
           (tier.discount > 0
             ? " (" + tier.discount + "% introductory discount)"
             : " (full price)"),
-        "Base price reference: $495/month + artwork/images",
+        "Base price reference: $495 p.a. + artwork/images",
         "",
         "Please send payment details / invoice.",
       ].join("\n");

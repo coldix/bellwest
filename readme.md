@@ -86,6 +86,11 @@ Requires `~/.ssh/gha_hostinger` (`chmod 600`):
 
 Push to `main` deploys via `.github/workflows/deploy.yml`. Secret: `HOSTINGER_SSH_KEY_B64`.
 
+## Promo pricing
+
+- Base rate: **$495 p.a.** + artwork/images
+- Introductory sliding discount by signup month (Jul 2026 → Apr 2027+); coupon **BW-90** for 90% off July signups
+
 ## Stripe (promo checkout)
 
 | Item | Value |

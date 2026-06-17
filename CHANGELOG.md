@@ -2,6 +2,12 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.7.1] - 2026-06-17
+
+### Copy fix — annual pricing
+- Promo and homepage copy corrected from “per month” to **p.a.** (per year); amounts unchanged.
+- Slider labels clarify **signup month** vs billing period.
+
 ## [1.7.0] - 2026-06-17
 
 ### Structure & images

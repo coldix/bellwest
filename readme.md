@@ -33,18 +33,24 @@ python3 -m http.server 8080
 
 Open http://localhost:8080
 
-## Deploy (Hostinger)
+## Deploy (GitHub → Hostinger)
 
-Site is configured for **bellwest.au** on Hostinger. Once DNS propagates:
+Auto-deploys on every push to `main` via `.github/workflows/deploy.yml` (same SSH rsync pattern as ozol.au).
 
-1. Log in to Hostinger → **Websites** → **bellwest.au** → **File Manager**
-2. Open `public_html/` and upload the full repo contents:
-   - `index.html`, `potential-uses.html`
-   - `css/`, `js/`, `images/`, `content/` (optional)
-3. Ensure `index.html` sits directly in `public_html/` (not in a subfolder)
-4. Point **bellwest.com.au** at the same Hostinger site (addon domain or redirect to bellwest.au)
+**Remote path:** `/home/u566466219/domains/bellwest.au/public_html/`
 
-DNS propagation can take up to 24–48 hours. The hero video streams from YouTube — no video file upload required.
+### One-time GitHub setup
+
+1. Open **coldix/bellwest** → **Settings** → **Secrets and variables** → **Actions**
+2. Add repository secret **`HOSTINGER_SSH_KEY_B64`** — same base64-encoded SSH private key used by ozol.au / ozol.org (or set it as an org secret on `coldix`)
+3. Push to `main`, or run **Actions** → **Deploy to Hostinger** → **Run workflow**
+
+### DNS
+
+- **bellwest.au** → Hostinger (propagation may take up to 24–48 hours)
+- **bellwest.com.au** → same site (addon domain) or redirect to `https://bellwest.au/`
+
+Hero video streams from YouTube — no video file upload required.
 
 ## Contact
 

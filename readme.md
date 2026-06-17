@@ -51,9 +51,8 @@ bellwest/
 │   ├── map.js              # Leaflet map (explore page)
 │   └── promo.js            # Pricing slider, columns, form, reveal
 ├── images/
-│   ├── gallery/            # Full-resolution aerial photography (Bells, Torquay, Barwon Heads)
-│   ├── thumbs/             # 640px thumbnails (display + click-to-enlarge)
-│   ├── branding/           # oze.au logo and logo variants
+│   ├── gallery/            # Aerial photography (Bells, Torquay, Barwon Heads)
+│   ├── branding/           # oze.au logo (png + webp)
 │   ├── hero-bells-beach-poster.jpg
 │   └── logo-wave-road.svg
 ├── content/

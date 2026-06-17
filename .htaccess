@@ -1,0 +1,7 @@
+# bellwest.au — URL redirects for folder restructure v2.0.0
+# Pages moved from root to subfolders; 301s preserve SEO equity
+
+Redirect 301 /explore.html https://bellwest.au/region/explore.html
+Redirect 301 /barwon-heads.html https://bellwest.au/region/barwon-heads.html
+Redirect 301 /panorama.html https://bellwest.au/region/panorama.html
+Redirect 301 /potential-uses.html https://bellwest.au/invest/

@@ -1,0 +1,66 @@
+{
+  "scraped": "2026-06-17",
+  "source_site": "https://coota.au",
+  "pages": [
+    {
+      "url": "https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/",
+      "title": "Bells Beach Torquay Longboard Classic: An Aerial Odyssey",
+      "date": "2023-08-31",
+      "categories": ["Great Ocean Road", "Sport"],
+      "youtube": "https://youtu.be/ze7-yqh-SMM",
+      "summary": "Drone footage after the 2023 WSL World Longboard Tour event — golden late-arvo light, ~50 longboarders, storm clouds from the north-west, 180° and 360° panoramas, 4K video.",
+      "pull_quote": "The interaction of light and shadow upon the water is nothing short of poetic.",
+      "images": {
+        "featured": "https://coota.au/wp-content/uploads/2023/09/Bells-Beach-31-Aug-23-HD-ai-2k.jpg",
+        "local_hero": "images/hero-bells-beach-poster.jpg",
+        "gallery": [
+          "https://coota.au/wp-content/uploads/2023/09/Bells-Beach-3-1-Pano-31-Aug-23-2k-1.jpg",
+          "https://coota.au/wp-content/uploads/2023/09/Bells-Beach-3-1-Pano-31-Aug-23-2k-2.jpg",
+          "https://coota.au/wp-content/uploads/2023/09/Bells-Beach-3-1-Pano-31-Aug-23-2k-3.jpg"
+        ],
+        "local_gallery": "images/gallery/bells-longboard-pano.jpg"
+      }
+    },
+    {
+      "url": "https://coota.au/bells-beach-may-22/",
+      "title": "Bells Beach May 2022 — A Calm Before the Storm",
+      "date": "2022-05-27",
+      "categories": ["Art", "Great Ocean Road", "Sport"],
+      "youtube": "https://www.youtube.com/embed/qetk6XZeyow",
+      "summary": "Glassy small surf at Winki Pop carpark, two soul surfers, storm rolling in from the west, sun breaking through grey cloud.",
+      "pull_quote": "Bells Beach is not just a place — it's a pulse, a sensation, a reverie.",
+      "images": {
+        "gallery": [
+          "https://coota.au/wp-content/uploads/2022/05/Bells-Beach-26-May-01-HD-scaled.jpg",
+          "https://coota.au/wp-content/uploads/2022/05/Bells-Beach-26-May-04-HD-scaled.jpg",
+          "https://coota.au/wp-content/uploads/2023/09/Bells-Beach-2k-3-1-26-May-2022-1.jpg"
+        ],
+        "local_gallery": [
+          "images/gallery/bells-may22-surf.jpg",
+          "images/gallery/bells-may22-storm.jpg"
+        ]
+      }
+    },
+    {
+      "url": "https://coota.au/torquay-may-2023/",
+      "title": "Torquay May 2023 — Fisherman's Beach",
+      "date": "2023-05-20",
+      "categories": ["Art", "Great Ocean Road"],
+      "youtube": "https://youtu.be/YnTzUuwMe8I",
+      "summary": "Bright day at Fisherman's Beach — surfers, Surf Rescue zodiacs, rain to the west and sun on the water, panoramas and video.",
+      "pull_quote": "Every captivating moment was immortalised through photos, panoramas, and video footage.",
+      "images": {
+        "featured": "https://coota.au/wp-content/uploads/2023/06/Torquay-HD-ai-2k.jpg",
+        "gallery": [
+          "https://coota.au/wp-content/uploads/2023/06/Torquay-20May-2023-180-1.jpg",
+          "https://coota.au/wp-content/uploads/2023/06/Torquay-20May-2023-180-2.jpg",
+          "https://coota.au/wp-content/uploads/2023/06/Torquay-20May-2023-180-3.jpg"
+        ],
+        "local_gallery": [
+          "images/gallery/torquay-fishermans.jpg",
+          "images/gallery/torquay-pano.jpg"
+        ]
+      }
+    }
+  ]
+}

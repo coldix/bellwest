@@ -7,17 +7,22 @@ Static HTML/CSS site with two pages:
 - `index.html` — hero landing, domain offer, local utility hub (SEO/AI-friendly)
 - `potential-uses.html` — four business opportunity pitches
 
-## Assets to add
+## Assets
 
-Drop your media into `images/`:
+| File | Status | Source |
+|------|--------|--------|
+| `images/hero-bells-beach-poster.jpg` | ✅ Downloaded | [coota.au — Bells Longboard Classic](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) |
+| `images/gallery/*` | ✅ 5 images | coota.au Bells Beach & Torquay posts |
+| `images/hero-bells-beach.mp4` | Optional | YouTube: `ze7-yqh-SMM` (Longboard Classic aerial) |
+| `images/logo-wave-road.svg` | Placeholder | Replace with your "Wave and the Road" logo |
 
-| File | Purpose |
-|------|---------|
-| `hero-bells-beach.mp4` | Hero background video (360° drone or coastal footage) |
-| `hero-bells-beach-poster.jpg` | Video poster / fallback still |
-| `logo-wave-road.svg` | Replace placeholder with your "Wave and the Road" logo |
+Scraped content manifest: `content/coota-scrape.json`
 
-Until video is added, the hero shows a coastal gradient fallback.
+### Source articles (coota.au)
+
+- [Bells Beach Longboard Classic — An Aerial Odyssey](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) — video `youtu.be/ze7-yqh-SMM`
+- [Bells Beach May 2022](https://coota.au/bells-beach-may-22/) — video `youtube.com/watch?v=qetk6XZeyow`
+- [Torquay May 2023](https://coota.au/torquay-may-2023/) — video `youtu.be/YnTzUuwMe8I`
 
 ## Local preview
 

@@ -1,5 +1,5 @@
 /* bellwest — premium domain sale site */
-/* Version: v002 | 17/06/2026 */
+/* Version: v003 | 17/06/2026 */
 
 :root {
   --ocean-deep: #0a2540;
@@ -197,7 +197,10 @@ a:hover {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(145deg, #0a2540 0%, #1a6b8a 40%, #2d8fad 70%, #c4a035 100%);
+  background:
+    linear-gradient(145deg, rgba(10, 37, 64, 0.35) 0%, rgba(10, 37, 64, 0.15) 100%),
+    url("../images/hero-bells-beach-poster.jpg") center / cover no-repeat,
+    linear-gradient(145deg, #0a2540 0%, #1a6b8a 40%, #2d8fad 70%, #c4a035 100%);
 }
 
 .hero-video {
@@ -321,6 +324,85 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--gold-light);
+}
+
+/* --- Region showcase --- */
+.region-showcase {
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+  background: var(--sand);
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.showcase-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 72px rgba(10, 37, 64, 0.14);
+}
+
+.showcase-media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.showcase-card:hover .showcase-media img {
+  transform: scale(1.03);
+}
+
+.showcase-body {
+  padding: 1.5rem 1.75rem 1.75rem;
+}
+
+.showcase-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--ocean-deep);
+  margin: 0 0 0.65rem;
+}
+
+.showcase-body p {
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.showcase-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 !important;
+}
+
+.showcase-links a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.showcase-links a:hover {
+  text-decoration: underline;
 }
 
 /* --- Sections --- */
@@ -460,6 +542,31 @@ a:hover {
   box-shadow: var(--shadow);
 }
 
+.pitch-card-visual {
+  grid-template-columns: 1fr;
+  padding: 0;
+  overflow: hidden;
+}
+
+.pitch-card-visual .pitch-image {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+}
+
+.pitch-card-visual .pitch-number,
+.pitch-card-visual .pitch-content {
+  padding: 0 2rem;
+}
+
+.pitch-card-visual .pitch-number {
+  padding-top: 1.5rem;
+}
+
+.pitch-card-visual .pitch-content {
+  padding-bottom: 2rem;
+}
+
 .pitch-number {
   font-family: var(--font-display);
   font-size: 2.5rem;
@@ -586,6 +693,12 @@ a:hover {
   .pitch-card {
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+
+  .pitch-card-visual .pitch-number,
+  .pitch-card-visual .pitch-content {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .pitch-number {

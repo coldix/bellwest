@@ -1,4 +1,4 @@
-// bellwest.au — main.js (header, hero video)
+// bellwest.au — main.js (header, hero video) — v1.6.0 | 2026-06-17
 
 (function () {
   const header = document.querySelector(".site-header");

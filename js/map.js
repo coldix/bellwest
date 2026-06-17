@@ -1,4 +1,4 @@
-// bellwest.au — explore page Leaflet map
+// bellwest.au — explore page Leaflet map — v1.6.0 | 2026-06-17
 (function () {
   const mapEl = document.getElementById("region-map");
   if (!mapEl || typeof L === "undefined") return;

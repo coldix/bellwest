@@ -1,6 +1,6 @@
 // bellwest — minimal site JS
-// Version: 1.1.0 | 2026-06-17 16:55 AEST
-// Update notes: Version stamp standardized. No logic changes.
+// Version: 1.2.0 | 2026-06-17
+// Update notes: Promo inquiry form mailto handler.
 
 (function () {
   const header = document.querySelector(".site-header");
@@ -35,5 +35,40 @@
     iframe.setAttribute("allowfullscreen", "");
     iframe.setAttribute("tabindex", "-1");
     heroMedia.insertBefore(iframe, heroMedia.firstChild);
+  }
+
+  const promoForm = document.getElementById("promo-inquiry-form");
+  if (promoForm) {
+    promoForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!promoForm.checkValidity()) {
+        promoForm.reportValidity();
+        return;
+      }
+
+      const name = document.getElementById("promo-name").value.trim();
+      const email = document.getElementById("promo-email").value.trim();
+      const phone = document.getElementById("promo-phone").value.trim();
+      const address = document.getElementById("promo-address").value.trim();
+
+      const body = [
+        "Promo page inquiry from bellwest.au/promo",
+        "",
+        "Name: " + name,
+        "Email: " + email,
+        "Phone: " + phone,
+        "Property/Business address: " + address,
+      ].join("\n");
+
+      const mailto = [
+        "mailto:col@oze.com.au",
+        "?subject=",
+        encodeURIComponent("bellwest.au promo page — " + name),
+        "&body=",
+        encodeURIComponent(body),
+      ].join("");
+
+      window.location.href = mailto;
+    });
   }
 })();

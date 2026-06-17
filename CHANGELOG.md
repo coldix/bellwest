@@ -2,6 +2,24 @@
 
 All notable changes to the bellwest.au / bellwest.com.au domain for-sale site.
 
+## [1.2.0] - 2026-06-17 17:11 AEST
+
+### Layout & UX improvements (potential-uses.html)
+- Wide screens (≥900px): 4 opportunity pitches now display in a clean **2-column grid** (less scrolling, more scannable).
+- **Click any pitch image** to open a full-screen lightbox for larger viewing. Close with ×, click outside, or press Escape.
+- Footer on both pages now prominently links to **https://oze.au** and displays the oze logo.
+- Added `images/oze-logo.webp` (sourced from oze.au) and `images/coota-eye.png` (from coota.au) for branding use.
+
+### Content refinements
+- Incorporated narrative style inspired by https://coota.au/barwon-heads/ (vivid coastal descriptions, place as character, atmospheric drone perspectives) while keeping the 4 focused business pitches.
+- Slightly tightened copy for better readability.
+
+### Other
+- Version stamps updated across files.
+- CSS and inline JS for lightbox + grid.
+
+See previous sections for v1.1 SEO/AI work.
+
 ## [1.1.0] - 2026-06-17 16:55 AEST
 
 **SEO & AI Visibility Maximization Release**

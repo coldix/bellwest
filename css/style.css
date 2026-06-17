@@ -783,3 +783,78 @@ a:hover {
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
+/* === v1.2.0 updates: 2-col pitches wide screen + click-to-enlarge lightbox | 2026-06-17 17:11 AEST === */
+
+/* 2-column grid for potential-uses pitches on wide screens (less scrolling, more readable) */
+@media (min-width: 900px) {
+  .pitches .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Pitch images are clickable for larger view */
+.pitch-image {
+  cursor: zoom-in;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.pitch-image:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 22px rgba(10, 37, 64, 0.18);
+}
+
+/* Lightweight accessible lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 37, 64, 0.93);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1rem;
+  cursor: zoom-out;
+}
+.lightbox.active {
+  display: flex;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 98vw;
+  max-height: 92vh;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+.lightbox-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  height: auto;
+  width: auto;
+}
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 2.1rem;
+  line-height: 1;
+  color: #0a2540;
+  background: rgba(246, 241, 233, 0.95);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.lightbox-close:hover {
+  background: #fff;
+}

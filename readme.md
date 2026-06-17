@@ -66,6 +66,11 @@ This site is optimized for both traditional search engines and AI/LLM systems (C
 - `llms.txt` — Clean, citable facts and page overview for AI models
 - Enhanced homepage FAQ + rich JSON-LD (WebSite + Product + FAQPage)
 
+### v1.2.0 updates (2026-06-17)
+- potential-uses.html: 2-column layout on wide screens + click images for lightbox viewer
+- Footer links to https://oze.au with oze logo (plus branding assets added: oze-logo.webp, coota-eye.png)
+- Narrative refinements drawing from coota.au/barwon-heads style for more engaging, readable pitches.
+
 See [CHANGELOG.md](CHANGELOG.md) for full version history and update notes.
 
 All versioned files include AEST timestamps.

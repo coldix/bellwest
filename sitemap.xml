@@ -22,4 +22,26 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://bellwest.au/explore.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bellwest.au/barwon-heads.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://bellwest.au/images/gallery/barwon-heads-may22.jpg</image:loc>
+      <image:title>Barwon Heads Bridge aerial — May 2022</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bellwest.au/panorama.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>

@@ -8,7 +8,7 @@ While the domain package is on the market, the site also showcases local aerial 
 
 ## Design (v3.0)
 
-Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled by a floating pill (top-right). The choice persists in `localStorage` (`bw-theme`) and defaults to the visitor's `prefers-color-scheme`; an inline `<head>` script applies it before first paint to avoid flashing. Warm-sand / deep-teal palette (no blue-on-blue), underlined content links, redesigned footer, 3D card tilt + scroll-reveal (all motion respects `prefers-reduced-motion`).
+Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled by a floating pill (top-right). **Aurora Glass (dark) is the default**; a returning visitor's saved choice (`localStorage` key `bw-theme`) overrides it. The default is set on `<html data-theme="dark">` and reaffirmed by an inline `<head>` script before first paint, so there's no flash and it holds even without JS. Warm-sand / deep-teal palette (no blue-on-blue), underlined content links, redesigned footer, 3D card tilt + scroll-reveal (all motion respects `prefers-reduced-motion`).
 
 ## Live site
 

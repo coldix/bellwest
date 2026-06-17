@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   bellwest.au — Promo Pages Offer
-  Version: 1.0.0 | 2026-06-17
+  Version: 2.0.0 | 2026-06-17
 -->
 <html lang="en-AU">
 <head>
@@ -25,14 +25,14 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "bellwest.au promotional page",
-    "description": "Premium promotional page on bellwest.au for private real estate sales and local Bellarine businesses. Includes custom URL, Kuula 360 tours, drone galleries, QR code, and lead generation forms.",
+    "description": "Premium promotional page on bellwest.au for private real estate sales and local Bellarine businesses.",
     "url": "https://bellwest.au/promo/",
     "brand": { "@type": "Brand", "name": "bellwest.au" },
     "offers": {
       "@type": "Offer",
       "price": "49.50",
       "priceCurrency": "AUD",
-      "description": "Introductory first-month rate (90% off $495 base). Plus artwork/images.",
+      "description": "Introductory July 2026 rate (90% off $495 base). Plus artwork/images.",
       "availability": "https://schema.org/InStock",
       "url": "https://bellwest.au/promo/"
     }
@@ -40,6 +40,12 @@
   </script>
 </head>
 <body class="promo-page">
+  <div class="promo-scene" aria-hidden="true">
+    <span class="promo-orb promo-orb-1"></span>
+    <span class="promo-orb promo-orb-2"></span>
+    <span class="promo-orb promo-orb-3"></span>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="../index.html" class="logo-link" aria-label="bellwest.au home">
@@ -54,60 +60,62 @@
     </div>
   </header>
 
-  <main>
+  <main class="promo-main">
     <section class="promo-hero" aria-labelledby="promo-heading">
       <div class="promo-hero-bg" aria-hidden="true"></div>
       <div class="container promo-hero-content">
-        <p class="hero-eyebrow">Local promotion</p>
-        <h1 id="promo-heading">Sell Your Property or Promote Your Business on the Bellarine's Premium Digital Gateway.</h1>
-        <p class="promo-hero-lead">Skip the restrictive standard directories. Claim a stunning, unrestricted visual canvas for your private real estate sale or local business.</p>
-        <div class="promo-hero-cta">
-          <a href="#claim-form" class="btn btn-primary">Claim My Promo Page</a>
-          <a href="#pricing" class="btn btn-secondary">See pricing</a>
-        </div>
+        <article class="glass-panel glass-panel-hero" data-tilt data-tilt-max="5">
+          <p class="hero-eyebrow">Local promotion</p>
+          <h1 id="promo-heading">Sell Your Property or Promote Your Business on the Bellarine's Premium Digital Gateway.</h1>
+          <p class="promo-hero-lead">Skip the restrictive standard directories. Claim a stunning, unrestricted visual canvas for your private real estate sale or local business.</p>
+          <div class="promo-hero-cta">
+            <a href="#pricing" class="btn btn-primary">See sliding pricing</a>
+            <a href="#claim-form" class="btn btn-secondary">Claim my page</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="promo-features" aria-labelledby="features-heading">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header promo-section-header" data-reveal>
           <p class="section-eyebrow">What's included</p>
           <h2 id="features-heading">Everything you need to stand out locally</h2>
           <p class="section-lead">A premium bellwest.au page built for private sellers and Bellarine businesses who want more than a cramped directory listing.</p>
         </header>
 
         <div class="promo-features-grid">
-          <article class="promo-feature-card">
+          <article class="glass-card" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">🔗</span>
             <h3>Custom URL</h3>
             <p>Your own memorable address — e.g. <strong>bellwest.au/your-property</strong> — easy to share on signs, socials, and email.</p>
           </article>
 
-          <article class="promo-feature-card">
+          <article class="glass-card" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">🌐</span>
             <h3>Kuula 360° virtual tours</h3>
             <p>Seamless embedding of immersive Kuula 360° virtual tours so buyers and customers can explore before they visit.</p>
           </article>
 
-          <article class="promo-feature-card">
+          <article class="glass-card" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">🚁</span>
             <h3>Aerial drone galleries</h3>
             <p>High-resolution aerial drone photography that showcases your property or business in stunning coastal context.</p>
           </article>
 
-          <article class="promo-feature-card">
+          <article class="glass-card" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">📱</span>
             <h3>Custom QR code</h3>
             <p>A scannable QR code for physical &ldquo;For Sale&rdquo; signboards or storefront windows — instant mobile access to your page.</p>
           </article>
 
-          <article class="promo-feature-card">
+          <article class="glass-card" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">✉️</span>
             <h3>Lead generation forms</h3>
             <p>Built-in inquiry forms that email you directly — capture serious buyers and customers without middlemen.</p>
           </article>
 
-          <article class="promo-feature-card promo-feature-card-highlight">
+          <article class="glass-card glass-card-gold" data-reveal data-tilt>
             <span class="promo-feature-icon" aria-hidden="true">📣</span>
             <h3>Featured Facebook post</h3>
             <p>A featured, pinned post to our growing <a href="https://www.facebook.com/groups/bellwest" target="_blank" rel="noopener noreferrer">facebook.com/groups/bellwest</a> community to drive instant local traffic.</p>
@@ -118,70 +126,100 @@
 
     <section class="promo-pricing" id="pricing" aria-labelledby="pricing-heading">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header promo-section-header" data-reveal>
           <p class="section-eyebrow">Introductory offer</p>
-          <h2 id="pricing-heading">Sliding discount pricing</h2>
-          <p class="section-lead">Launch fast with a massive introductory discount that steps down each month as your page gains traction.</p>
+          <h2 id="pricing-heading">Slide to see your monthly rate</h2>
+          <p class="section-lead">Discount drops 10% each month from July 2026. Drag the slider to see what you'll pay — then order by email. Stripe checkout coming soon.</p>
         </header>
 
-        <div class="pricing-layout">
-          <div class="pricing-base-card">
-            <p class="pricing-label">Base price</p>
-            <p class="pricing-amount">$495 <span class="pricing-period">/ month</span></p>
-            <p class="pricing-note">Plus artwork &amp; images</p>
-            <p class="pricing-base-detail">Full premium page with all features above — custom URL, media embeds, QR code, lead forms, and Facebook spotlight.</p>
+        <article class="glass-panel glass-panel-pricing" data-reveal data-tilt data-tilt-max="6">
+          <div class="pricing-slider-header">
+            <div>
+              <p class="pricing-slider-label">Your selected month</p>
+              <p class="pricing-slider-month" id="promo-live-month">July 2026</p>
+            </div>
+            <span class="pricing-discount-badge" id="promo-live-discount">90% OFF</span>
           </div>
 
-          <div class="pricing-discount-grid">
-            <article class="pricing-tier pricing-tier-featured">
-              <p class="pricing-tier-month">1st month</p>
-              <p class="pricing-tier-discount">90% OFF</p>
-              <p class="pricing-tier-price">$49.50</p>
-              <p class="pricing-tier-save">Save $445.50</p>
-            </article>
-            <article class="pricing-tier">
-              <p class="pricing-tier-month">2nd month</p>
-              <p class="pricing-tier-discount">80% OFF</p>
-              <p class="pricing-tier-price">$99.00</p>
-              <p class="pricing-tier-save">Save $396.00</p>
-            </article>
-            <article class="pricing-tier">
-              <p class="pricing-tier-month">3rd month</p>
-              <p class="pricing-tier-discount">70% OFF</p>
-              <p class="pricing-tier-price">$148.50</p>
-              <p class="pricing-tier-save">Save $346.50</p>
-            </article>
+          <div class="pricing-price-display">
+            <span class="pricing-price-currency">AUD</span>
+            <span class="pricing-price-value" id="promo-live-price">$49.50</span>
+            <span class="pricing-price-period">/ month</span>
           </div>
-        </div>
+          <p class="pricing-savings-line" id="promo-live-savings">Save $445.50 this month</p>
+          <p class="pricing-base-ref">Base price <strong>$495</strong>/month + artwork &amp; images</p>
 
-        <p class="pricing-footnote">Discount decreases by 10% each month. After month three, standard monthly rates apply. Artwork and custom photography quoted separately where required.</p>
+          <div class="promo-slider-wrap">
+            <div class="promo-slider-track">
+              <div class="promo-slider-fill" id="promo-slider-fill"></div>
+            </div>
+            <input
+              type="range"
+              id="promo-price-slider"
+              class="promo-price-slider"
+              min="0"
+              max="9"
+              value="0"
+              step="1"
+              aria-label="Select month to see promotional pricing"
+              aria-describedby="promo-slider-hint"
+            >
+            <div class="promo-slider-ticks" aria-hidden="true">
+              <span class="promo-slider-tick is-active" data-index="0">Jul</span>
+              <span class="promo-slider-tick" data-index="1">Aug</span>
+              <span class="promo-slider-tick" data-index="2">Sep</span>
+              <span class="promo-slider-tick" data-index="3">Oct</span>
+              <span class="promo-slider-tick" data-index="4">Nov</span>
+              <span class="promo-slider-tick" data-index="5">Dec</span>
+              <span class="promo-slider-tick" data-index="6">Jan</span>
+              <span class="promo-slider-tick" data-index="7">Feb</span>
+              <span class="promo-slider-tick" data-index="8">Mar</span>
+              <span class="promo-slider-tick" data-index="9">Full</span>
+            </div>
+          </div>
+          <p class="pricing-slider-hint" id="promo-slider-hint">Introductory discount decreases 10% each month until full price ($495) from April 2027.</p>
+
+          <div class="pricing-order-row">
+            <a href="#" class="btn btn-primary btn-order" id="promo-order-btn">Order now — $49.50</a>
+            <a href="#claim-form" class="btn btn-secondary btn-order-alt">Full inquiry form</a>
+          </div>
+
+          <!-- Stripe purchase button placeholder — paste embed here later -->
+          <div id="stripe-checkout-slot" class="stripe-checkout-slot" hidden aria-hidden="true"></div>
+        </article>
       </div>
     </section>
 
     <section class="promo-upsell" aria-labelledby="upsell-heading">
-      <div class="container promo-upsell-inner">
-        <div class="promo-upsell-copy">
-          <p class="section-eyebrow">Hospitality &amp; beyond</p>
-          <h2 id="upsell-heading">Need more than just a page? Claim your own Subdomain.</h2>
-          <p>We have premium domains available like <strong>pizza.bellwest.au</strong>. Just ask! We can build you a full online ordering system with both premium and low-cost setup options available.</p>
-        </div>
-        <div class="promo-upsell-examples" aria-label="Example subdomains">
-          <span class="subdomain-chip">pizza.bellwest.au</span>
-          <span class="subdomain-chip">cafe.bellwest.au</span>
-          <span class="subdomain-chip">yourname.bellwest.au</span>
-        </div>
+      <div class="container">
+        <article class="glass-panel glass-panel-upsell" data-reveal data-tilt data-tilt-max="5">
+          <div class="promo-upsell-inner">
+            <div class="promo-upsell-copy">
+              <p class="section-eyebrow">Hospitality &amp; beyond</p>
+              <h2 id="upsell-heading">Need more than just a page? Claim your own Subdomain.</h2>
+              <p>We have premium domains available like <strong>pizza.bellwest.au</strong>. Just ask! We can build you a full online ordering system with both premium and low-cost setup options available.</p>
+            </div>
+            <div class="promo-upsell-examples" aria-label="Example subdomains">
+              <span class="subdomain-chip">pizza.bellwest.au</span>
+              <span class="subdomain-chip">cafe.bellwest.au</span>
+              <span class="subdomain-chip">yourname.bellwest.au</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="promo-form-section" id="claim-form" aria-labelledby="form-heading">
       <div class="container">
-        <header class="section-header">
+        <header class="section-header promo-section-header" data-reveal>
           <p class="section-eyebrow">Get started</p>
           <h2 id="form-heading">Claim your promo page</h2>
-          <p class="section-lead">Tell us about your property or business. We'll be in touch within one business day to get your page live.</p>
+          <p class="section-lead">Tell us about your property or business. Your pricing selection from the slider is included automatically.</p>
         </header>
 
-        <form class="promo-form" id="promo-inquiry-form" novalidate>
+        <form class="glass-panel glass-panel-form promo-form" id="promo-inquiry-form" data-reveal novalidate>
+          <input type="hidden" id="promo-selected-month" name="selected-month" value="July 2026 — $49.50">
+
           <div class="promo-form-grid">
             <label class="promo-field">
               <span class="promo-field-label">Full name</span>
@@ -231,5 +269,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script src="../js/promo.js"></script>
 </body>
 </html>

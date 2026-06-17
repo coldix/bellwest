@@ -2,6 +2,13 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.7.3] - 2026-06-17
+
+### Promo page — iPad / tablet layout
+- Constrain feature icons (explicit SVG dimensions + smaller size on tablet).
+- Wider section padding on iPad; bento grid stays 2-column up to 1080px.
+- Price display bar stacks below 900px (was 720px).
+
 ## [1.7.2] - 2026-06-17
 
 ### Promo pricing clarity

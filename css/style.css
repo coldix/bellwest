@@ -1,4 +1,4 @@
-/* bellwest.au shared styles — v1.7.0 | 2026-06-17 */
+/* bellwest.au shared styles — v1.7.3 | 2026-06-17 */
 
 :root {
   --ocean-deep: #0a2540;
@@ -1422,7 +1422,7 @@ a:hover {
   gap: 1.25rem;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .promo-bento {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1440,16 +1440,24 @@ a:hover {
   justify-content: center;
   width: 44px;
   height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
   margin-bottom: 1.1rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--gold-light);
+  overflow: hidden;
 }
 
 .glass-box-icon svg {
+  display: block;
   width: 22px;
   height: 22px;
+  max-width: 22px;
+  max-height: 22px;
+  flex-shrink: 0;
 }
 
 .glass-box-num {
@@ -2108,7 +2116,7 @@ a:hover {
   color: var(--white);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .pricing-display-glass {
     grid-template-columns: 1fr;
     text-align: center;
@@ -2118,7 +2126,44 @@ a:hover {
   .pricing-display-right {
     text-align: center;
   }
+}
 
+@media (min-width: 721px) and (max-width: 1024px) {
+  .promo-page .container {
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px) + 1rem);
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px) + 1rem);
+  }
+
+  .pricing-display-bar {
+    padding: 0 1.5rem;
+  }
+
+  .pricing-visual-stage {
+    padding: 0 1.25rem;
+  }
+
+  .promo-bento .glass-box-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    margin-bottom: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .promo-bento .glass-box-icon svg {
+    width: 18px;
+    height: 18px;
+    max-width: 18px;
+    max-height: 18px;
+  }
+
+  .promo-bento .glass-box {
+    padding: 1.35rem;
+  }
+}
+
+@media (max-width: 720px) {
   .pricing-columns {
     gap: 0.25rem;
     min-height: 160px;

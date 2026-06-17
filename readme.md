@@ -35,6 +35,10 @@ Old URLs 301 → new locations via `.htaccess`:
 | `/potential-uses.html` | `/invest/` |
 | `/panorama.html`, `/region/panorama.html` | `/region/explore.html#tours` |
 
+`.htaccess` also blocks public web access to dev/source files (`*.md`, `*.sh`,
+`*.yml`, `.gitignore`) — they're deployed but return 403. (The deploy server
+IP/user/path live in `deploy.sh`, so don't let it be web-readable.)
+
 ## Project structure
 
 ```
@@ -83,6 +87,10 @@ Open http://localhost:8080 — promo page at http://localhost:8080/promo/
 
 ## Deploy
 
+Both methods `rsync --delete` so the server **mirrors** the repo (files removed
+locally are removed on the server). `.well-known` and `cgi-bin` are excluded so
+`--delete` can't wipe server-managed paths (SSL renewal, etc.) that aren't in git.
+
 ### Manual (Mac)
 
 Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
@@ -97,7 +105,36 @@ Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
 
 Pushes to `main` auto-deploy via `.github/workflows/deploy.yml`.
 
-**One-time setup:** Add repository secret `HOSTINGER_SSH_KEY_B64` (base64-encoded private key, same as ozol-au). Or run **Actions → Deploy to Hostinger → Run workflow** after the secret is set.
+- **One-time setup:** repo secret `HOSTINGER_SSH_KEY_B64` (base64 of the private key).
+- Editing `deploy.yml` requires a Git token with the **`workflow`** scope, or edit
+  it via the GitHub web UI.
+
+### ⚠️ Caching — bump `?v=` when you change CSS/JS
+
+The site is fronted by **Hostinger's CDN (`hcdn`)**. It serves **HTML live**
+(`x-hcdn-cache-status: DYNAMIC`) but **caches `css`/`js`/images for 7 days**
+(`Cache-Control: max-age=604800`) at the edge. Because the redesign reuses the
+same HTML class names, a stale cached `style.css` makes a fresh page look
+**unchanged** — and incognito / hard-refresh does **not** help (the stale copy
+lives on the CDN edge, not in the browser).
+
+So after editing `css/style.css` or any `js/*.js`, **bump the version query** on
+its `<link>` / `<script>` in every HTML file, e.g. `style.css?v=3.0.2` →
+`?v=3.0.3`. New URL = new object the CDN must re-fetch → change is instant for
+everyone. (A full CDN purge in hPanel → *Performance/CDN → Purge cache* also
+works, but versioning is self-service and reliable.)
+
+Quick bump for all pages:
+
+```bash
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=3\.0\.2/?v=3.0.3/g'
+```
+
+Verify a deploy reached the edge:
+
+```bash
+curl -sI "https://bellwest.au/css/style.css?v=3.0.3" | grep x-hcdn-cache-status   # expect MISS then HIT
+```
 
 ### DNS
 

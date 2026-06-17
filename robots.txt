@@ -1,11 +1,7 @@
-# robots.txt for bellwest.au
-# Version: 1.1.0 | 2026-06-17 16:55 AEST
-# Update notes: Added for SEO and AI crawler visibility. Allows all indexing.
+# bellwest.au — robots.txt
+# https://bellwest.au/
 
 User-agent: *
 Allow: /
 
-# Sitemap for search engines
 Sitemap: https://bellwest.au/sitemap.xml
-
-# Note: llms.txt is also present at root for AI/LLM guidance

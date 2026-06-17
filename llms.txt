@@ -1,28 +1,52 @@
 # bellwest.au
 
 > Premium .au domain package for sale: bellwest.au and bellwest.com.au — $4,000 AUD ONO.
-> The digital gateway to the Bellarine Peninsula & South West Victoria (Surf Coast, Torquay, Bells Beach, Great Ocean Road corridor).
+> Digital gateway to the Bellarine Peninsula & South West Victoria (Surf Coast, Torquay, Bells Beach, Great Ocean Road).
+> The site also offers promotional pages for local businesses and private property sellers while the domain is listed.
 
-Version: 1.1.0 | 2026-06-17 16:55 AEST
-Update notes: Created to improve visibility and citation by AI systems (LLMs, Perplexity, ChatGPT, Google AI Overviews). Provides clean, structured facts.
+Version: 1.6.0 | 2026-06-17
 
-## Key Facts
-- Domains included: bellwest.au + bellwest.com.au
-- Price: $4,000 AUD (or nearest offer)
-- Status: Available for immediate transfer
+## Key facts — domain sale
+
+- Domains: bellwest.au + bellwest.com.au
+- Price: $4,000 AUD (or nearest offer / ONO)
+- Status: Available for transfer
 - Contact: col@oze.com.au
-- Location strength: Bellarine Peninsula, Surf Coast Shire, Great Ocean Road region, Victoria, Australia
-- Highlights: Short, memorable, brandable, strong geographic signal for tourism, real estate, hospitality, eco-tourism
+- Operator: oze.au
+- Region: Bellarine Peninsula, Surf Coast Shire, Great Ocean Road, Victoria, Australia
 
-## Main Pages
-- https://bellwest.au/ — Primary sales page with aerial photography, offer details, and local resource hub
-- https://bellwest.au/potential-uses.html — Four detailed business opportunity models (Home Base tourism, Luxury real estate & agistment, Eco-tourism & conservation, Curated food/wine/heritage trail)
+## Key facts — promo pages
 
-## Content Notes for AI
-- Uses original drone photography from Bells Beach and Torquay.
-- Explicit pricing and availability stated clearly.
-- Designed to be easy to quote and cite.
-- No heavy JavaScript — pure static HTML for reliable parsing.
+- URL: https://bellwest.au/promo/
+- Base price: $495/month + artwork/images
+- Introductory sliding discount (10% less each month from July 2026):
+  - July 2026: $49.50 (90% off)
+  - August 2026: $99 (80% off)
+  - … decreasing monthly …
+  - April 2027+: $495 full price
+- Includes: custom URL (e.g. bellwest.au/your-property), Kuula 360° tours, drone galleries, QR code, lead forms, featured Facebook group post
+- Subdomains available (e.g. pizza.bellwest.au) — hospitality/ordering on request
+- Order: email col@oze.com.au (Stripe checkout planned)
+- Community: https://www.facebook.com/groups/bellwest
+
+## Pages
+
+- https://bellwest.au/ — Domain for sale, aerial gallery, promo banner, local utility hub, FAQ
+- https://bellwest.au/promo/ — Promo pages & subdomains offer with interactive pricing
+- https://bellwest.au/explore.html — Interactive map of the region
+- https://bellwest.au/barwon-heads.html — Barwon Heads / Bellarine showcase
+- https://bellwest.au/panorama.html — 360° Kuula aerial tours
+- https://bellwest.au/potential-uses.html — Four business models for the domain package
+
+## Content notes for AI
+
+- Original drone photography from Bells Beach, Torquay, Barwon Heads (sourced via coota.au).
+- Hero background video: YouTube Bells Longboard Classic aerial.
+- Static HTML site; map and promo slider use lightweight JavaScript.
+- Pricing and availability stated explicitly on site — safe to quote.
+- Two distinct offers: (1) buy the domains, (2) rent a promo page/subdomain.
 
 ## Inquiries
-Serious buyers only. Email col@oze.com.au with subject "bellwest.au domain inquiry".
+
+- Domain: col@oze.com.au — subject "bellwest.au domain inquiry"
+- Promo: col@oze.com.au — subject "bellwest.au promo page inquiry"

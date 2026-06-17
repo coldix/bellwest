@@ -1,28 +1,53 @@
-# bellwest
+# bellwest.au
 
-Premium, visual-first "For Sale" site for **bellwest.au** and **bellwest.com.au** — $4,000 ONO.
+Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula & South West Victoria**.
 
-Static HTML/CSS site with two pages:
+**Domains:** [bellwest.au](https://bellwest.au) + [bellwest.com.au](https://bellwest.au) — **$4,000 AUD ONO**
 
-- `index.html` — hero landing, domain offer, local utility hub (SEO/AI-friendly)
-- `potential-uses.html` — four business opportunity pitches
+While the domain package is on the market, the site also showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
 
-## Assets
+## Live site
 
-| File | Status | Source |
-|------|--------|--------|
-| `images/hero-bells-beach-poster.jpg` | ✅ Downloaded | [coota.au — Bells Longboard Classic](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) |
-| `images/gallery/*` | ✅ 5 images | coota.au Bells Beach & Torquay posts |
-| Hero video | ✅ YouTube embed | `ze7-yqh-SMM` — Bells Longboard Classic aerial (no local file needed) |
-| `images/logo-wave-road.svg` | Placeholder | Replace with your "Wave and the Road" logo |
+| Page | URL | Purpose |
+|------|-----|---------|
+| Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ |
+| Promo | [/promo/](https://bellwest.au/promo/) | Monetisation — promo pages & subdomains from $49.50/mo (sliding discount) |
+| Explore | [/explore.html](https://bellwest.au/explore.html) | Interactive map of the bellwest corridor |
+| Barwon Heads | [/barwon-heads.html](https://bellwest.au/barwon-heads.html) | Bellarine showcase article |
+| 360° tours | [/panorama.html](https://bellwest.au/panorama.html) | Kuula aerial panoramas (Barwon Heads, Torquay, Bells) |
+| Potential uses | [/potential-uses.html](https://bellwest.au/potential-uses.html) | Four business opportunity pitches |
 
-Scraped content manifest: `content/coota-scrape.json`
+**Community:** [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest)
 
-### Source articles (coota.au)
+## Project structure
 
-- [Bells Beach Longboard Classic — An Aerial Odyssey](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) — video `youtu.be/ze7-yqh-SMM`
-- [Bells Beach May 2022](https://coota.au/bells-beach-may-22/) — video `youtube.com/watch?v=qetk6XZeyow`
-- [Torquay May 2023](https://coota.au/torquay-may-2023/) — video `youtu.be/YnTzUuwMe8I`
+```
+bellwest/
+├── index.html              # Homepage
+├── explore.html
+├── barwon-heads.html
+├── panorama.html
+├── potential-uses.html
+├── promo/
+│   └── index.html          # Promo landing page
+├── css/style.css           # Shared styles (v1.6+)
+├── js/
+│   ├── main.js             # Header scroll, hero YouTube
+│   ├── map.js              # Leaflet map (explore page)
+│   └── promo.js            # Pricing slider, columns, form
+├── images/
+│   ├── gallery/            # Aerial photography
+│   ├── hero-bells-beach-poster.jpg
+│   └── logo-wave-road.svg
+├── content/coota-scrape.json
+├── deploy.sh               # Manual rsync deploy
+├── .github/workflows/deploy.yml
+├── robots.txt
+├── sitemap.xml
+├── llms.txt                # AI/LLM citation guide
+├── CHANGELOG.md
+└── readme.md
+```
 
 ## Local preview
 
@@ -31,64 +56,59 @@ cd bellwest
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080
+Open http://localhost:8080 — promo page at http://localhost:8080/promo/
 
-## Deploy (GitHub → Hostinger)
+## Deploy
 
-Auto-deploys on every push to `main` via `.github/workflows/deploy.yml` (same SSH rsync pattern as ozol.au).
+### Manual (Mac)
+
+Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
+
+```bash
+./deploy.sh
+```
 
 **Remote path:** `/home/u566466219/domains/bellwest.au/public_html/`
 
-### One-time GitHub setup
+### GitHub Actions
 
-1. Open **coldix/bellwest** → **Settings** → **Secrets and variables** → **Actions**
-2. Add repository secret **`HOSTINGER_SSH_KEY_B64`** — same base64-encoded SSH private key used by ozol.au / ozol.org (or set it as an org secret on `coldix`)
-3. Push to `main`, or run **Actions** → **Deploy to Hostinger** → **Run workflow**
+Pushes to `main` auto-deploy via `.github/workflows/deploy.yml`.
+
+**One-time setup:** Add repository secret `HOSTINGER_SSH_KEY_B64` (base64-encoded private key, same as ozol-au). Or run **Actions → Deploy to Hostinger → Run workflow** after the secret is set.
 
 ### DNS
 
-- **bellwest.au** → Hostinger (propagation may take up to 24–48 hours)
-- **bellwest.com.au** → same site (addon domain) or redirect to `https://bellwest.au/`
+- **bellwest.au** → Hostinger
+- **bellwest.com.au** → same site or redirect to `https://bellwest.au/`
 
-Hero video streams from YouTube — no video file upload required.
+Hero video streams from YouTube (`ze7-yqh-SMM`) — no local video file required.
+
+## Assets & sources
+
+| Asset | Source |
+|-------|--------|
+| Gallery images | [coota.au](https://coota.au) — Bells Beach, Torquay, Barwon Heads posts |
+| Hero video | YouTube `ze7-yqh-SMM` — Bells Longboard Classic aerial |
+| 360° embeds | [Kuula](https://kuula.co) — Barwon Heads, Torquay, Bells collections |
+| Map | [Leaflet](https://leafletjs.com) + OpenStreetMap |
+
+Scraped content manifest: `content/coota-scrape.json`
 
 ## Contact
 
-Inquiries: [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry)
+| Inquiry | Email |
+|---------|-------|
+| Domain purchase | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry) |
+| Promo page / subdomain | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry) |
 
-## SEO & AI Visibility (v1.1.0+)
+Operator: [oze.au](https://oze.au)
 
-This site is optimized for both traditional search engines and AI/LLM systems (ChatGPT, Claude, Perplexity, Google AI Overviews, etc.).
+## SEO & AI visibility
 
-### Key files added in 1.1.0 (2026-06-17 16:55 AEST)
-- `robots.txt` — Crawler directives
-- `sitemap.xml` — Structured sitemap with images
-- `llms.txt` — Clean, citable facts and page overview for AI models
-- Enhanced homepage FAQ + rich JSON-LD (WebSite + Product + FAQPage)
+- `robots.txt` — crawler directives + sitemap link
+- `sitemap.xml` — all public pages including `/promo/`
+- `llms.txt` — structured facts for LLM citation
+- Homepage JSON-LD: WebSite, Product, FAQPage
+- Semantic HTML, minimal JS, static hosting
 
-### v1.2.0 updates (2026-06-17)
-- potential-uses.html: 2-column layout on wide screens + click images for lightbox viewer
-- Footer links to https://oze.au with oze logo (plus branding assets added: oze-logo.webp, coota-eye.png)
-- Narrative refinements drawing from coota.au/barwon-heads style for more engaging, readable pitches.
-
-See [CHANGELOG.md](CHANGELOG.md) for full version history and update notes.
-
-All versioned files include AEST timestamps.
-
-## Structure
-
-```
-bellwest/
-├── index.html
-├── potential-uses.html
-├── css/style.css
-├── js/main.js
-├── images/
-├── robots.txt
-├── sitemap.xml
-├── llms.txt
-├── CHANGELOG.md
-└── readme.md
-```
-
-## Local preview
+See [CHANGELOG.md](CHANGELOG.md) for version history.

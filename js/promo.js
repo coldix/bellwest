@@ -1,5 +1,4 @@
-// bellwest — promo page interactions
-// Version: 2.0.0 | 2026-06-17
+// bellwest.au — promo page (pricing slider, form)
 
 (function () {
   const BASE_PRICE = 495;

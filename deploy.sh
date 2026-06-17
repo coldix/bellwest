@@ -1,5 +1,6 @@
 #!/bin/bash
-# Deploy bellwest to Hostinger. Needs ~/.ssh/id_ed25519 (same key as ozol-au).
+# Deploy bellwest.au to Hostinger via rsync over SSH.
+# Requires: ~/.ssh/gha_hostinger (chmod 600)
 set -e
 cd "$(dirname "$0")"
 rsync -av --progress \

@@ -1,6 +1,4 @@
-// bellwest — minimal site JS
-// Version: 1.2.1 | 2026-06-17
-// Update notes: Promo form moved to promo.js.
+// bellwest.au — main.js (header, hero video)
 
 (function () {
   const header = document.querySelector(".site-header");

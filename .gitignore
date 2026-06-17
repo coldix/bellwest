@@ -1,7 +1,3 @@
-# .gitignore
-# Version: 1.1.0 | 2026-06-17 16:55 AEST
-# Update notes: Part of v1.1.0 SEO/AI release. Unchanged logic.
-
 .DS_Store
 Thumbs.db
 *.mp4

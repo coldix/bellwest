@@ -1,3 +1,4 @@
+// bellwest.au — explore page Leaflet map
 (function () {
   const mapEl = document.getElementById("region-map");
   if (!mapEl || typeof L === "undefined") return;

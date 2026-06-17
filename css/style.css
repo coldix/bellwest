@@ -299,28 +299,23 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
   .logo-img { height: 36px; }
 }
 
-/* ---------- Theme toggle pill (injected by main.js) ---------- */
+/* ---------- Theme toggle pill (injected by main.js, sits in header) ---------- */
 .theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 200;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.32rem;
+  gap: 0.15rem;
+  padding: 0.2rem;
   border-radius: var(--radius-pill);
-  background: var(--glass);
-  border: 1px solid var(--glass-brd);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  box-shadow: var(--shadow);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+  border: 1px solid var(--line);
+  margin-left: 0.3rem;
+  flex: 0 0 auto;
 }
 .theme-toggle button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px; height: 34px;
+  width: 30px; height: 30px;
   border: 0;
   border-radius: 50%;
   background: transparent;
@@ -328,14 +323,15 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
   cursor: pointer;
   transition: color 0.2s, background 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.theme-toggle button svg { width: 18px; height: 18px; }
+.theme-toggle button svg { width: 17px; height: 17px; }
+.theme-toggle button:hover { color: var(--ink); }
 .theme-toggle button.is-active {
   background: var(--grad-accent);
   color: #fff;
   box-shadow: var(--shadow-sm);
   transform: scale(1.04);
 }
-@media (max-width: 720px) { .theme-toggle { top: auto; bottom: 1rem; } }
+@media (max-width: 420px) { .theme-toggle button { width: 27px; height: 27px; } }
 
 /* ---------- Hero (home) ---------- */
 .hero {
@@ -647,7 +643,23 @@ section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
 .feature-card h3 { margin-bottom: 0.45rem; }
 .feature-card p { font-size: 0.97rem; }
 
-.promo-pricing { background: var(--canvas-2); }
+.promo-included { background: var(--canvas-2); }
+.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.included-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.9rem; box-shadow: var(--shadow-sm); }
+.included-card-extra { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.included-card h3 { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 1.1rem; }
+.included-card h3 .tag { font-family: var(--font-body); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; padding: 0.2rem 0.55rem; border-radius: var(--radius-pill); }
+.included-card-yes h3 .tag { background: var(--grad-aqua); }
+.included-card-extra h3 .tag { background: var(--grad-accent); }
+.included-card ul { list-style: none; padding: 0; display: grid; gap: 0.75rem; }
+.included-card li { position: relative; padding-left: 1.8rem; color: var(--ink); font-size: 0.98rem; line-height: 1.5; }
+.included-card li::before { position: absolute; left: 0; top: 0.05rem; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; font-size: 0.72rem; font-weight: 800; color: #fff; }
+.included-card-yes li::before { content: "\2713"; background: var(--grad-aqua); }
+.included-card-extra li::before { content: "+"; background: var(--grad-accent); font-size: 0.95rem; }
+.included-note { margin-top: 1.4rem; font-size: 0.92rem; color: var(--ink-soft); }
+@media (max-width: 700px) { .included-grid { grid-template-columns: 1fr; } }
+
+.promo-pricing { background: var(--canvas); }
 .pricing-display-bar { margin-bottom: 2rem; }
 .pricing-display-glass {
   display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;

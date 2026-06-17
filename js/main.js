@@ -35,7 +35,12 @@
     var btn = e.target.closest("button");
     if (btn) applyTheme(btn.dataset.theme, true);
   });
-  document.body.appendChild(toggle);
+  // Place the pill inside the header nav (before the Inquire CTA) so it never overlaps it.
+  var nav = document.querySelector(".site-nav");
+  var navCta = nav ? nav.querySelector(".nav-cta") : null;
+  if (nav && navCta) nav.insertBefore(toggle, navCta);
+  else if (nav) nav.appendChild(toggle);
+  else document.body.appendChild(toggle);
   applyTheme(currentTheme(), false);
 
   /* ---------- Header scroll state ---------- */

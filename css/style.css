@@ -1783,21 +1783,78 @@ a:hover {
 
 .pricing-cta-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
 
+.pricing-cta-alt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .btn-order-lg {
-  font-size: 1.1rem;
-  padding: 1rem 2rem;
-  min-width: 260px;
+  font-size: 1.05rem;
+  padding: 0.9rem 1.75rem;
+  min-width: 240px;
 }
 
 .stripe-checkout-slot {
   width: 100%;
+  max-width: 440px;
+  padding: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.stripe-checkout-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.stripe-coupon-hint {
+  margin: 0 0 1.25rem;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+}
+
+.stripe-coupon-hint strong {
+  color: var(--gold-light);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.stripe-checkout-slot stripe-buy-button {
+  display: block;
+  margin: 0 auto;
+}
+
+.stripe-link-fallback {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+}
+
+.stripe-link-fallback a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.stripe-link-fallback a:hover {
+  color: var(--gold-light);
 }
 
 /* Upsell + form */

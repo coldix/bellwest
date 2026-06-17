@@ -26,7 +26,7 @@ Version: 1.6.0 | 2026-06-17
   - April 2027+: $495 full price
 - Includes: custom URL (e.g. bellwest.au/your-property), Kuula 360° tours, drone galleries, QR code, lead forms, featured Facebook group post
 - Subdomains available (e.g. pizza.bellwest.au) — hospitality/ordering on request
-- Order: email col@oze.com.au (Stripe checkout planned)
+- Order: Stripe checkout on /promo/ (coupon BW-90 for 90% off) or email col@oze.com.au
 - Community: https://www.facebook.com/groups/bellwest
 
 ## Pages

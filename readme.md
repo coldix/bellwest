@@ -105,14 +105,17 @@ Operator: [oze.au](https://oze.au)
 
 ## Stripe (promo checkout)
 
-Promo page payments via Stripe:
+Live on `/promo/` — buy button in `#stripe-checkout-slot`.
 
-| Item | ID / code |
-|------|-----------|
+| Item | Value |
+|------|-------|
 | Product | `prod_UiiOowYQt2TkPl` |
 | Intro coupon (90% off) | `BW-90` |
+| Payment link | https://buy.stripe.com/3cIeVdcVMezo1st51f77O00 |
+| Buy button ID | `buy_btn_1TjH5PDRtLu90m8j4O1g5xA5` |
+| Publishable key | `pk_live_6TrCubeAphhHGIDlKHpcluuS` |
 
-Apply coupon **BW-90** at checkout for the introductory discount (e.g. $49.50 first month on the $495 base). Wire the Payment Link or Buy Button into `promo/index.html` at `#stripe-checkout-slot` when ready.
+Customers apply **BW-90** at checkout for the introductory discount ($49.50 first month on the $495 base). Email order remains as a fallback.
 
 ## SEO & AI visibility
 

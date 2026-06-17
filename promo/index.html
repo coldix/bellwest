@@ -169,13 +169,26 @@
             aria-describedby="promo-slider-hint"
           >
         </div>
-        <p class="pricing-slider-hint" id="promo-slider-hint">July $49.50 → August $99 → … → full price $495 from April 2027. Stripe checkout coming soon.</p>
+        <p class="pricing-slider-hint" id="promo-slider-hint">July $49.50 → August $99 → … → full price $495 from April 2027. Pay with Stripe or email to order.</p>
       </div>
 
       <div class="pricing-cta-bar container" data-reveal>
-        <a href="#" class="btn btn-primary btn-order-lg" id="promo-order-btn">Order by email — $49.50</a>
-        <a href="#claim-form" class="btn btn-secondary">Full inquiry form</a>
-        <div id="stripe-checkout-slot" class="stripe-checkout-slot" hidden aria-hidden="true"></div>
+        <div id="stripe-checkout-slot" class="stripe-checkout-slot">
+          <p class="stripe-checkout-label">Pay securely with Stripe</p>
+          <p class="stripe-coupon-hint">First month? Apply coupon <strong>BW-90</strong> at checkout for 90% off.</p>
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TjH5PDRtLu90m8j4O1g5xA5"
+            publishable-key="pk_live_6TrCubeAphhHGIDlKHpcluuS"
+          ></stripe-buy-button>
+          <p class="stripe-link-fallback">
+            <a href="https://buy.stripe.com/3cIeVdcVMezo1st51f77O00" target="_blank" rel="noopener noreferrer">Open checkout in a new tab</a>
+          </p>
+        </div>
+        <div class="pricing-cta-alt">
+          <a href="#" class="btn btn-secondary btn-order-lg" id="promo-order-btn">Order by email — $49.50</a>
+          <a href="#claim-form" class="btn btn-secondary">Full inquiry form</a>
+        </div>
       </div>
     </section>
 

@@ -2,6 +2,13 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.6.1] - 2026-06-17
+
+### Stripe checkout (`/promo/`)
+- Embedded Stripe Buy Button (`buy_btn_1TjH5PDRtLu90m8j4O1g5xA5`) with coupon hint **BW-90**.
+- Payment link fallback: https://buy.stripe.com/3cIeVdcVMezo1st51f77O00
+- Email order demoted to secondary CTA.
+
 ## [1.6.0] - 2026-06-17
 
 ### Promo page redesign (`/promo/`)

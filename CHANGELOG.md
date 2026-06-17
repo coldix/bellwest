@@ -2,6 +2,13 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [1.7.4] - 2026-06-17
+
+### Promo features — restore glass bento grid
+- Six reasons reveal as one bento grid (not staggered list items).
+- Pricing notes use glass boxes instead of bullet lists.
+- Root CSS path + cache bust on `/promo/`.
+
 ## [1.7.3] - 2026-06-17
 
 ### Promo page — iPad / tablet layout

@@ -2,6 +2,18 @@
 
 All notable changes to the bellwest.au / bellwest.com.au domain for-sale site.
 
+## [1.3.0] - 2026-06-17 18:30 AEST
+
+### Barwon Heads & content updates (potential-uses.html)
+- Added explicit references to Barwon Heads (bridge, storm clouds, river mouth, farmland) in the Home Base tourism pitch, matching the atmospheric narrative style of https://coota.au/barwon-heads/.
+- Updated lead text to mention Barwon Heads.
+- Added full FAQ section at bottom of page with four questions, prominently featuring: "Are you open to partnerships? Yes — we are willing to consider a partner arrangement with this project."
+
+### Footer
+- Switched oze logo to oze-logo.png for consistency with user-provided assets (logo1.png, logo2.png, oze-logo.png also available in /images/).
+
+See previous for 1.2 layout/FAQ on home.
+
 ## [1.2.0] - 2026-06-17 17:11 AEST
 
 ### Layout & UX improvements (potential-uses.html)

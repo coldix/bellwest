@@ -1,5 +1,6 @@
 // bellwest — minimal site JS
-// Version: v003
+// Version: 1.1.0 | 2026-06-17 16:55 AEST
+// Update notes: Version stamp standardized. No logic changes.
 
 (function () {
   const header = document.querySelector(".site-header");

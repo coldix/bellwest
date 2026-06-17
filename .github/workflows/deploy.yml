@@ -1,3 +1,7 @@
+# .github/workflows/deploy.yml
+# Version: 1.1.0 | 2026-06-17 16:55 AEST
+# Update notes: Version stamp added. No functional changes. New root files (robots, sitemap, llms, CHANGELOG) are deployed via rsync (not excluded).
+
 name: Deploy to Hostinger (SSH rsync)
 
 on:

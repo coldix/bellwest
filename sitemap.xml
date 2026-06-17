@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  bellwest.au sitemap
+  Version: 1.1.0 | 2026-06-17 16:55 AEST
+  Update notes: Initial sitemap for SEO. Includes main pages and hero image.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://bellwest.au/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bellwest.au/images/hero-bells-beach-poster.jpg</image:loc>
+      <image:title>bellwest.au hero - Bells Beach aerial</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bellwest.au/potential-uses.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

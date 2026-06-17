@@ -65,5 +65,25 @@ bellwest/
 ├── css/style.css
 ├── js/main.js
 ├── images/
+├── robots.txt
+├── sitemap.xml
+├── llms.txt
+├── CHANGELOG.md
 └── readme.md
 ```
+
+## SEO & AI Visibility (v1.1.0+)
+
+This site is optimized for both traditional search engines and AI/LLM systems (ChatGPT, Claude, Perplexity, Google AI Overviews, etc.).
+
+### Key files added in 1.1.0 (2026-06-17 16:55 AEST)
+- `robots.txt` — Crawler directives
+- `sitemap.xml` — Structured sitemap with images
+- `llms.txt` — Clean, citable facts and page overview for AI models
+- Enhanced homepage FAQ + rich JSON-LD (WebSite + Product + FAQPage)
+
+See [CHANGELOG.md](CHANGELOG.md) for full version history and update notes.
+
+All versioned files include AEST timestamps.
+
+## Local preview

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+  bellwest.au — Explore the Region
+  Regional map page — v2.0.0 | 2026-06-17
+-->
+<html lang="en-AU" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="LulrzleF7rxUWs-Z8TcaihyEXalsS6_X06Xyk47sIj0">
+  <script>(function(){try{var t=localStorage.getItem('bw-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <title>Explore the Region — 360° Tours, Map &amp; Locations | bellwest.au</title>
+  <meta name="description" content="Interactive map of the Bellarine Peninsula, Surf Coast, and Great Ocean Road corridor — Barwon Heads, Torquay, Bells Beach, and beyond.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://bellwest.au/region/explore.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="../css/style.css?v=3.0.2">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo-link" aria-label="bellwest.au home">
+        <img src="../images/logo-wave-road.svg" alt="bellwest — wave and the road" class="logo-img" width="220" height="48">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="explore.html" class="nav-link active">Explore</a>
+        <a href="../invest/" class="nav-link">Invest</a>
+        <a href="../promo/" class="nav-link">Advertise</a>
+        <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="nav-cta">Inquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero" aria-labelledby="page-heading">
+      <div class="container">
+        <p class="section-eyebrow">Bellarine &amp; South West</p>
+        <h1 id="page-heading">Explore the region</h1>
+        <p class="page-hero-lead">From Geelong and Barwon Heads on the Bellarine Peninsula to Torquay, Bells Beach, and the Great Ocean Road — the geography behind the bellwest brand.</p>
+      </div>
+    </section>
+
+    <section class="explore-map-section" aria-labelledby="map-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Interactive map</p>
+          <h2 id="map-heading">The bellwest corridor</h2>
+          <p class="section-lead">Click a marker for details. Scroll or pinch to zoom once you've clicked the map.</p>
+        </header>
+        <div class="map-shell">
+          <div id="region-map" role="img" aria-label="Map of Barwon Heads, Geelong, Torquay, Bells Beach and Lorne"></div>
+        </div>
+        <ul class="map-legend" aria-label="Map locations">
+          <li>Geelong — Bellarine gateway</li>
+          <li>Barwon Heads — river &amp; bridge</li>
+          <li>Torquay — Surf Coast beaches</li>
+          <li>Bells Beach — iconic surf coast</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="explore-cards" aria-labelledby="highlights-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="highlights-heading">Featured locations</h2>
+        </header>
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <a href="barwon-heads.html" class="showcase-media">
+              <img src="../images/gallery/barwon-heads-may22.jpg" alt="Aerial view of Barwon Heads Bridge as storm clouds depart" width="1600" height="1066" loading="lazy">
+            </a>
+            <div class="showcase-body">
+              <h3>Barwon Heads</h3>
+              <p>Drone story from the Bellarine — storm clouds retreating over the iconic bridge, river mouth, and Murtnaghurt Lagoon. Full article and links to coota.au.</p>
+              <p class="showcase-links">
+                <a href="barwon-heads.html">Read on bellwest</a>
+                <a href="https://coota.au/barwon-heads/" target="_blank" rel="noopener noreferrer">Original on coota.au</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="showcase-card">
+            <a href="#tours" class="showcase-media">
+              <img src="../images/gallery/torquay-fishermans.jpg" alt="Preview — 360° aerial tours of the Surf Coast" width="1920" height="1080" loading="lazy">
+            </a>
+            <div class="showcase-body">
+              <h3>360° aerial tours</h3>
+              <p>Three Kuula panoramas — Barwon Heads, Torquay, and Bells Beach. Drag to look around; VR-ready on mobile.</p>
+              <p class="showcase-links">
+                <a href="#barwon-heads">Barwon Heads</a>
+                <a href="#torquay">Torquay</a>
+                <a href="#bells">Bells Beach</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="showcase-card">
+            <a href="../index.html#region-showcase" class="showcase-media">
+              <img src="../images/gallery/bells-longboard-pano.jpg" alt="Bells Beach aerial panorama" width="2560" height="853" loading="lazy">
+            </a>
+            <div class="showcase-body">
+              <h3>Bells Beach &amp; Torquay</h3>
+              <p>Original drone photography and coota.au stories from the Surf Coast — Longboard Classic, Winki Pop, and Fisherman's Beach.</p>
+              <p class="showcase-links">
+                <a href="../index.html#region-showcase">View on home page</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="panorama-section" id="tours" aria-labelledby="tours-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-eyebrow">Immersive media</p>
+          <h2 id="tours-heading">360° aerial tours</h2>
+          <p class="section-lead">Barwon Heads, Torquay, and Bells Beach from above — drag to pan, scroll to zoom, or open in VR on supported devices.</p>
+        </header>
+        <div class="panorama-stack">
+
+          <article class="panorama-block" id="barwon-heads">
+            <h2>Barwon Heads</h2>
+            <p class="panorama-location">Bellarine Peninsula — bridge, river mouth &amp; lagoon country</p>
+            <div class="panorama-embed">
+              <iframe width="100%" height="560" frameborder="0" allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no" title="360° aerial panorama — Barwon Heads" src="https://kuula.co/share/NHQDq?logo=1&amp;info=1&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;autorotate=0.3&amp;thumbs=1" loading="lazy"></iframe>
+            </div>
+            <p class="panorama-note"><a href="barwon-heads.html">Barwon Heads story</a> · <a href="https://kuula.co/share/NHQDq" target="_blank" rel="noopener noreferrer">Open on Kuula</a></p>
+          </article>
+
+          <article class="panorama-block" id="torquay">
+            <h2>Torquay</h2>
+            <p class="panorama-location">Surf Coast — beaches, bay &amp; Fisherman's Beach</p>
+            <div class="panorama-embed">
+              <iframe width="100%" height="560" frameborder="0" allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no" title="360° aerial panorama — Torquay" src="https://kuula.co/share/5mmtd?logo=1&amp;info=1&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;autorotate=0.3&amp;thumbs=1" loading="lazy"></iframe>
+            </div>
+            <p class="panorama-note"><a href="https://coota.au/torquay-may-2023/" target="_blank" rel="noopener noreferrer">coota.au — Torquay</a> · <a href="https://kuula.co/share/5mmtd" target="_blank" rel="noopener noreferrer">Open on Kuula</a></p>
+          </article>
+
+          <article class="panorama-block" id="bells">
+            <h2>Bells Beach</h2>
+            <p class="panorama-location">Surf Coast — Winki Pop, Rincon &amp; Longboard Classic</p>
+            <div class="panorama-embed">
+              <iframe width="100%" height="560" frameborder="0" allow="xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen scrolling="no" title="360° aerial panorama collection — Bells Beach" src="https://kuula.co/share/collection/7J2pJ?logo=1&amp;info=1&amp;fs=1&amp;vr=1&amp;zoom=1&amp;sd=1&amp;autorotate=0.3&amp;thumbs=1" loading="lazy"></iframe>
+            </div>
+            <p class="panorama-note"><a href="https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/" target="_blank" rel="noopener noreferrer">coota.au — Bells Beach</a> · <a href="https://kuula.co/share/collection/7J2pJ" target="_blank" rel="noopener noreferrer">Open on Kuula</a></p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band cta-band-dark" aria-labelledby="cta-heading">
+      <div class="container cta-band-inner">
+        <div>
+          <h2 id="cta-heading">Own the digital gateway to this coastline</h2>
+          <p>bellwest.au and bellwest.com.au — $4,000 ONO for the full domain package.</p>
+        </div>
+        <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="btn btn-primary">Inquire Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="https://bellwest.au" class="footer-brand-name">bellwest.au</a>
+          <p class="footer-tagline">The premium digital gateway to the Bellarine Peninsula &amp; South West Victoria. Premium domains for sale — $4,000 ONO.</p>
+        </div>
+        <div>
+          <p class="footer-col-heading">Pages</p>
+          <ul class="footer-nav-list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="explore.html">Explore the region</a></li>
+            <li><a href="../invest/">Invest — potential uses</a></li>
+            <li><a href="../promo/">Advertise on bellwest</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-heading">Contact</p>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry">col@oze.com.au</a></li>
+            <li><a href="https://www.facebook.com/groups/bellwest" target="_blank" rel="noopener noreferrer" class="footer-social-link">Bellwest on Facebook</a></li>
+            <li><a href="https://oze.au" target="_blank" rel="noopener">oze.au</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy"><a href="https://oze.au" target="_blank" rel="noopener">© OZ On Line</a> · Premium domains for sale — $4,000 ONO</p>
+        <span class="footer-domains">bellwest.au &amp; bellwest.com.au</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="../js/main.js?v=3.0.2"></script>
+  <script src="../js/map.js?v=3.0.2"></script>
+</body>
+</html>

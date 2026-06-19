@@ -1,62 +1,109 @@
 # bellwest.au Changelog
 
-All notable changes to the bellwest.au / bellwest.com.au domain for-sale site.
+All notable changes to the bellwest.au / bellwest.com.au site.
 
-## [1.3.0] - 2026-06-17 18:30 AEST
+## [1.7.4] - 2026-06-17
 
-### Barwon Heads & content updates (potential-uses.html)
-- Added explicit references to Barwon Heads (bridge, storm clouds, river mouth, farmland) in the Home Base tourism pitch, matching the atmospheric narrative style of https://coota.au/barwon-heads/.
-- Updated lead text to mention Barwon Heads.
-- Added full FAQ section at bottom of page with four questions, prominently featuring: "Are you open to partnerships? Yes — we are willing to consider a partner arrangement with this project."
+### Promo features — restore glass bento grid
+- Six reasons reveal as one bento grid (not staggered list items).
+- Pricing notes use glass boxes instead of bullet lists.
+- Root CSS path + cache bust on `/promo/`.
 
-### Footer
-- Switched oze logo to oze-logo.png for consistency with user-provided assets (logo1.png, logo2.png, oze-logo.png also available in /images/).
+## [1.7.3] - 2026-06-17
 
-See previous for 1.2 layout/FAQ on home.
+### Promo page — iPad / tablet layout
+- Constrain feature icons (explicit SVG dimensions + smaller size on tablet).
+- Wider section padding on iPad; bento grid stays 2-column up to 1080px.
+- Price display bar stacks below 900px (was 720px).
 
-## [1.2.0] - 2026-06-17 17:11 AEST
+## [1.7.2] - 2026-06-17
 
-### Layout & UX improvements (potential-uses.html)
-- Wide screens (≥900px): 4 opportunity pitches now display in a clean **2-column grid** (less scrolling, more scannable).
-- **Click any pitch image** to open a full-screen lightbox for larger viewing. Close with ×, click outside, or press Escape.
-- Footer on both pages now prominently links to **https://oze.au** and displays the oze logo.
-- Added `images/oze-logo.webp` (sourced from oze.au) and `images/coota-eye.png` (from coota.au) for branding use.
+### Promo pricing clarity
+- Image placement included; photography billed separately by the photographer.
+- FSBO portal listings (realestate.com.au + domain.com.au) noted as ~$600 p.a. extra.
+- New “What's included — and what's extra” block on `/promo/`.
 
-### Content refinements
-- Incorporated narrative style inspired by https://coota.au/barwon-heads/ (vivid coastal descriptions, place as character, atmospheric drone perspectives) while keeping the 4 focused business pitches.
-- Slightly tightened copy for better readability.
+## [1.7.1] - 2026-06-17
 
-### Other
-- Version stamps updated across files.
-- CSS and inline JS for lightbox + grid.
+### Copy fix — annual pricing
+- Promo and homepage copy corrected from “per month” to **p.a.** (per year); amounts unchanged.
+- Slider labels clarify **signup month** vs billing period.
 
-See previous sections for v1.1 SEO/AI work.
+## [1.7.0] - 2026-06-17
 
-## [1.1.0] - 2026-06-17 16:55 AEST
+### Structure & images
+- `images/thumbs/` — 640px thumbnails for all gallery JPEGs.
+- `images/branding/` — moved oze logos and unused logo assets out of `images/` root.
+- Root `images/` keeps only site assets: `logo-wave-road.svg`, `hero-bells-beach-poster.jpg`, `gallery/`, `thumbs/`, `branding/`.
 
-**SEO & AI Visibility Maximization Release**
+### UX
+- Thumbnails use `object-fit: contain` (no crop/distort); click opens full image in shared lightbox (`main.js`).
+- Compact 2×2 gallery on home; shorter card copy; FAQ collapsed by default.
+- Removed duplicate per-page lightbox scripts.
+- Unified footer logo path: `images/branding/oze-logo.png`.
 
-### Added
-- `robots.txt` — Explicit allow for all crawlers + sitemap reference.
-- `sitemap.xml` — XML sitemap including main pages and primary image for Google/Bing.
-- `llms.txt` — Structured plain-text file at root for AI/LLM crawlers (per emerging llms.txt standard). Provides clean facts, page list, and guidance for better citation in generative answers.
-- Visible FAQ section on homepage using semantic `<details>`/`<summary>` (excellent for featured snippets and AI extraction).
-- Enhanced structured data (JSON-LD) on homepage:
-  - WebSite schema
-  - Improved Product + Offer
-  - New FAQPage schema with 4 key questions
-- Version stamps with AEST date/time on all key files.
-- `CHANGELOG.md` for tracking updates.
+## [1.6.1] - 2026-06-17
 
-### Changed
-- `index.html` — Added version header, replaced schema block with richer @graph version, inserted FAQ section before footer.
-- `potential-uses.html` — Added version header comment.
-- `readme.md` — Added "SEO & AI Visibility" section and link to CHANGELOG. Updated structure note to include new root files.
+### Stripe checkout (`/promo/`)
+- Embedded Stripe Buy Button (`buy_btn_1TjH5PDRtLu90m8j4O1g5xA5`) with coupon hint **BW-90**.
+- Payment link fallback: https://buy.stripe.com/3cIeVdcVMezo1st51f77O00
+- Email order demoted to secondary CTA.
 
-### Notes
-- All changes maintain static HTML purity (fast, crawlable, LLM-friendly).
-- Designed to improve ranking in traditional search **and** being cited/summarized by AI tools.
-- Deployment via existing GitHub → Hostinger flow (or direct Git in Hostinger panel).
+## [1.6.0] - 2026-06-17
+
+### Promo page redesign (`/promo/`)
+- Bento **glass-box** feature grid with SVG icons (replaces emoji cards).
+- **Full-width pricing timeline**: interactive column chart, glowing slider rail, live price display.
+- Tap any month column or drag slider — Jul 2026 $49.50 → full price $495.
+- Email order button + inquiry form; Stripe checkout slot reserved (`#stripe-checkout-slot`).
+- New `js/promo.js`; promo styles in `css/style.css` v1.6.
+
+### Homepage
+- Hero CTA: **Promo from $49.50** → `/promo/`.
+- Promo banner strip, nav link, Facebook group in utility hub + footer.
+
+### Site-wide
+- Facebook link: [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest) in footers.
+- `sitemap.xml` — `/promo/` added (priority 0.9).
+- Documentation refresh: `readme.md`, `llms.txt`, `CHANGELOG.md`.
+
+## [1.5.0] - 2026-06-17
+
+### Promo landing page (initial)
+- `/promo/` — hero, features, sliding discount pricing, subdomain upsell, mailto inquiry form.
+- Homepage promo banner + nav link.
+- Facebook community links on all main pages.
+
+## [1.4.0] - 2026-06-17
+
+### Regional content
+- `explore.html` — Leaflet/OSM map (`js/map.js`), corridor markers.
+- `barwon-heads.html` — Bellarine article with coota.au cross-links.
+- `panorama.html` — three Kuula 360° embeds (Barwon Heads, Torquay, Bells).
+- Homepage showcase cards, Explore nav, gallery links to 360° tours.
+- `sitemap.xml` updated with new pages.
+
+## [1.3.0] - 2026-06-17
+
+### potential-uses.html
+- Barwon Heads narrative in tourism pitch (coota.au style).
+- FAQ section including partnership openness.
+- Footer: oze-logo.png + link to oze.au.
+
+## [1.2.0] - 2026-06-17
+
+### Layout & UX
+- `potential-uses.html`: 2-column grid on wide screens; image lightbox.
+- Footer branding (oze.au logo).
+- `images/oze-logo.webp`, `coota-eye.png` added.
+
+## [1.1.0] - 2026-06-17
+
+### SEO & AI visibility
+- `robots.txt`, `sitemap.xml`, `llms.txt`.
+- Homepage FAQ + JSON-LD (WebSite, Product, FAQPage).
 
 ## [1.0.0] - Earlier
-- Initial site launch with two pages, hero visuals, pricing, and local hub.
+
+- Initial two-page domain-for-sale site (home + potential uses).
+- Hero visuals, $4,000 ONO offer, local utility hub.

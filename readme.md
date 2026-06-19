@@ -1,28 +1,80 @@
-# bellwest
+# bellwest.au
 
-Premium, visual-first "For Sale" site for **bellwest.au** and **bellwest.com.au** — $4,000 ONO.
+Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula & South West Victoria**.
 
-Static HTML/CSS site with two pages:
+**Domains:** [bellwest.au](https://bellwest.au) + [bellwest.com.au](https://bellwest.au) — **$4,000 AUD ONO**
 
-- `index.html` — hero landing, domain offer, local utility hub (SEO/AI-friendly)
-- `potential-uses.html` — four business opportunity pitches
+While the domain package is on the market, the site also showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
 
-## Assets
+## Design (v3.0)
 
-| File | Status | Source |
-|------|--------|--------|
-| `images/hero-bells-beach-poster.jpg` | ✅ Downloaded | [coota.au — Bells Longboard Classic](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) |
-| `images/gallery/*` | ✅ 5 images | coota.au Bells Beach & Torquay posts |
-| Hero video | ✅ YouTube embed | `ze7-yqh-SMM` — Bells Longboard Classic aerial (no local file needed) |
-| `images/logo-wave-road.svg` | Placeholder | Replace with your "Wave and the Road" logo |
+Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled by a floating pill (top-right). **Aurora Glass (dark) is the default**; a returning visitor's saved choice (`localStorage` key `bw-theme`) overrides it. The default is set on `<html data-theme="dark">` and reaffirmed by an inline `<head>` script before first paint, so there's no flash and it holds even without JS. Warm-sand / deep-teal palette (no blue-on-blue), underlined content links, redesigned footer, 3D card tilt + scroll-reveal (all motion respects `prefers-reduced-motion`).
 
-Scraped content manifest: `content/coota-scrape.json`
+## Live site
 
-### Source articles (coota.au)
+Four primary pages + one article (consolidated from six in v3.0):
 
-- [Bells Beach Longboard Classic — An Aerial Odyssey](https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/) — video `youtu.be/ze7-yqh-SMM`
-- [Bells Beach May 2022](https://coota.au/bells-beach-may-22/) — video `youtube.com/watch?v=qetk6XZeyow`
-- [Torquay May 2023](https://coota.au/torquay-may-2023/) — video `youtu.be/YnTzUuwMe8I`
+| Page | URL | Purpose |
+|------|-----|---------|
+| Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ |
+| Explore | [/region/explore.html](https://bellwest.au/region/explore.html) | Interactive map, featured locations **and** the 360° Kuula tours (`#tours`) |
+| Invest | [/invest/](https://bellwest.au/invest/) | Four business opportunity pitches |
+| Advertise | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains from $49.50/year (sliding annual discount) |
+| Barwon Heads | [/region/barwon-heads.html](https://bellwest.au/region/barwon-heads.html) | Bellarine showcase article (linked from Explore) |
+
+**Community:** [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest)
+
+### Redirects
+
+Old URLs 301 → new locations via `.htaccess`:
+
+| Old | New |
+|-----|-----|
+| `/explore.html` | `/region/explore.html` |
+| `/barwon-heads.html` | `/region/barwon-heads.html` |
+| `/potential-uses.html` | `/invest/` |
+| `/panorama.html`, `/region/panorama.html` | `/region/explore.html#tours` |
+
+`.htaccess` also blocks public web access to dev/source files (`*.md`, `*.sh`,
+`*.yml`, `.gitignore`) — they're deployed but return 403. (The deploy server
+IP/user/path live in `deploy.sh`, so don't let it be web-readable.)
+
+## Project structure
+
+```
+bellwest/
+├── index.html              # Homepage
+├── .htaccess               # 301 redirects for moved pages
+├── promo/
+│   └── index.html          # Advertise — promo pages & subdomains
+├── invest/
+│   └── index.html          # Invest — four business opportunity pitches
+├── region/
+│   ├── explore.html        # Map + featured locations + 360° Kuula tours (#tours)
+│   └── barwon-heads.html   # Bellarine showcase article
+├── css/
+│   └── style.css           # Design system v3.0 — light + dark themes
+├── js/
+│   ├── main.js             # Theme toggle, header, hero video, 3D tilt, scroll reveal
+│   ├── map.js              # Leaflet map (explore page)
+│   └── promo.js            # Pricing slider, columns, form, reveal
+├── images/
+│   ├── gallery/            # Aerial photography (Bells, Torquay, Barwon Heads)
+│   ├── branding/           # oze.au logo (png + webp)
+│   ├── hero-bells-beach-poster.jpg
+│   └── logo-wave-road.svg
+├── content/
+│   └── coota-scrape.json   # Asset manifest
+├── deploy.sh               # Manual rsync deploy to Hostinger
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # Auto-deploy on push to main
+├── robots.txt
+├── sitemap.xml
+├── llms.txt                # AI/LLM citation guide
+├── CHANGELOG.md
+└── readme.md
+```
 
 ## Local preview
 
@@ -31,64 +83,106 @@ cd bellwest
 python3 -m http.server 8080
 ```
 
-Open http://localhost:8080
+Open http://localhost:8080 — promo page at http://localhost:8080/promo/
 
-## Deploy (GitHub → Hostinger)
+## Deploy
 
-Auto-deploys on every push to `main` via `.github/workflows/deploy.yml` (same SSH rsync pattern as ozol.au).
+Both methods `rsync --delete` so the server **mirrors** the repo (files removed
+locally are removed on the server). `.well-known` and `cgi-bin` are excluded so
+`--delete` can't wipe server-managed paths (SSL renewal, etc.) that aren't in git.
+
+### Manual (Mac)
+
+Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
+
+```bash
+./deploy.sh
+```
 
 **Remote path:** `/home/u566466219/domains/bellwest.au/public_html/`
 
-### One-time GitHub setup
+### GitHub Actions
 
-1. Open **coldix/bellwest** → **Settings** → **Secrets and variables** → **Actions**
-2. Add repository secret **`HOSTINGER_SSH_KEY_B64`** — same base64-encoded SSH private key used by ozol.au / ozol.org (or set it as an org secret on `coldix`)
-3. Push to `main`, or run **Actions** → **Deploy to Hostinger** → **Run workflow**
+Pushes to `main` auto-deploy via `.github/workflows/deploy.yml`.
+
+- **One-time setup:** repo secret `HOSTINGER_SSH_KEY_B64` (base64 of the private key).
+- Editing `deploy.yml` requires a Git token with the **`workflow`** scope, or edit
+  it via the GitHub web UI.
+
+### ⚠️ Caching — bump `?v=` when you change CSS/JS
+
+The site is fronted by **Hostinger's CDN (`hcdn`)**. It serves **HTML live**
+(`x-hcdn-cache-status: DYNAMIC`) but **caches `css`/`js`/images for 7 days**
+(`Cache-Control: max-age=604800`) at the edge. Because the redesign reuses the
+same HTML class names, a stale cached `style.css` makes a fresh page look
+**unchanged** — and incognito / hard-refresh does **not** help (the stale copy
+lives on the CDN edge, not in the browser).
+
+So after editing `css/style.css` or any `js/*.js`, **bump the version query** on
+its `<link>` / `<script>` in every HTML file, e.g. `style.css?v=3.0.2` →
+`?v=3.0.3`. New URL = new object the CDN must re-fetch → change is instant for
+everyone. (A full CDN purge in hPanel → *Performance/CDN → Purge cache* also
+works, but versioning is self-service and reliable.)
+
+Quick bump for all pages:
+
+```bash
+grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=3\.0\.2/?v=3.0.3/g'
+```
+
+Verify a deploy reached the edge:
+
+```bash
+curl -sI "https://bellwest.au/css/style.css?v=3.0.3" | grep x-hcdn-cache-status   # expect MISS then HIT
+```
 
 ### DNS
 
-- **bellwest.au** → Hostinger (propagation may take up to 24–48 hours)
-- **bellwest.com.au** → same site (addon domain) or redirect to `https://bellwest.au/`
+- **bellwest.au** → Hostinger
+- **bellwest.com.au** → same site or redirect to `https://bellwest.au/`
 
-Hero video streams from YouTube — no video file upload required.
+Hero video streams from YouTube (`ze7-yqh-SMM`) — no local video file required.
+
+## Assets & sources
+
+| Asset | Source |
+|-------|--------|
+| Gallery images | [coota.au](https://coota.au) — Bells Beach, Torquay, Barwon Heads posts |
+| Hero video | YouTube `ze7-yqh-SMM` — Bells Longboard Classic aerial |
+| 360° embeds | [Kuula](https://kuula.co) — Barwon Heads, Torquay, Bells collections |
+| Map | [Leaflet](https://leafletjs.com) + OpenStreetMap |
+
+Scraped content manifest: `content/coota-scrape.json`
 
 ## Contact
 
-Inquiries: [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry)
+| Inquiry | Email |
+|---------|-------|
+| Domain purchase | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry) |
+| Promo page / subdomain | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry) |
 
-## SEO & AI Visibility (v1.1.0+)
+Operator: [oze.au](https://oze.au)
 
-This site is optimized for both traditional search engines and AI/LLM systems (ChatGPT, Claude, Perplexity, Google AI Overviews, etc.).
+## Stripe (promo checkout)
 
-### Key files added in 1.1.0 (2026-06-17 16:55 AEST)
-- `robots.txt` — Crawler directives
-- `sitemap.xml` — Structured sitemap with images
-- `llms.txt` — Clean, citable facts and page overview for AI models
-- Enhanced homepage FAQ + rich JSON-LD (WebSite + Product + FAQPage)
+Live on `/promo/` — buy button in `#stripe-checkout-slot`.
 
-### v1.2.0 updates (2026-06-17)
-- potential-uses.html: 2-column layout on wide screens + click images for lightbox viewer
-- Footer links to https://oze.au with oze logo (plus branding assets added: oze-logo.webp, coota-eye.png)
-- Narrative refinements drawing from coota.au/barwon-heads style for more engaging, readable pitches.
+| Item | Value |
+|------|-------|
+| Product | `prod_UiiOowYQt2TkPl` |
+| Intro coupon (90% off) | `BW-90` |
+| Payment link | https://buy.stripe.com/3cIeVdcVMezo1st51f77O00 |
+| Buy button ID | `buy_btn_1TjH5PDRtLu90m8j4O1g5xA5` |
+| Publishable key | `pk_live_6TrCubeAphhHGIDlKHpcluuS` |
 
-See [CHANGELOG.md](CHANGELOG.md) for full version history and update notes.
+Customers apply **BW-90** at checkout for the introductory discount ($49.50 first year on the $495/year base). Email order remains as a fallback.
 
-All versioned files include AEST timestamps.
+## SEO & AI visibility
 
-## Structure
+- `robots.txt` — crawler directives + sitemap link
+- `sitemap.xml` — all public pages including `/promo/`
+- `llms.txt` — structured facts for LLM citation
+- Homepage JSON-LD: WebSite, Product, FAQPage
+- Semantic HTML, minimal JS, static hosting
 
-```
-bellwest/
-├── index.html
-├── potential-uses.html
-├── css/style.css
-├── js/main.js
-├── images/
-├── robots.txt
-├── sitemap.xml
-├── llms.txt
-├── CHANGELOG.md
-└── readme.md
-```
-
-## Local preview
+See [CHANGELOG.md](CHANGELOG.md) for version history.

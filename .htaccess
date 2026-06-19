@@ -1,0 +1,15 @@
+# bellwest.au — URL redirects | v3.0.0
+# 301s preserve SEO equity after restructure + the panorama→Explore merge
+
+Redirect 301 /explore.html https://bellwest.au/region/explore.html
+Redirect 301 /barwon-heads.html https://bellwest.au/region/barwon-heads.html
+Redirect 301 /potential-uses.html https://bellwest.au/invest/
+
+# Panorama page merged into Explore (#tours)
+Redirect 301 /region/panorama.html https://bellwest.au/region/explore.html#tours
+Redirect 301 /panorama.html https://bellwest.au/region/explore.html#tours
+
+# Block dev/source files from public web access (readme, deploy.sh, changelog, etc.)
+<FilesMatch "(?i)\.(sh|md|gitignore|yml|yaml)$">
+  Require all denied
+</FilesMatch>

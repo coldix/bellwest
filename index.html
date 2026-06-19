@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <!--
   bellwest.au — Premium Domain For Sale
-  Version: 1.2.0 | 2026-06-17 17:11 AEST
-  Update notes: Footer now links to oze.au with logo. potential-uses.html updated with 2-col wide layout + image lightbox. See CHANGELOG.md.
+  bellwest.au homepage — v2.0.0 | 2026-06-17
 -->
-<html lang="en-AU">
+<html lang="en-AU" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="LulrzleF7rxUWs-Z8TcaihyEXalsS6_X06Xyk47sIj0">
+  <script>(function(){try{var t=localStorage.getItem('bw-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <title>bellwest.au — Premium Domain For Sale | Bellarine &amp; South West Victoria</title>
   <meta name="description" content="Premium domain names bellwest.au and bellwest.com.au are for sale ($4k ONO). Ideal for Bellarine Peninsula and South West Victoria tourism, real estate, or eco-brands.">
   <meta name="robots" content="index, follow">
@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3.0.2">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,7 +96,9 @@
       </a>
       <nav class="site-nav" aria-label="Main">
         <a href="index.html" class="nav-link active">Home</a>
-        <a href="potential-uses.html" class="nav-link">Potential Uses</a>
+        <a href="region/explore.html" class="nav-link">Explore</a>
+        <a href="invest/" class="nav-link">Invest</a>
+        <a href="promo/" class="nav-link">Advertise</a>
         <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="nav-cta">Inquire</a>
       </nav>
     </div>
@@ -117,7 +119,8 @@
         </div>
         <div class="hero-actions">
           <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="btn btn-primary">Inquire Now</a>
-          <a href="potential-uses.html" class="btn btn-secondary">Explore the vision</a>
+          <a href="invest/" class="btn btn-secondary">Investment case</a>
+          <a href="region/explore.html" class="btn btn-secondary">Explore the region</a>
         </div>
       </div>
     </section>
@@ -131,7 +134,18 @@
       </div>
     </section>
 
-    <section class="region-showcase" aria-labelledby="showcase-heading">
+    <section class="promo-banner" aria-labelledby="promo-banner-heading">
+      <div class="container promo-banner-inner">
+        <div class="promo-banner-copy">
+          <p class="promo-banner-eyebrow">Monetise while you wait</p>
+          <h2 id="promo-banner-heading">Sell privately or promote your local business</h2>
+          <p>Rent a premium promo page or subdomain on bellwest.au — starting at just <span class="promo-banner-price">$49.50</span> for your first year. Custom URLs, 360° tours, drone galleries, QR codes, and lead forms included.</p>
+        </div>
+        <a href="promo/" class="btn btn-primary">View promo offer</a>
+      </div>
+    </section>
+
+    <section class="region-showcase" id="region-showcase" aria-labelledby="showcase-heading">
       <div class="container">
         <header class="section-header">
           <p class="section-eyebrow">Aerial photography</p>
@@ -140,6 +154,21 @@
         </header>
 
         <div class="showcase-grid">
+          <article class="showcase-card">
+            <a href="region/barwon-heads.html" class="showcase-media">
+              <img src="images/gallery/barwon-heads-may22.jpg" alt="Aerial view of Barwon Heads Bridge on the Bellarine Peninsula" width="1600" height="1066" loading="lazy">
+            </a>
+            <div class="showcase-body">
+              <h3>Barwon Heads — Bellarine Peninsula</h3>
+              <p>Storm clouds retreating over the iconic bridge, Barwon River, and Murtnaghurt Lagoon — the western anchor of the bellwest corridor. Includes a 360° aerial tour.</p>
+              <p class="showcase-links">
+                <a href="region/barwon-heads.html">Read on bellwest</a>
+                <a href="https://coota.au/barwon-heads/" target="_blank" rel="noopener noreferrer">coota.au</a>
+                <a href="region/explore.html#barwon-heads">360° view</a>
+              </p>
+            </div>
+          </article>
+
           <article class="showcase-card">
             <a href="https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/" target="_blank" rel="noopener noreferrer" class="showcase-media">
               <img src="images/gallery/bells-longboard-pano.jpg" alt="180-degree aerial panorama of Bells Beach after the Longboard Classic" width="2560" height="853" loading="lazy">
@@ -150,6 +179,7 @@
               <p class="showcase-links">
                 <a href="https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/">Read on coota.au</a>
                 <a href="https://youtu.be/ze7-yqh-SMM" target="_blank" rel="noopener noreferrer">Watch aerial video</a>
+                <a href="region/explore.html#bells">360° view</a>
               </p>
             </div>
           </article>
@@ -178,6 +208,7 @@
               <p class="showcase-links">
                 <a href="https://coota.au/torquay-may-2023/">Read on coota.au</a>
                 <a href="https://youtu.be/YnTzUuwMe8I" target="_blank" rel="noopener noreferrer">Watch video</a>
+                <a href="region/explore.html#torquay">360° view</a>
               </p>
             </div>
           </article>
@@ -208,6 +239,7 @@
             <h3>Government &amp; community</h3>
             <p>Council services, regional development, and community-led coastal care initiatives.</p>
             <ul class="link-list">
+              <li><a href="https://www.facebook.com/groups/bellwest" target="_blank" rel="noopener noreferrer">Bellwest community on Facebook</a></li>
               <li><a href="https://www.surfcoast.vic.gov.au/" target="_blank" rel="noopener noreferrer">Surf Coast Shire</a></li>
               <li><a href="https://www.rdv.vic.gov.au/" target="_blank" rel="noopener noreferrer">Regional Development Victoria</a></li>
               <li><a href="https://www.greatoceanroaddunecare.org.au/" target="_blank" rel="noopener noreferrer">Great Ocean Road Dunecare</a></li>
@@ -233,11 +265,10 @@
           <h2 id="cta-heading">Own the gateway to Victoria's most iconic coastline</h2>
           <p>From Geelong and the Bellarine to Torquay, Lorne, and the 12 Apostles — bellwest is a brand-ready URL with serious commercial potential.</p>
         </div>
-        <a href="potential-uses.html" class="btn btn-primary">See potential uses</a>
+        <a href="invest/" class="btn btn-primary">See potential uses</a>
       </div>
     </section>
 
-    <!-- FAQ for SEO + AI citation (added 2026-06-17) -->
     <section class="faq" aria-labelledby="faq-heading">
       <div class="container">
         <header class="section-header">
@@ -267,21 +298,41 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-brand">
-        <a href="https://oze.au" target="_blank" rel="noopener" title="Visit oze.au">
-          <img src="images/oze-logo.png" alt="oze.au" style="height: 22px; vertical-align: middle; margin-right: 6px;">
-        </a>
-        <a href="https://bellwest.au">bellwest.au</a> &amp; <a href="https://bellwest.au">bellwest.com.au</a>
-      </p>
-      <p class="footer-note">Premium domains for sale — $4,000 ONO</p>
-      <p class="footer-contact">
-        <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry">col@oze.com.au</a>
-      </p>
-      <p class="footer-copy"><a href="https://oze.au" target="_blank" rel="noopener">© OZ On Line</a></p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="https://bellwest.au" class="footer-brand-name">bellwest.au</a>
+          <p class="footer-tagline">The premium digital gateway to the Bellarine Peninsula &amp; South West Victoria. Two memorable domains — one iconic region.</p>
+        </div>
+        <div>
+          <p class="footer-col-heading">Pages</p>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="region/explore.html">Explore the region</a></li>
+            <li><a href="invest/">Invest — potential uses</a></li>
+            <li><a href="promo/">Advertise on bellwest</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-heading">Contact</p>
+          <ul class="footer-contact-list">
+            <li><a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry">col@oze.com.au</a></li>
+            <li><a href="https://www.facebook.com/groups/bellwest" target="_blank" rel="noopener noreferrer" class="footer-social-link">Bellwest on Facebook</a></li>
+            <li>
+              <a href="https://oze.au" target="_blank" rel="noopener">
+                <img src="images/branding/oze-logo.png" alt="oze.au" style="height:18px;vertical-align:middle;margin-right:4px;">oze.au
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy"><a href="https://oze.au" target="_blank" rel="noopener">© OZ On Line</a> · Premium domains for sale — $4,000 ONO</p>
+        <span class="footer-domains">bellwest.au &amp; bellwest.com.au</span>
+      </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3.0.2"></script>
 </body>
 </html>

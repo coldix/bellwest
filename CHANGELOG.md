@@ -2,6 +2,11 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [3.1.1] - 2026-08-27
+
+### TrailBound cross-link
+- Explore card and home utility card point at [trailbound.au](https://trailbound.au/) for mapped East Gippsland walks, and say plainly the Surf Coast is not in that guide yet.
+
 ## [3.1.0] - 2026-08-27
 
 ### House promotions

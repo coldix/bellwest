@@ -2,6 +2,12 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [3.1.0] - 2026-08-27
+
+### House promotions
+- One oze adnet row above the footer on every page (1/2/3 columns by width).
+- Units labelled **Promo**, cookie-free. Footer links the oze ad network.
+
 ## [1.7.4] - 2026-06-17
 
 ### Promo features — restore glass bento grid

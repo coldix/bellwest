@@ -16,7 +16,7 @@ Four primary pages + one article (consolidated from six in v3.0):
 
 | Page | URL | Purpose |
 |------|-----|---------|
-| Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ |
+| Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ, house promotions |
 | Explore | [/region/explore.html](https://bellwest.au/region/explore.html) | Interactive map, featured locations **and** the 360° Kuula tours (`#tours`) |
 | Invest | [/invest/](https://bellwest.au/invest/) | Four business opportunity pitches |
 | Advertise | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains from $49.50/year (sliding annual discount) |

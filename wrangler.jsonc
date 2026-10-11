@@ -4,6 +4,8 @@
   "account_id": "ab29454df8dbb469d259956fcf482075",
   "main": "worker.js",
   "compatibility_date": "2024-09-23",
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

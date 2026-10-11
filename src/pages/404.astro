@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | bellwest.au"
+  description="The page you are looking for does not exist on bellwest.au. Explore our regional guide or domain package."
+  showAdnet={false}
+>
+  <section class="page-hero" style="min-height: 60vh; display: grid; place-items: center; text-align: center;">
+    <div class="container">
+      <p class="section-eyebrow">404 Error</p>
+      <h1 style="margin-bottom: 1rem;">Page Not Found</h1>
+      <p class="page-hero-lead" style="margin-inline: auto;">
+        The page you requested may have moved or no longer exists. Head back to the homepage or explore the coastline.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+        <a href="/" class="btn btn-primary">Return Home</a>
+        <a href="/region/explore" class="btn btn-secondary">Explore the Region</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

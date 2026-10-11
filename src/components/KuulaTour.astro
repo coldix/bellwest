@@ -1,0 +1,55 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  location: string;
+  kuulaId: string;
+  isCollection?: boolean;
+  storyLink?: string;
+  storyLabel?: string;
+}
+
+const {
+  id,
+  title,
+  location,
+  kuulaId,
+  isCollection = false,
+  storyLink,
+  storyLabel,
+} = Astro.props;
+
+const embedUrl = isCollection
+  ? `https://kuula.co/share/collection/${kuulaId}?logo=1&info=1&fs=1&vr=1&zoom=1&sd=1&autorotate=0.3&thumbs=1`
+  : `https://kuula.co/share/${kuulaId}?logo=1&info=1&fs=1&vr=1&zoom=1&sd=1&autorotate=0.3&thumbs=1`;
+
+const directUrl = isCollection
+  ? `https://kuula.co/share/collection/${kuulaId}`
+  : `https://kuula.co/share/${kuulaId}`;
+---
+
+<article class="panorama-block" id={id}>
+  <h2>{title}</h2>
+  <p class="panorama-location">{location}</p>
+  <div class="panorama-embed">
+    <iframe
+      width="100%"
+      height="560"
+      frameborder="0"
+      allow="xr-spatial-tracking; gyroscope; accelerometer"
+      allowfullscreen
+      scrolling="no"
+      title={`360° aerial panorama — ${title}`}
+      src={embedUrl}
+      loading="lazy"
+    ></iframe>
+  </div>
+  <p class="panorama-note">
+    {storyLink && storyLabel && (
+      <>
+        <a href={storyLink}>{storyLabel}</a> ·{' '}
+      </>
+    )}
+    <a href={directUrl} target="_blank" rel="noopener noreferrer">Open on Kuula</a>
+  </p>
+</article>

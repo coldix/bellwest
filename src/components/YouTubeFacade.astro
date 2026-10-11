@@ -1,0 +1,67 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+  posterImage: string;
+  aspectRatio?: string;
+  label?: string;
+}
+
+const {
+  videoId,
+  title,
+  posterImage,
+  aspectRatio = '16 / 9',
+  label = 'Play video',
+} = Astro.props;
+---
+
+<div
+  class="yt-facade"
+  data-video-id={videoId}
+  data-video-title={title}
+  style={`aspect-ratio: ${aspectRatio};`}
+  role="region"
+  aria-label={title}
+>
+  <img
+    src={posterImage}
+    alt={title}
+    class="yt-facade-poster"
+    loading="lazy"
+    width="1280"
+    height="720"
+  />
+
+  <button type="button" class="yt-facade-play" aria-label={`Play: ${title}`}>
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  </button>
+
+  {label && <span class="yt-facade-label">{label}</span>}
+</div>
+
+<script>
+  function initYouTubeFacades() {
+    const facades = document.querySelectorAll('.yt-facade');
+    facades.forEach((facade) => {
+      facade.addEventListener('click', () => {
+        const videoId = facade.getAttribute('data-video-id');
+        const title = facade.getAttribute('data-video-title') || 'YouTube Video';
+        if (!videoId) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.title = title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+
+        facade.innerHTML = '';
+        facade.appendChild(iframe);
+      }, { once: true });
+    });
+  }
+
+  initYouTubeFacades();
+</script>

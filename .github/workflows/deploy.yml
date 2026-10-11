@@ -1,10 +1,4 @@
-# .github/workflows/deploy.yml
-# Version: 1.2.1 | 2026-06-17 17:20 AEST
-# Update notes: Hardened SSH deploy after failure. Explicit key file (-i), more debug output,
-# StrictHostKeyChecking=no for reliable CI (ephemeral runners), better error messages,
-# key validity check, and kept the Node 24 force. New assets (logos, lightbox etc.) deploy fine.
-
-name: Deploy to Hostinger (SSH rsync)
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -14,79 +8,24 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install rsync
-        run: sudo apt-get update && sudo apt-get install -y rsync
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
 
-      - name: Configure SSH
-        run: |
-          set -e
-          mkdir -p ~/.ssh
+      - name: Install dependencies
+        run: npm ci
 
-          SECRET="${{ secrets.HOSTINGER_SSH_KEY_B64 }}"
-          echo "=== SSH Secret Debug ==="
-          echo "Secret length (chars): ${#SECRET}"
-          if [ -z "$SECRET" ]; then
-            echo "❌ ERROR: Secret HOSTINGER_SSH_KEY_B64 is empty or not defined!"
-            echo "   This usually means the secret is not set in this repo (or org)."
-            echo "   Go to Settings → Secrets and variables → Actions and add it."
-            exit 1
-          fi
+      - name: Build Astro site
+        run: npm run build
 
-          # Robust decode: strip any whitespace/newlines that sometimes sneak into secrets
-          printf '%s' "$SECRET" | tr -d '\n\r\t ' | base64 -d > ~/.ssh/id_ed25519 || {
-            echo "❌ ERROR: Failed to base64-decode the secret."
-            echo "   Make sure the secret value is the exact base64 output of the private key file (no extra spaces)."
-            exit 1
-          }
-
-          chmod 600 ~/.ssh/id_ed25519
-
-          echo "SSH key file size: $(wc -c < ~/.ssh/id_ed25519) bytes"
-          ls -l ~/.ssh/id_ed25519
-          echo "First 80 chars of decoded key (for validation):"
-          head -c 80 ~/.ssh/id_ed25519 | cat -A || true
-
-      - name: Verify SSH connection
-        run: |
-          echo "=== Verifying SSH to Hostinger ==="
-          if ssh -i ~/.ssh/id_ed25519 -p 65002 \
-               -o BatchMode=yes \
-               -o ConnectTimeout=20 \
-               -o StrictHostKeyChecking=no \
-               -o UserKnownHostsFile=/dev/null \
-               u566466219@46.202.196.151 \
-               "echo '✅ SSH OK from runner at $(date)' && whoami && pwd"; then
-            echo "✅ SSH verification successful"
-          else
-            echo "❌ SSH verification FAILED."
-            echo "Check:"
-            echo "  1. Secret HOSTINGER_SSH_KEY_B64 is correctly set (repo or coldix org level)"
-            echo "  2. Public key is in server's ~/.ssh/authorized_keys for user u566466219"
-            echo "  3. Directory /home/u566466219/domains/bellwest.au/public_html/ exists and is writable"
-            echo "  4. No extra whitespace in the base64 secret value"
-            exit 1
-          fi
-
-      - name: Deploy via rsync over SSH
-        run: |
-          echo "=== Starting rsync deploy ==="
-          if rsync -av --progress --delete \
-            -e "ssh -i ~/.ssh/id_ed25519 -p 65002 -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='.DS_Store' \
-            --exclude='.well-known' \
-            --exclude='cgi-bin' \
-            ./ u566466219@46.202.196.151:/home/u566466219/domains/bellwest.au/public_html/; then
-            echo "✅ Deploy completed successfully"
-          else
-            echo "❌ rsync failed. Check permissions on the remote public_html directory."
-            exit 1
-          fi
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PricingCalculator from '../../components/PricingCalculator.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Advertise on bellwest.au — Promo Pages",
+      "url": "https://bellwest.au/promo/",
+      "description": "Premium promo pages and subdomains for Bellarine Peninsula businesses and private property sellers. Custom URLs, 360° tours, drone galleries, QR codes, and lead forms.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "bellwest.au",
+        "url": "https://bellwest.au/"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "bellwest.au Promo Pages & Subdomains",
+      "description": "Rent a premium promo page or subdomain (e.g. yourbusiness.bellwest.au) for local businesses, private property sales, and tourism operators. Includes custom URL, Kuula 360° tours, drone galleries, QR codes, lead forms, and a featured Facebook community post.",
+      "url": "https://bellwest.au/promo/",
+      "image": "https://bellwest.au/images/gallery/bells-longboard-pano.jpg",
+      "provider": {
+        "@type": "Organization",
+        "name": "OZ On Line",
+        "url": "https://oze.au",
+        "email": "col@oze.com.au"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Bellarine Peninsula and South West Victoria, Australia"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Introductory first-year promo page",
+          "price": "49.50",
+          "priceCurrency": "AUD",
+          "description": "July 2026 introductory price — 90% off the $495/year standard rate. Apply coupon BW-90 at Stripe checkout.",
+          "availability": "https://schema.org/InStock",
+          "url": "https://bellwest.au/promo/",
+          "priceValidUntil": "2026-07-31"
+        },
+        {
+          "@type": "Offer",
+          "name": "Standard annual promo page",
+          "price": "495",
+          "priceCurrency": "AUD",
+          "description": "Standard annual rate — includes promo page, hosting, custom URL, image placement, QR code, lead forms, and Facebook spotlight. Photography and portal listings billed separately.",
+          "availability": "https://schema.org/InStock",
+          "url": "https://bellwest.au/promo/"
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Advertise on bellwest.au — Promo Pages from $49.50"
+  description="Sell your property privately or promote your Bellarine business on bellwest.au. Premium promo pages from $49.50 for your first year — custom URLs, 360° tours, drone galleries, QR codes, and lead forms."
+  schema={schema}
+  adnetContext="page=promo"
+>
+  <!-- Hero -->
+  <section class="promo-hero" aria-labelledby="promo-heading">
+    <div class="promo-hero-bg" aria-hidden="true"></div>
+    <div class="container promo-hero-content">
+      <p class="hero-eyebrow">Bellarine &amp; South West Coast</p>
+      <h1 id="promo-heading">Put your property or business in front of the right audience.</h1>
+      <p class="promo-hero-lead">
+        Skip restrictive directories. Get a stunning bellwest.au page with drone imagery, 360° tours, QR codes, and direct lead capture — from just <strong>$49.50</strong> in July.
+      </p>
+      <div class="promo-hero-cta">
+        <a href="#checkout" class="btn btn-primary">Secure Your Page</a>
+        <a href="#features" class="btn btn-secondary">What's Included</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Stats Strip -->
+  <div class="promo-intro-strip" aria-label="Pricing summary">
+    <div class="container">
+      <div class="promo-stat">
+        <span class="promo-stat-value">$49.50</span>
+        <span>first year from July</span>
+      </div>
+      <span class="promo-stat-sep" aria-hidden="true"></span>
+      <div class="promo-stat">
+        <span class="promo-stat-value">$495</span>
+        <span>standard annual rate</span>
+      </div>
+      <span class="promo-stat-sep" aria-hidden="true"></span>
+      <div class="promo-stat">
+        <span class="promo-stat-value">90%</span>
+        <span>introductory saving</span>
+      </div>
+      <span class="promo-stat-sep" aria-hidden="true"></span>
+      <div class="promo-stat">
+        <span>Limited availability</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Six Reasons -->
+  <section class="promo-features" id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <header class="promo-section-header" data-reveal>
+        <p class="section-eyebrow">What's included</p>
+        <h2 id="features-heading">Six reasons locals choose bellwest</h2>
+        <p class="section-lead">
+          Every promo page is a premium, unrestricted canvas — not a cramped listing squeezed into someone else's template.
+        </p>
+      </header>
+
+      <div class="promo-features-grid">
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">01</span>
+          <h3>Custom URL</h3>
+          <p>Your own memorable address — <strong>bellwest.au/your-property</strong> — ready for signboards, socials, and email campaigns.</p>
+        </article>
+
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">02</span>
+          <h3>Kuula 360° tours</h3>
+          <p>Immersive virtual tours embedded seamlessly — buyers and customers explore room-by-room or coastline before they arrive.</p>
+        </article>
+
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M12 2v4"></path>
+              <path d="m4.93 4.93 2.83 2.83"></path>
+              <path d="M2 12h4"></path>
+              <path d="m4.93 19.07 2.83-2.83"></path>
+              <path d="M12 18v4"></path>
+              <path d="m19.07 19.07-2.83-2.83"></path>
+              <path d="M22 12h-4"></path>
+              <path d="m19.07 4.93-2.83 2.83"></path>
+              <circle cx="12" cy="12" r="4"></circle>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">03</span>
+          <h3>Drone galleries</h3>
+          <p>High-resolution aerial photography placing your property or business in stunning coastal context.</p>
+        </article>
+
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              <path d="M14 14h2v2h-2z"></path>
+              <path d="M20 14h1v1h-1z"></path>
+              <path d="M14 20h2v2h-2z"></path>
+              <path d="M17 17h1v1h-1z"></path>
+              <path d="M20 17h1v1h-1z"></path>
+              <path d="M17 20h2v2h-2z"></path>
+              <path d="M20 20h1v1h-1z"></path>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">04</span>
+          <h3>Custom QR code</h3>
+          <p>Scannable high-res codes for "For Sale" boards, menus, and shop windows — one tap directly to your live page.</p>
+        </article>
+
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <path d="m22 6-10 7L2 6"></path>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">05</span>
+          <h3>Lead capture forms</h3>
+          <p>Inquiry forms that email you directly. Capture serious buyers and bookings without agency lock-ins or third-party fees.</p>
+        </article>
+
+        <article class="feature-card" data-reveal>
+          <div class="feature-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <span class="feature-card-num" aria-hidden="true">06</span>
+          <h3>Facebook spotlight</h3>
+          <p>Featured pinned post in our <a href="https://www.facebook.com/groups/bellwest" target="_blank" rel="noopener noreferrer">Bellwest community</a> — instant local reach on launch day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's included / What's extra -->
+  <section class="promo-included" aria-labelledby="included-heading">
+    <div class="container">
+      <header class="promo-section-header" data-reveal>
+        <p class="section-eyebrow">Good to know</p>
+        <h2 id="included-heading">What's included — and what's extra</h2>
+        <p class="section-lead">
+          Honest, transparent flat pricing for the page itself. Specialist media and real-estate portal listings are arranged separately, at cost — no markup, no surprises.
+        </p>
+      </header>
+      <div class="included-grid">
+        <article class="included-card included-card-yes" data-reveal>
+          <h3><span class="tag">Included</span> In your $495/year</h3>
+          <ul>
+            <li>Your bellwest.au promo page, hosting &amp; a custom URL (e.g. <strong>bellwest.au/your-property</strong>)</li>
+            <li>Placement of your drone galleries, photos &amp; 360° virtual tours</li>
+            <li>Custom QR code for signboards, shop windows &amp; print materials</li>
+            <li>Direct-to-you lead form — zero commissions or middleman cut</li>
+            <li>Featured spotlight in the Bellwest Facebook community</li>
+          </ul>
+        </article>
+        <article class="included-card included-card-extra" data-reveal>
+          <h3><span class="tag">Extra</span> Arranged separately</h3>
+          <ul>
+            <li><strong>Photography &amp; 360° capture</strong> — billed directly by the photographer, or supply your own high-res imagery.</li>
+            <li><strong>Real-estate listings</strong> — selling privately? We can arrange your listing on <strong>domain.com.au</strong> and <strong>realestate.com.au</strong> (private-sale / FSBO, roughly $600/year).</li>
+            <li><strong>Subdomains &amp; online ordering</strong> — custom subdomain setup on request (e.g. yourbusiness.bellwest.au).</li>
+          </ul>
+        </article>
+      </div>
+      <p class="included-note" data-reveal>
+        Building a private property sale? Ask about the page + photography + portal-listing bundle and we'll quote it in one go.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing Calculator -->
+  <section class="promo-pricing" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <header class="promo-section-header" data-reveal>
+        <p class="section-eyebrow">Introductory offer</p>
+        <h2 id="pricing-heading">Slide the timeline — watch your rate change</h2>
+        <p class="section-lead">
+          Discount drops 10% each month from July 2026. Tap a column or drag the slider. Base price $495/year.
+        </p>
+      </header>
+
+      <PricingCalculator />
+    </div>
+  </section>
+
+  <!-- Subdomain Upsell -->
+  <section class="promo-upsell" aria-labelledby="upsell-heading">
+    <div class="container">
+      <div class="promo-upsell-inner" data-reveal>
+        <div class="promo-upsell-copy">
+          <p class="section-eyebrow">Hospitality &amp; beyond</p>
+          <h2 id="upsell-heading">Need more than a page? Claim a subdomain.</h2>
+          <p>
+            Whether you run an artisanal bakery in Torquay, a luxury guest house in Barwon Heads, or a cellar door on the Bellarine, a branded subdomain establishes an unforgettable digital presence.
+          </p>
+        </div>
+        <div class="promo-upsell-examples">
+          <span class="subdomain-chip">cottage.bellwest.au</span>
+          <span class="subdomain-chip">winery.bellwest.au</span>
+          <span class="subdomain-chip">dining.bellwest.au</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Form -->
+  <section class="promo-form-section" id="claim-form" aria-labelledby="form-heading">
+    <div class="container promo-form-wrap">
+      <header class="promo-section-header" data-reveal style="text-align:center;margin-inline:auto;">
+        <p class="section-eyebrow">Direct contact</p>
+        <h2 id="form-heading">Send an inquiry</h2>
+        <p class="section-lead">Tell us about your property or business and we'll tailor your promo package.</p>
+      </header>
+
+      <form
+        class="promo-form"
+        id="promo-inquiry-form"
+        data-reveal
+        action="mailto:col@oze.com.au"
+        method="GET"
+        enctype="text/plain"
+      >
+        <div class="promo-form-grid">
+          <div class="promo-field">
+            <label for="form-name" class="promo-field-label">Your Name</label>
+            <input type="text" id="form-name" name="name" required placeholder="e.g. Sarah Jenkins" />
+          </div>
+          <div class="promo-field">
+            <label for="form-email" class="promo-field-label">Email Address</label>
+            <input type="email" id="form-email" name="email" required placeholder="sarah@example.com.au" />
+          </div>
+          <div class="promo-field">
+            <label for="form-phone" class="promo-field-label">Phone Number</label>
+            <input type="tel" id="form-phone" name="phone" placeholder="0400 000 000" />
+          </div>
+          <div class="promo-field">
+            <label for="form-property" class="promo-field-label">Business or Property Name</label>
+            <input type="text" id="form-property" name="property" required placeholder="e.g. Point Addis Retreat" />
+          </div>
+          <div class="promo-field promo-field-wide">
+            <label for="form-url" class="promo-field-label">Preferred bellwest.au URL</label>
+            <input type="text" id="form-url" name="preferred_url" placeholder="e.g. bellwest.au/point-addis" />
+          </div>
+        </div>
+
+        <button type="submit" class="promo-form-submit">Send Inquiry to Colin</button>
+        <p class="promo-form-note">
+          Or email directly: <a href="mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry">col@oze.com.au</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

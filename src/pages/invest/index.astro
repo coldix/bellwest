@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Invest in bellwest.au — Potential Uses",
+      "url": "https://bellwest.au/invest/",
+      "description": "Four high-value business opportunities for the bellwest.au and bellwest.com.au domain package across Victoria's Bellarine Peninsula and Great Ocean Road region.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "bellwest.au",
+        "url": "https://bellwest.au/"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "bellwest.au Domain Package",
+      "description": "Two premium .au domains (bellwest.au and bellwest.com.au) for sale at $4,000 AUD ONO — a launchpad for tourism, real estate, eco-tourism, or hospitality brands on the Bellarine and Surf Coast.",
+      "url": "https://bellwest.au/invest/",
+      "offers": {
+        "@type": "Offer",
+        "price": "4000",
+        "priceCurrency": "AUD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://bellwest.au/invest/",
+        "description": "Full package including both domains, ready for transfer. Partner arrangements welcome."
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Four ways to build on bellwest",
+      "description": "Business opportunity pitches for the bellwest.au domain package at $4,000 ONO.",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home Base tourism & itinerary platform",
+          "description": "Use bellwest as the URL for a home-base travel model — Geelong, Torquay, Barwon Heads, and Ocean Grove as a base camp for exploring the Great Ocean Road corridor, with recurring revenue from extended-stay packages and local operator partnerships."
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Luxury real estate & agistment portal",
+          "description": "A curated portal for off-market listings, luxury rentals, and premium rural holdings on the Surf Coast and Bellarine Peninsula — high commission potential and brand authority for the luxury coastal property market."
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Eco-tourism & conservation hub",
+          "description": "An app and web hub promoting low-impact travel, protecting fragile dune systems and native habitat, and guiding visitors to regenerative experiences — aligned with Parks Victoria and growing demand for sustainable tourism."
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Curated food, wine & heritage trail",
+          "description": "A hospitality directory or experience marketplace aggregating high-end dining, wine tours, and heritage walks across the Bellarine and South West — revenue from booking fees, sponsored listings, and winery partnerships."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is bellwest.au open to partnerships?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — we are willing to consider a partner arrangement with this project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes bellwest special for tourism?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The domain name itself signals the Bellarine Peninsula and Great Ocean Road region. Barwon Heads, Torquay, and Bells Beach give it instant geographic credibility for a home-base or itinerary platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do the four opportunities connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They all leverage the premium coastal positioning of the Bellarine and South West Victoria. A single owner could combine elements (e.g. eco-tourism with food and wine trails) or run them separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the price negotiable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "$4,000 AUD ONO for both domains. Serious offers and partner proposals welcome."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Invest in bellwest.au — Premium Domain Potential Uses"
+  description="Discover four high-value business opportunities for bellwest.au and bellwest.com.au: tourism home base, luxury real estate, eco-conservation, and food & wine trails across the Bellarine and South West."
+  schema={schema}
+  adnetContext="page=invest"
+>
+  <section class="page-hero" aria-labelledby="page-heading">
+    <div class="container">
+      <p class="section-eyebrow">The opportunity</p>
+      <h1 id="page-heading">Four ways to build on bellwest</h1>
+      <p class="page-hero-lead">
+        bellwest.au isn't just a URL — it's a launchpad for businesses rooted in one of Australia's most desirable coastal corridors, including Barwon Heads on the Bellarine. At $4,000 AUD ONO, the domain package offers exceptional value against the revenue these models can generate.
+      </p>
+    </div>
+  </section>
+
+  <!-- Business Pitches -->
+  <section class="pitches" aria-label="Business opportunity pitches">
+    <div class="container" style="display:grid;gap:2.4rem;">
+      <!-- 01 -->
+      <article class="pitch-card pitch-card-visual" data-reveal>
+        <img
+          src="/images/gallery/torquay-fishermans.jpg"
+          alt="Fisherman's Beach Torquay — surfers and rescue craft in the bay"
+          class="pitch-image"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          data-lightbox
+          title="Click to enlarge"
+        />
+        <span class="pitch-number" aria-hidden="true">01</span>
+        <div class="pitch-content">
+          <h2>Home Base tourism &amp; itinerary platform</h2>
+          <p>
+            Standard Great Ocean Road tourism is exhausting — endless hotel-hopping, rushed day trips, and fragmented booking experiences. A modern travel company can use bellwest as the perfect URL for a <strong>"Home Base" model</strong>: market Geelong, Torquay, Barwon Heads, and Ocean Grove as the ultimate base camp for exploring the entire corridor.
+          </p>
+          <p>
+            Picture Fisherman's Beach on a bright May morning — surfers in rhythm with the ocean, rescue zodiacs in the bay, rain to the west and sun on the water. Instead of selling another generic motel room, you sell that week-long lifestyle: morning swims at Eastern Beach, afternoon drives to Bells Beach or Barwon Heads, and curated day trips to the Otways.
+          </p>
+          <ul class="pitch-highlights">
+            <li>Extended-stay packages with local boutique operators</li>
+            <li>Curated seasonal itineraries with integrated booking engine</li>
+            <li>Premium brand alignment with the surf &amp; coastal lifestyle</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="pitch-card pitch-card-visual" data-reveal>
+        <img
+          src="/images/gallery/barwon-heads-may22.jpg"
+          alt="Aerial view of Barwon Heads Bridge and coastal holdings"
+          class="pitch-image"
+          width="1600"
+          height="1066"
+          loading="lazy"
+          data-lightbox
+          title="Click to enlarge"
+        />
+        <span class="pitch-number" aria-hidden="true">02</span>
+        <div class="pitch-content">
+          <h2>Luxury real estate &amp; private property portal</h2>
+          <p>
+            The Bellarine Peninsula and Surf Coast are home to some of Victoria’s most prestigious property transactions — from architectural cliff-top homes in Barwon Heads and Jan Juc to expansive rural holdings and equestrian estates in freshwater lagoon country.
+          </p>
+          <p>
+            A bespoke agency or private portal operating on <strong>bellwest.au</strong> commands instant prestige. Rather than competing in the generic portal noise, establish a curated destination for high-net-worth buyers seeking architectural coastal sanctuaries and rural escapes.
+          </p>
+          <ul class="pitch-highlights">
+            <li>Private off-market sales and bespoke buyer advisory</li>
+            <li>Full-screen drone photography and 360° virtual tours built in</li>
+            <li>Lucrative commission and listing fee model</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="pitch-card pitch-card-visual" data-reveal>
+        <img
+          src="/images/gallery/bells-may22-storm.jpg"
+          alt="Storm approaching Bells Beach at Winki Pop"
+          class="pitch-image"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          data-lightbox
+          title="Click to enlarge"
+        />
+        <span class="pitch-number" aria-hidden="true">03</span>
+        <div class="pitch-content">
+          <h2>Eco-tourism &amp; coastal conservation hub</h2>
+          <p>
+            The natural grandeur of Bells Beach, Point Addis Marine National Park, and the Great Otway National Park requires vigilant care. As conscious travel continues to surge, travellers actively seek regenerative, low-impact holiday experiences.
+          </p>
+          <p>
+            <strong>bellwest.au</strong> can become the trusted environmental authority — partnering with Parks Victoria, local Indigenous groups, and Great Ocean Road Dunecare to educate visitors, certify low-carbon accommodations, and guide guided wilderness walks.
+          </p>
+          <ul class="pitch-highlights">
+            <li>Eco-certification and eco-stays booking platform</li>
+            <li>Educational maps, trail conditions, and dune restoration volunteering</li>
+            <li>Corporate sustainability sponsorship and grant opportunities</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="pitch-card pitch-card-visual" data-reveal>
+        <img
+          src="/images/gallery/torquay-pano.jpg"
+          alt="Torquay aerial panoramic coastline"
+          class="pitch-image"
+          width="1920"
+          height="800"
+          loading="lazy"
+          data-lightbox
+          title="Click to enlarge"
+        />
+        <span class="pitch-number" aria-hidden="true">04</span>
+        <div class="pitch-content">
+          <h2>Curated food, wine &amp; artisan trails</h2>
+          <p>
+            From the cool-climate vineyards of the Bellarine Taste Trail to artisan micro-breweries and seafood restaurants lining the coast, the culinary footprint of South West Victoria is world-class.
+          </p>
+          <p>
+            A dedicated gastronomic portal under <strong>bellwest.au</strong> provides an irresistible hub for food lovers, pairing cellar door tours with farm-gate produce, cooking masterclasses, and weekend culinary getaways.
+          </p>
+          <ul class="pitch-highlights">
+            <li>Interactive dining map with real-time reservation integration</li>
+            <li>Sponsored winery and farm-gate trail memberships</li>
+            <li>Curated seasonal food hampers and ticketed gourmet events</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <header class="section-header" data-reveal>
+        <p class="section-eyebrow">Investment questions</p>
+        <h2 id="faq-heading">Frequently asked questions</h2>
+      </header>
+      <div class="faq-list" data-reveal>
+        <details open>
+          <summary>Is bellwest.au open to partnerships?</summary>
+          <p>Yes — we are willing to consider a partner arrangement with this project. If you have an operational business or development plan, we are open to discussing equity, joint ventures, or creative terms.</p>
+        </details>
+        <details>
+          <summary>What makes bellwest special for tourism?</summary>
+          <p>The domain name itself signals the Bellarine Peninsula and Great Ocean Road region. Barwon Heads, Torquay, and Bells Beach give it instant geographic credibility for a home-base or itinerary platform.</p>
+        </details>
+        <details>
+          <summary>How do the four opportunities connect?</summary>
+          <p>They all leverage the premium coastal positioning of the Bellarine and South West Victoria. A single owner could combine elements (e.g. eco-tourism with food and wine trails) or run them separately.</p>
+        </details>
+        <details>
+          <summary>Is the price negotiable?</summary>
+          <p><strong>$4,000 AUD ONO</strong> for both domains (bellwest.au + bellwest.com.au). Serious offers and partner proposals are welcome.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="cta-band" aria-labelledby="cta-heading">
+    <div class="container cta-band-inner" data-reveal>
+      <div>
+        <h2 id="cta-heading">Ready to acquire the bellwest domain package?</h2>
+        <p>Two premium Australian domains for $4,000 AUD ONO. Immediate transfer via your accredited registrar.</p>
+      </div>
+      <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="btn btn-primary">Make an Offer</a>
+    </div>
+  </section>
+</BaseLayout>

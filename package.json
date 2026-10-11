@@ -1,0 +1,30 @@
+{
+  "name": "bellwest",
+  "version": "1.0.0",
+  "description": "Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula & South West Victoria**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coldix/bellwest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coldix/bellwest/issues"
+  },
+  "homepage": "https://github.com/coldix/bellwest#readme",
+  "dependencies": {
+    "astro": "^7.3.8",
+    "wrangler": "^4.149.0"
+  }
+}

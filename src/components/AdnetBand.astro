@@ -1,0 +1,19 @@
+---
+interface Props {
+  context?: string;
+}
+
+const { context = 'page=home' } = Astro.props;
+---
+
+<section class="adnet-band" aria-label="Promoted links">
+  <div class="container">
+    <div class="ad-row-wrap">
+      <div class="ad-row">
+        <div class="ad-slot ad-300x250" data-ad-zone="footer-row" data-ad-context={context}></div>
+        <div class="ad-slot ad-300x250 ad-col-2" data-ad-zone="footer-row-2" data-ad-context={context}></div>
+        <div class="ad-slot ad-300x250 ad-col-3" data-ad-zone="footer-row-3" data-ad-context={context}></div>
+      </div>
+    </div>
+  </div>
+</section>

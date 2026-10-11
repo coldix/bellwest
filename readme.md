@@ -6,183 +6,131 @@ Premium domain-for-sale site and regional gateway for the **Bellarine Peninsula 
 
 While the domain package is on the market, the site also showcases local aerial content and offers **promo pages** for private sellers and Bellarine businesses.
 
-## Design (v3.0)
+## Tech Stack & Architecture
 
-Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled by a floating pill (top-right). **Aurora Glass (dark) is the default**; a returning visitor's saved choice (`localStorage` key `bw-theme`) overrides it. The default is set on `<html data-theme="dark">` and reaffirmed by an inline `<head>` script before first paint, so there's no flash and it holds even without JS. Warm-sand / deep-teal palette (no blue-on-blue), underlined content links, redesigned footer, 3D card tilt + scroll-reveal (all motion respects `prefers-reduced-motion`).
+- **Framework:** [Astro](https://astro.build) (Static output)
+- **Edge Platform:** [Cloudflare Workers](https://developers.cloudflare.com/workers/) with Static Assets
+- **Deployment:** GitHub Actions (`.github/workflows/deploy.yml`) on push to `main`
+- **Video:** Lightweight YouTube facade (poster image with on-demand video player)
+- **Interactive:**
+  - Leaflet / OpenStreetMap for the regional corridor map
+  - Kuula 360° aerial virtual tours
+  - Promo pricing timeline slider with live savings & Stripe checkout
+  - Lightbox image preview modal for aerial photography
+  - House promotions via oze ad network (`https://ads.oze.net.au/`)
 
-## Live site
+## Design System (v4.0)
 
-Four primary pages + one article (consolidated from six in v3.0):
+Two-theme design system — **Coastal Editorial** (light) and **Aurora Glass** (dark) — toggled in the header navigation:
+- **Aurora Glass (dark)** is the default; returning visitors' choices persist in `localStorage` (`bw-theme`).
+- Zero flash on load via inline script before first paint.
+- Fraunces serif display typography paired with Source Sans 3 body.
+- 3D card tilt & smooth scroll reveal (respects `prefers-reduced-motion`).
+
+## Pages & Structure
 
 | Page | URL | Purpose |
 |------|-----|---------|
-| Home | [/](https://bellwest.au/) | Domain offer, hero video, promo banner, gallery, utility hub, FAQ, house promotions |
-| Explore | [/region/explore.html](https://bellwest.au/region/explore.html) | Interactive map, featured locations **and** the 360° Kuula tours (`#tours`) |
+| Home | [/](https://bellwest.au/) | Domain offer ($4k ONO), hero imagery, promo banner, aerial gallery, utility hub, FAQ |
+| Explore | [/region/explore](https://bellwest.au/region/explore) | Interactive map, featured locations & 360° Kuula aerial tours |
 | Invest | [/invest/](https://bellwest.au/invest/) | Four business opportunity pitches |
 | Advertise | [/promo/](https://bellwest.au/promo/) | Promo pages & subdomains from $49.50/year (sliding annual discount) |
-| Barwon Heads | [/region/barwon-heads.html](https://bellwest.au/region/barwon-heads.html) | Bellarine showcase article (linked from Explore) |
+| Barwon Heads | [/region/barwon-heads](https://bellwest.au/region/barwon-heads) | Bellarine showcase article |
 
 **Community:** [facebook.com/groups/bellwest](https://www.facebook.com/groups/bellwest)
 
-### Redirects
+### Redirects (301 Permanent)
 
-Old URLs 301 → new locations via `.htaccess`:
+Legacy URLs return 301 redirects handled at the Cloudflare edge:
 
-| Old | New |
-|-----|-----|
-| `/explore.html` | `/region/explore.html` |
-| `/barwon-heads.html` | `/region/barwon-heads.html` |
+| Old URL | Destination |
+|---------|-------------|
+| `/explore.html` | `/region/explore` |
+| `/barwon-heads.html` | `/region/barwon-heads` |
 | `/potential-uses.html` | `/invest/` |
-| `/panorama.html`, `/region/panorama.html` | `/region/explore.html#tours` |
+| `/panorama.html`, `/region/panorama.html` | `/region/explore#tours` |
+| `/region/explore.html` | `/region/explore` |
+| `/region/barwon-heads.html` | `/region/barwon-heads` |
+| `bellwest.com.au/*`, `www.bellwest.au/*` | `https://bellwest.au/*` |
 
-`.htaccess` also blocks public web access to dev/source files (`*.md`, `*.sh`,
-`*.yml`, `.gitignore`) — they're deployed but return 403. (The deploy server
-IP/user/path live in `deploy.sh`, so don't let it be web-readable.)
-
-## Project structure
+## Project Structure
 
 ```
 bellwest/
-├── index.html              # Homepage
-├── .htaccess               # 301 redirects for moved pages
-├── promo/
-│   └── index.html          # Advertise — promo pages & subdomains
-├── invest/
-│   └── index.html          # Invest — four business opportunity pitches
-├── region/
-│   ├── explore.html        # Map + featured locations + 360° Kuula tours (#tours)
-│   └── barwon-heads.html   # Bellarine showcase article
-├── css/
-│   └── style.css           # Design system v3.0 — light + dark themes
-├── js/
-│   ├── main.js             # Theme toggle, header, hero video, 3D tilt, scroll reveal
-│   ├── map.js              # Leaflet map (explore page)
-│   └── promo.js            # Pricing slider, columns, form, reveal
-├── images/
-│   ├── gallery/            # Aerial photography (Bells, Torquay, Barwon Heads)
-│   ├── branding/           # oze.au logo (png + webp)
-│   ├── hero-bells-beach-poster.jpg
-│   └── logo-wave-road.svg
-├── content/
-│   └── coota-scrape.json   # Asset manifest
-├── deploy.sh               # Manual rsync deploy to Hostinger
-├── .github/
-│   └── workflows/
-│       └── deploy.yml      # Auto-deploy on push to main
-├── robots.txt
-├── sitemap.xml
-├── llms.txt                # AI/LLM citation guide
+├── astro.config.mjs        # Astro configuration & static build settings
+├── wrangler.jsonc          # Cloudflare Worker & static assets configuration
+├── worker.js               # Edge worker router for redirects & asset delivery
+├── package.json
+├── src/
+│   ├── layouts/
+│   │   └── BaseLayout.astro
+│   ├── components/
+│   │   ├── Header.astro
+│   │   ├── Footer.astro
+│   │   ├── YouTubeFacade.astro
+│   │   ├── Lightbox.astro
+│   │   ├── AdnetBand.astro
+│   │   ├── ExploreMap.astro
+│   │   ├── KuulaTour.astro
+│   │   └── PricingCalculator.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── 404.astro
+│   │   ├── invest/index.astro
+│   │   ├── promo/index.astro
+│   │   └── region/
+│   │       ├── explore.astro
+│   │       └── barwon-heads.astro
+│   └── styles/
+│       ├── global.css
+│       └── adnet.css
+├── public/
+│   ├── images/
+│   │   ├── gallery/
+│   │   ├── branding/
+│   │   ├── hero-bells-beach-poster.jpg
+│   │   └── logo-wave-road.svg
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   ├── llms.txt
+│   ├── _redirects
+│   └── _headers
+├── docs/
+│   └── missions/
 ├── CHANGELOG.md
 └── readme.md
 ```
 
-## Local preview
+## Local Development
 
 ```bash
-cd bellwest
-python3 -m http.server 8080
+# Install dependencies
+npm install
+
+# Start local Astro dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview build locally
+npm run preview
 ```
 
-Open http://localhost:8080 — promo page at http://localhost:8080/promo/
+## Deployment
 
-## Deploy
+Deployments to Cloudflare Workers are automated via GitHub Actions on every push to `main`.
 
-Both methods `rsync --delete` so the server **mirrors** the repo (files removed
-locally are removed on the server). `.well-known` and `cgi-bin` are excluded so
-`--delete` can't wipe server-managed paths (SSL renewal, etc.) that aren't in git.
-
-### Manual (Mac)
-
-Requires `~/.ssh/gha_hostinger` (Hostinger deploy key, `chmod 600`):
-
+Manual deploy via Wrangler:
 ```bash
-./deploy.sh
+npm run build
+npx wrangler deploy
 ```
 
-**Remote path:** `/home/u566466219/domains/bellwest.au/public_html/`
-
-### GitHub Actions
-
-Pushes to `main` auto-deploy via `.github/workflows/deploy.yml`.
-
-- **One-time setup:** repo secret `HOSTINGER_SSH_KEY_B64` (base64 of the private key).
-- Editing `deploy.yml` requires a Git token with the **`workflow`** scope, or edit
-  it via the GitHub web UI.
-
-### ⚠️ Caching — bump `?v=` when you change CSS/JS
-
-The site is fronted by **Hostinger's CDN (`hcdn`)**. It serves **HTML live**
-(`x-hcdn-cache-status: DYNAMIC`) but **caches `css`/`js`/images for 7 days**
-(`Cache-Control: max-age=604800`) at the edge. Because the redesign reuses the
-same HTML class names, a stale cached `style.css` makes a fresh page look
-**unchanged** — and incognito / hard-refresh does **not** help (the stale copy
-lives on the CDN edge, not in the browser).
-
-So after editing `css/style.css` or any `js/*.js`, **bump the version query** on
-its `<link>` / `<script>` in every HTML file, e.g. `style.css?v=3.0.2` →
-`?v=3.0.3`. New URL = new object the CDN must re-fetch → change is instant for
-everyone. (A full CDN purge in hPanel → *Performance/CDN → Purge cache* also
-works, but versioning is self-service and reliable.)
-
-Quick bump for all pages:
-
-```bash
-grep -rl '?v=' --include='*.html' . | xargs sed -i '' 's/?v=3\.0\.2/?v=3.0.3/g'
-```
-
-Verify a deploy reached the edge:
-
-```bash
-curl -sI "https://bellwest.au/css/style.css?v=3.0.3" | grep x-hcdn-cache-status   # expect MISS then HIT
-```
-
-### DNS
-
-- **bellwest.au** → Hostinger
-- **bellwest.com.au** → same site or redirect to `https://bellwest.au/`
-
-Hero video streams from YouTube (`ze7-yqh-SMM`) — no local video file required.
-
-## Assets & sources
-
-| Asset | Source |
-|-------|--------|
-| Gallery images | [coota.au](https://coota.au) — Bells Beach, Torquay, Barwon Heads posts |
-| Hero video | YouTube `ze7-yqh-SMM` — Bells Longboard Classic aerial |
-| 360° embeds | [Kuula](https://kuula.co) — Barwon Heads, Torquay, Bells collections |
-| Map | [Leaflet](https://leafletjs.com) + OpenStreetMap |
-
-Scraped content manifest: `content/coota-scrape.json`
+Preview URL: https://bellwest.col-ab2.workers.dev
 
 ## Contact
 
-| Inquiry | Email |
-|---------|-------|
-| Domain purchase | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry) |
-| Promo page / subdomain | [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry) |
-
-Operator: [oze.au](https://oze.au)
-
-## Stripe (promo checkout)
-
-Live on `/promo/` — buy button in `#stripe-checkout-slot`.
-
-| Item | Value |
-|------|-------|
-| Product | `prod_UiiOowYQt2TkPl` |
-| Intro coupon (90% off) | `BW-90` |
-| Payment link | https://buy.stripe.com/3cIeVdcVMezo1st51f77O00 |
-| Buy button ID | `buy_btn_1TjH5PDRtLu90m8j4O1g5xA5` |
-| Publishable key | `pk_live_6TrCubeAphhHGIDlKHpcluuS` |
-
-Customers apply **BW-90** at checkout for the introductory discount ($49.50 first year on the $495/year base). Email order remains as a fallback.
-
-## SEO & AI visibility
-
-- `robots.txt` — crawler directives + sitemap link
-- `sitemap.xml` — all public pages including `/promo/`
-- `llms.txt` — structured facts for LLM citation
-- Homepage JSON-LD: WebSite, Product, FAQPage
-- Semantic HTML, minimal JS, static hosting
-
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+- **Domain Purchase:** [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry)
+- **Promo Page / Subdomain:** [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20promo%20page%20inquiry)
+- **Operator:** [oze.au](https://oze.au)

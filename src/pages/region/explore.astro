@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ExploreMap from '../../components/ExploreMap.astro';
+import KuulaTour from '../../components/KuulaTour.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Explore the Region — 360° Tours, Map & Locations",
+      "url": "https://bellwest.au/region/explore",
+      "description": "Interactive map of the Bellarine Peninsula, Surf Coast, and Great Ocean Road corridor — Barwon Heads, Torquay, Bells Beach, and beyond.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "bellwest.au",
+        "url": "https://bellwest.au/"
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Explore the Region — 360° Tours, Map & Locations | bellwest.au"
+  description="Interactive map of the Bellarine Peninsula, Surf Coast, and Great Ocean Road corridor — Barwon Heads, Torquay, Bells Beach, and beyond."
+  schema={schema}
+  adnetContext="page=region/explore"
+>
+  <section class="page-hero" aria-labelledby="page-heading">
+    <div class="container">
+      <p class="section-eyebrow">Bellarine &amp; South West</p>
+      <h1 id="page-heading">Explore the region</h1>
+      <p class="page-hero-lead">
+        From Geelong and Barwon Heads on the Bellarine Peninsula to Torquay, Bells Beach, and the Great Ocean Road — the geography behind the bellwest brand.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Map -->
+  <section class="explore-map-section" aria-labelledby="map-heading">
+    <div class="container">
+      <header class="section-header" data-reveal>
+        <p class="section-eyebrow">Interactive map</p>
+        <h2 id="map-heading">The bellwest corridor</h2>
+        <p class="section-lead">Click a marker for details. Scroll or pinch to zoom once you've clicked the map.</p>
+      </header>
+
+      <div data-reveal>
+        <ExploreMap />
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Locations -->
+  <section class="explore-cards" aria-labelledby="highlights-heading">
+    <div class="container">
+      <header class="section-header" data-reveal>
+        <h2 id="highlights-heading">Featured locations</h2>
+      </header>
+
+      <div class="showcase-grid">
+        <article class="showcase-card" data-reveal>
+          <a href="/region/barwon-heads" class="showcase-media" aria-label="Read Barwon Heads story">
+            <img
+              src="/images/gallery/barwon-heads-may22.jpg"
+              alt="Aerial view of Barwon Heads Bridge as storm clouds depart"
+              width="1600"
+              height="1066"
+              loading="lazy"
+            />
+          </a>
+          <div class="showcase-body">
+            <h3>Barwon Heads</h3>
+            <p>Drone story from the Bellarine — storm clouds retreating over the iconic bridge, river mouth, and Murtnaghurt Lagoon. Full article and links to coota.au.</p>
+            <p class="showcase-links">
+              <a href="/region/barwon-heads">Read on bellwest</a>
+              <a href="https://coota.au/barwon-heads/" target="_blank" rel="noopener noreferrer">Original on coota.au</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="showcase-card" data-reveal>
+          <a href="#tours" class="showcase-media" aria-label="Jump to 360 tours">
+            <img
+              src="/images/gallery/torquay-fishermans.jpg"
+              alt="Preview — 360° aerial tours of the Surf Coast"
+              width="1920"
+              height="1080"
+              loading="lazy"
+            />
+          </a>
+          <div class="showcase-body">
+            <h3>360° aerial tours</h3>
+            <p>Three Kuula panoramas — Barwon Heads, Torquay, and Bells Beach. Drag to look around; VR-ready on mobile devices.</p>
+            <p class="showcase-links">
+              <a href="#barwon-heads">Barwon Heads</a>
+              <a href="#torquay">Torquay</a>
+              <a href="#bells">Bells Beach</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="showcase-card" data-reveal>
+          <a href="/#region-showcase" class="showcase-media" aria-label="View on home page">
+            <img
+              src="/images/gallery/bells-longboard-pano.jpg"
+              alt="Bells Beach aerial panorama"
+              width="2560"
+              height="853"
+              loading="lazy"
+            />
+          </a>
+          <div class="showcase-body">
+            <h3>Bells Beach &amp; Torquay</h3>
+            <p>Original drone photography and coota.au stories from the Surf Coast — Longboard Classic, Winki Pop, and Fisherman's Beach.</p>
+            <p class="showcase-links">
+              <a href="/#region-showcase">View on home page</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="showcase-card" data-reveal>
+          <a href="https://trailbound.au/" target="_blank" rel="noopener noreferrer" class="showcase-media" aria-label="Open TrailBound">
+            <img
+              src="https://trailbound.au/og.jpg"
+              alt="TrailBound — East Gippsland and far south coast walks, mapped"
+              width="1200"
+              height="630"
+              loading="lazy"
+            />
+          </a>
+          <div class="showcase-body">
+            <h3>Mapped walks — East Gippsland today</h3>
+            <p>TrailBound is a map-first guide to walks on the far-east coast. Surf Coast and Great Ocean Road trails are not listed yet — that is the other end of Victoria’s coastline.</p>
+            <p class="showcase-links">
+              <a href="https://trailbound.au/" target="_blank" rel="noopener noreferrer">Open TrailBound</a>
+              <a href="https://trailbound.au/trails/" target="_blank" rel="noopener noreferrer">All trails</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360 Panoramas Section -->
+  <section class="panorama-section" id="tours" aria-labelledby="tours-heading">
+    <div class="container">
+      <header class="section-header" data-reveal>
+        <p class="section-eyebrow">Immersive media</p>
+        <h2 id="tours-heading">360° aerial tours</h2>
+        <p class="section-lead">
+          Barwon Heads, Torquay, and Bells Beach from above — drag to pan, scroll to zoom, or open in VR on supported devices.
+        </p>
+      </header>
+
+      <div class="panorama-stack" data-reveal>
+        <KuulaTour
+          id="barwon-heads"
+          title="Barwon Heads"
+          location="Bellarine Peninsula — bridge, river mouth & lagoon country"
+          kuulaId="NHQDq"
+          storyLink="/region/barwon-heads"
+          storyLabel="Barwon Heads story"
+        />
+
+        <KuulaTour
+          id="torquay"
+          title="Torquay"
+          location="Surf Coast — beaches, bay & Fisherman's Beach"
+          kuulaId="5mmtd"
+          storyLink="https://coota.au/torquay-may-2023/"
+          storyLabel="coota.au — Torquay"
+        />
+
+        <KuulaTour
+          id="bells"
+          title="Bells Beach"
+          location="Surf Coast — Winki Pop, Rincon & Longboard Classic"
+          kuulaId="7J2pJ"
+          isCollection={true}
+          storyLink="https://coota.au/bells-beach-longboard-classic-an-aerial-odyssey/"
+          storyLabel="coota.au — Bells Beach"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="cta-band cta-band-dark" aria-labelledby="cta-heading">
+    <div class="container cta-band-inner" data-reveal>
+      <div>
+        <h2 id="cta-heading">Own the digital gateway to this coastline</h2>
+        <p>bellwest.au and bellwest.com.au — $4,000 AUD ONO for the full domain package.</p>
+      </div>
+      <a href="mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry" class="btn btn-primary">Inquire Now</a>
+    </div>
+  </section>
+</BaseLayout>

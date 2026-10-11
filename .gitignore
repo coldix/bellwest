@@ -2,3 +2,6 @@
 Thumbs.db
 *.mp4
 !images/.gitkeep
+node_modules/
+dist/
+.astro/

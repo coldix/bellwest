@@ -2,6 +2,16 @@
 
 All notable changes to the bellwest.au / bellwest.com.au site.
 
+## [4.0.0] - 2026-10-11
+
+### Cloudflare & Astro Rebuild
+- Rebuilt site with **Astro** static generator; output deployed to **Cloudflare Workers** with Static Assets.
+- Removed Hostinger `deploy.sh` and SSH deploy workflow; configured automated GitHub Action for Cloudflare Workers.
+- Implemented edge router in `worker.js` and `_redirects` for 301 redirects on all legacy URLs and canonical domain redirects (`bellwest.com.au` / `www` → `https://bellwest.au`).
+- Preserved all content, domain terms ($4,000 AUD ONO), Kuula 360° virtual tours, interactive Leaflet map, house promotions (`ads.oze.net.au`), and promo page pricing calculator with Stripe integration.
+- Elevated design system to v4.0 with mobile navigation drawer, theme toggle persistence, optimized video facade for hero and drone stories.
+- Added structured JSON-LD, `llms.txt`, and clean static asset delivery with immutable caching headers.
+
 ## [3.1.1] - 2026-08-27
 
 ### TrailBound cross-link

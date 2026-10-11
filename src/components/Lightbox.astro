@@ -1,0 +1,56 @@
+<div id="image-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image preview">
+  <div class="lightbox-content">
+    <button type="button" class="lightbox-close" id="lightbox-close-btn" aria-label="Close enlarged image">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+</div>
+
+<script>
+  function initLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+    const closeBtn = document.getElementById('lightbox-close-btn');
+
+    if (!lightbox || !lightboxImg) return;
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+      lightboxImg.alt = '';
+      document.body.style.overflow = '';
+    };
+
+    const openLightbox = (src: string, alt: string) => {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    // Attach to images marked with zoom/lightbox
+    document.querySelectorAll('[data-lightbox]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        const img = e.currentTarget as HTMLImageElement;
+        openLightbox(img.src, img.alt);
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    // Also support global openLightbox for inline clicks if needed
+    (window as any).openLightbox = (imgElement: HTMLImageElement) => {
+      if (imgElement) openLightbox(imgElement.src, imgElement.alt);
+    };
+  }
+
+  initLightbox();
+</script>

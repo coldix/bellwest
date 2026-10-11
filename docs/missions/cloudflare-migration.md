@@ -1,58 +1,63 @@
-# Antigravity mission: move bellwest.au from Hostinger to Cloudflare
+# Antigravity mission: bellwest.au → Astro on Cloudflare
 
-Run on: Mac Studio (Antigravity, signed in to GitHub as coldix, wrangler logged in to the Cloudflare account that will hold bellwest.au).
-Repo: https://github.com/coldix/bellwest
-Live now: https://bellwest.au (Hostinger, `platform: hostinger`, www → www.bellwest.au.cdn.hstgr.net)
+Version 2 · 11 Oct 2026
+Run on: Mac Studio (Antigravity, GitHub as coldix, wrangler logged in to Colin's Cloudflare account)
+Repo: https://github.com/coldix/bellwest · Live now: https://bellwest.au (Hostinger)
 
-## Goal
-Serve bellwest.au (and www, plus bellwest.com.au as a redirect) from Cloudflare with no visible change to the site, no lost SEO, and auto-deploy from GitHub `main`. Then retire the Hostinger deploy path.
+## The goal
+Rebuild bellwest.au as an Astro site on Cloudflare, make it better than it is now, and auto-deploy from `main`. Hostinger goes away afterwards.
 
-## What the repo is (checked 11 Oct 2026)
-- Plain static HTML/CSS/JS, NOT Astro. Pages: `/`, `/region/explore.html`, `/region/barwon-heads.html`, `/invest/`, `/promo/`. Images ~2 MB. No PHP, no server forms (promo form uses `mailto:col@oze.com.au`).
-- `.htaccess` holds 5 x 301 redirects and blocks `*.md *.sh *.yml .gitignore` from the web.
-- `deploy.sh` + `.github/workflows/deploy.yml` rsync to Hostinger over SSH (secret `HOSTINGER_SSH_KEY_B64`).
-- `*.mp4` is gitignored: the hero video may only exist on the Hostinger server. CHECK THIS FIRST.
+You have room to improve it. Use your judgement on layout, typography, motion, imagery and page structure. Make it faster, cleaner and more convincing. These things must survive:
+- What it's for: a premium domain-for-sale site (bellwest.au + bellwest.com.au, **$4,000 AUD ONO**) that also works as a gateway to the Bellarine Peninsula and South West Victoria.
+- The content: Home, Explore (map + 360° Kuula tours), Invest, Advertise/Promo, the Barwon Heads article, FAQ, the oze.au footer credit, and the Facebook group link.
+- The contact paths: the promo order and enquiry flows can stay `mailto:col@oze.com.au` unless you find something better and free.
+- SEO: titles, descriptions, JSON-LD, `robots.txt`, `sitemap.xml`, `llms.txt`, and 301s from the old URLs.
 
-## Decision: do NOT convert to Astro
-Keep it static. Deploy as a Cloudflare Worker with static assets (preferred, matches other Oze sites) or Pages if simpler. Astro rewrite is out of scope; flag it as a later option only.
+## What's there now
+- Plain static HTML/CSS/JS (not Astro). Pages: `/`, `/region/explore.html`, `/region/barwon-heads.html`, `/invest/`, `/promo/`. Leaflet map, Kuula embeds, light/dark theme toggle, promo price slider.
+- `.htaccess` has the 301s: `/explore.html`, `/barwon-heads.html` → `/region/…`; `/potential-uses.html` → `/invest/`; `/panorama.html`, `/region/panorama.html` → `/region/explore.html#tours`.
+- `deploy.sh` and `.github/workflows/deploy.yml` rsync to Hostinger. Both go.
 
-## Colin does (before / during)
-1. Add bellwest.au (and bellwest.com.au) as zones in Cloudflare (Free plan). Let Cloudflare import existing DNS.
-2. Tell Antigravity "zones added" and the account name.
-3. When Antigravity says "ready for NS", change nameservers at the registrar to the two Cloudflare NS shown for each zone.
-4. After it's live and checked for a week: cancel/delete the Hostinger hosting for bellwest (only after step 9 below passes).
+## How to build it
+- Astro, static output, deployed as a Cloudflare Worker with static assets (Pages is fine if it's simpler). Push to `main` deploys (Workers Builds or a `wrangler deploy` Action using repo secrets). No secrets in the repo.
+- **Videos:** don't host mp4s. Use YouTube links or lightweight YouTube embeds (lite/facade, poster image until clicked). Ask Colin for the YouTube URLs if you can't find them. A still poster image is fine for the hero.
+- Keep the old URLs working, either as real Astro routes or as `_redirects` 301s.
+- Only the built site is served. Readme, changelog and docs aren't public.
+- Hit good Lighthouse scores on mobile, and keep it accessible.
+- Update `readme.md` and `CHANGELOG.md`. Remove the Hostinger deploy files and the server IP/user.
 
-## Antigravity does
-1. Clone repo, branch `cloudflare-migration`.
-2. Find every asset the pages reference (`grep -rhoE 'src="[^"]+"|href="[^"]+"'`) and confirm it exists in the repo. For anything missing (esp. `*.mp4` hero video, poster), download it from the live Hostinger site with curl before NS changes. Videos: if over 25 MiB per file, put them in R2 (or Cloudflare Stream) and update the URL; otherwise commit or store as an asset. Report what was missing.
-3. Move redirects from `.htaccess` to `_redirects`:
-   ```
-   /explore.html          /region/explore.html        301
-   /barwon-heads.html     /region/barwon-heads.html   301
-   /potential-uses.html   /invest/                    301
-   /panorama.html         /region/explore.html#tours  301
-   /region/panorama.html  /region/explore.html#tours  301
-   ```
-4. Keep dev files off the web: publish only a `public/` folder (or use `.assetsignore`) so `readme.md`, `CHANGELOG.md`, `deploy.sh`, `.github`, `.htaccess`, `content/coota-scrape.json` (if not used by pages) are NOT served. Keep `robots.txt`, `sitemap.xml`, `llms.txt`.
-5. Add `wrangler.jsonc` (Worker name `bellwest`, assets dir, `html_handling: auto-trailing-slash`, `not_found_handling: 404-page` with a simple `404.html`). Add `_headers` with long cache for `/images/*` `/css/*` `/js/*` (keep the existing `?v=` cache-busting).
-6. Replace the GitHub Action with a Cloudflare deploy (Workers Builds connected to the repo, or a `wrangler deploy` action using `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` secrets). Delete `deploy.sh` and the Hostinger rsync workflow, and update `readme.md` (Hosting, Caching, Deploy sections). Bump CHANGELOG.
-7. Deploy to the `*.workers.dev` URL first. Check every page, every redirect, map (Leaflet), Kuula 360 embeds, hero video, theme toggle, promo slider, 404, and that `/readme.md` and `/deploy.sh` return 404. Send Colin the workers.dev link and say "ready for NS".
-8. DNS (in Cloudflare, before Colin flips NS): remove imported Hostinger A/AAAA/CNAME for `@` and `www`. Attach custom domains `bellwest.au` and `www.bellwest.au` to the Worker (www → 301 to apex via a redirect rule). For bellwest.com.au: redirect rule `*bellwest.com.au/*` → `https://bellwest.au/${2}` 301 (proxied dummy record is fine).
-   EMAIL: both zones have Hostinger MX (`mx1/mx2.hostinger.com`) and SPF. Ask Colin whether any @bellwest.au mailbox is used. If no: remove MX/SPF and add Cloudflare Email Routing to forward e.g. `info@bellwest.au` → col@oze.com.au. If yes: keep MX/SPF untouched. Keep the `google-site-verification` TXT either way.
-9. After Colin changes NS: wait for zone Active, confirm SSL (Full/strict not needed for Workers), `curl -I https://bellwest.au` shows `server: cloudflare`, www and bellwest.com.au redirect, redirects 301 correctly. Re-submit `sitemap.xml` in Google Search Console if it's connected.
-10. Open a PR, merge after the checks pass, confirm the GitHub-triggered deploy works with a trivial change.
-11. Update ops.dixon.au for Bellwest: hosting = Cloudflare Workers, repo = coldix/bellwest, main AI = Antigravity/Gemini, check method + date, note "Hostinger can be cancelled after 1 week live". Add bellwest.com.au as redirect-only if it's listed as a domain.
+## Who does what
+**Colin:**
+1. Adds bellwest.au and bellwest.com.au to Cloudflare (Free plan).
+2. Changes the nameservers at the registrar when you say ready. Downtime during the switch is fine, and there's no important email on these domains.
+3. Cancels Hostinger once it's live.
+
+**Antigravity:**
+1. Build on a branch and deploy to the `*.workers.dev` preview. Send Colin the preview link.
+2. Once Colin is happy, attach `bellwest.au` as the Worker custom domain. Redirect `www.bellwest.au` and `bellwest.com.au` (all paths) to `https://bellwest.au` with a 301.
+3. DNS cleanup in Cloudflare: remove the Hostinger A/CNAME/MX/SPF records. Keep the `google-site-verification` TXT. Optional: Cloudflare Email Routing `info@bellwest.au` → col@oze.com.au.
+4. After NS is active, check HTTPS, the redirects and every page. Merge to `main` and confirm auto-deploy works.
 
 ## Guardrails
-- Do not touch the registrar; Colin changes NS.
-- Do not delete anything on Hostinger. Colin does that after a week.
-- No secrets in the repo. Remove the Hostinger IP/user from `deploy.sh`/workflow when deleting them.
-- Do not change site copy, design or the $4,000 ONO offer.
-- Stop and ask Colin if: video files are missing from both repo and server, email is in use, or anything costs money.
+- Don't touch the registrar or delete anything on Hostinger. Those are Colin's jobs.
+- Don't spend money. Ask Colin first if anything isn't free.
+- Don't change the $4,000 ONO offer or the domain-sale terms.
+
+## When it's live: tell the Chief of Staff (Grok Bot)
+Grok Bot keeps ops.dixon.au up to date. Don't edit ops yourself. Send it this handoff as a chat message: ask Colin to paste it into his Grok Bot chat, which is better than email. Also commit it as `docs/missions/cloudflare-migration-done.md`.
+
+```
+Bellwest is live on Cloudflare. Please update ops.dixon.au:
+- Site: bellwest.au (bellwest.com.au + www → 301 to bellwest.au)
+- Hosting: Cloudflare Workers (Astro), auto-deploy from coldix/bellwest main
+- Main AI: Antigravity (Gemini)
+- Live since: <date AEDT>
+- Preview/PR: <links>
+- Checked: pages, redirects, HTTPS, Lighthouse <scores>
+- Email: none (or: Email Routing info@ → col@oze.com.au)
+- Hostinger: safe to cancel
+- Follow-ups: <anything open>
+```
 
 ## Done when
-- bellwest.au, www.bellwest.au, bellwest.com.au all serve/redirect via Cloudflare with valid HTTPS.
-- Push to `main` auto-deploys to Cloudflare.
-- Old URLs 301 correctly; dev files not served.
-- ops.dixon.au updated.
-- Report back to Colin: live link, PR link, what was missing/fixed, email decision, and "safe to cancel Hostinger on <date>".
+bellwest.au serves the new Astro site over HTTPS from Cloudflare. www and .com.au redirect. Old URLs 301. Pushing to `main` deploys. Hostinger deploy files are gone. The handoff above has gone to Grok Bot.

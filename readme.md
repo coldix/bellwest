@@ -129,6 +129,14 @@ npx wrangler deploy
 
 Preview URL: https://bellwest.col-ab2.workers.dev
 
+## Panoramic wall art (OzeArt)
+
+The home page has a **Panoramic wall art** section (`#wall-art` in `src/pages/index.astro`), placed after "Why this region sells itself" and before the "Bellarine & South West resources" hub. It uses the existing Bells Beach 3:1 panorama (`/images/gallery/bells-longboard-pano.jpg`) and links to [art.oze.au](https://art.oze.au). The footer Pages list also links to art.oze.au.
+
+- Prices: 90 × 30 cm $395 · 120 × 40 cm $495 · 150 × 50 cm $595 (canvas, walnut shadow frame).
+- **Spring special (temporary):** 10% off plus free postage anywhere in Australia. Remove or update the `.wall-art-offer` line when the promotion ends.
+- Styles: `/* Panoramic wall art */` block at the end of `src/styles/global.css`.
+
 ## Contact
 
 - **Domain Purchase:** [col@oze.com.au](mailto:col@oze.com.au?subject=bellwest.au%20domain%20inquiry)

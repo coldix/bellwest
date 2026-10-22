@@ -17,7 +17,7 @@ While the domain package is on the market, the site also showcases local aerial 
   - Kuula 360° aerial virtual tours
   - Promo pricing timeline slider with live savings & Stripe checkout
   - Lightbox image preview modal for aerial photography
-  - House promotions via oze ad network (`https://ads.oze.net.au/`)
+  - House promotions via oze ad network (`https://ads.oze.au/`)
 
 ## Design System (v4.0)
 
